@@ -3,8 +3,8 @@ const path = require("path");
 const fetch = (...args) =>
     import("node-fetch").then(({ default: fetch }) => fetch(...args));
 
-const OUTPUT_FILE = path.resolve(__dirname, "users.json");
-const RESUME_FILE = path.resolve(__dirname, "resume.json");
+const OUTPUT_FILE = path.resolve(__dirname, "../data/raw", "users.json");
+const RESUME_FILE = path.resolve(__dirname, "../data/raw", "resume.json");
 
 const BASE_URL = "https://summer.hackclub.com/api/v1/users?page=";
 
@@ -64,7 +64,7 @@ async function fetchPage(page, retry = 0) {
     const url = BASE_URL + page;
     try {
         const headers = {
-            "User-Agent": "SoMUsersScraper/1.0 (Pls dont ban)",
+            "User-Agent": "SoM-Analytics/1.0 (Pls dont ban)",
             Accept: "application/json, text/plain, */*",
             "Accept-Language": "en-US,en;q=0.5",
             "Accept-Encoding": "gzip, deflate, br",

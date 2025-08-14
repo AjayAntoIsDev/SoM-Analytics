@@ -2,8 +2,8 @@ const fs = require("fs");
 const path = require("path");
 const fetch = (...args) => import("node-fetch").then(({ default: fetch }) => fetch(...args));
 
-const OUTPUT_FILE = path.resolve(__dirname, "comments.json");
-const RESUME_FILE = path.resolve(__dirname, "comments_resume.json");
+const OUTPUT_FILE = path.resolve(__dirname, "../data/raw", "comments.json");
+const RESUME_FILE = path.resolve(__dirname, "../data/raw", "comments_resume.json");
 
 const BASE_URL = "https://summer.hackclub.com/api/v1/comments?page=";
 
@@ -57,7 +57,7 @@ async function fetchPage(page, retry = 0) {
   const url = BASE_URL + page;
   try {
     const headers = {
-      "User-Agent": "SoMCommentsScraper/1.0 (Pls dont ban)",
+      "User-Agent": "SoM-Analytics/1.0 (Pls dont ban)",
       Accept: "application/json, text/plain, */*",
       "Accept-Language": "en-US,en;q=0.5",
       "Accept-Encoding": "gzip, deflate, br",
