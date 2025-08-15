@@ -1,7 +1,7 @@
 {
-  "scraped_at": "2025-08-13T12:50:51.815Z",
-  "total": 1235,
-  "expected_total": 1235,
+  "scraped_at": "2025-08-15T04:09:34.853Z",
+  "total": 1323,
+  "expected_total": 1323,
   "comments": [
     {
       "text": "woow, pretty awesome project! i love it!",
@@ -7412,11 +7412,539 @@
       "devlog_id": 33067,
       "slack_id": "U08RE7RUD9C",
       "created_at": "2025-08-13T11:20:20.210Z"
+    },
+    {
+      "text": "I’ve been following along and you’re doing really well",
+      "devlog_id": 35439,
+      "slack_id": "U09A3GV54QL",
+      "created_at": "2025-08-13T15:56:03.614Z"
+    },
+    {
+      "text": "noice",
+      "devlog_id": 35451,
+      "slack_id": "U07E8H9A24A",
+      "created_at": "2025-08-13T16:04:45.227Z"
+    },
+    {
+      "text": "Ts is a good projects for learning math fr fr",
+      "devlog_id": 35451,
+      "slack_id": "U096R9P8TS9",
+      "created_at": "2025-08-13T16:28:01.695Z"
+    },
+    {
+      "text": "Lol I’ve got a lot of those crazy errors as well 💀",
+      "devlog_id": 35493,
+      "slack_id": "U09A3GV54QL",
+      "created_at": "2025-08-13T16:49:57.620Z"
+    },
+    {
+      "text": "Creative I must say!",
+      "devlog_id": 35492,
+      "slack_id": "U09A3GV54QL",
+      "created_at": "2025-08-13T16:50:48.009Z"
+    },
+    {
+      "text": "This is getting a lot better",
+      "devlog_id": 35491,
+      "slack_id": "U09A3GV54QL",
+      "created_at": "2025-08-13T16:51:15.207Z"
+    },
+    {
+      "text": "Would it work if I upload it from my dodgy hand writing?",
+      "devlog_id": 35499,
+      "slack_id": "U09A3GV54QL",
+      "created_at": "2025-08-13T16:53:25.595Z"
+    },
+    {
+      "text": "Would love it if you answered my questions ):",
+      "devlog_id": 35503,
+      "slack_id": "U09A3GV54QL",
+      "created_at": "2025-08-13T16:57:25.919Z"
+    },
+    {
+      "text": "As you can see here( https://github.com/deveworld/relativity_simul ),  I used raylib-go with go-gl",
+      "devlog_id": 34980,
+      "slack_id": "U091PHB2AG5",
+      "created_at": "2025-08-13T16:59:16.617Z"
+    },
+    {
+      "text": "yes.. try it make sure its visible",
+      "devlog_id": 35499,
+      "slack_id": "U09A2PHRXQQ",
+      "created_at": "2025-08-13T17:03:56.806Z"
+    },
+    {
+      "text": "I’ve fixed it. May you try again?",
+      "devlog_id": 35493,
+      "slack_id": "U09ANA31KMW",
+      "created_at": "2025-08-13T17:05:24.394Z"
+    },
+    {
+      "text": "Bro I don’t even know that Lovable can attach API into their projects 💀",
+      "devlog_id": 35258,
+      "slack_id": "U09ANA31KMW",
+      "created_at": "2025-08-13T17:07:05.562Z"
+    },
+    {
+      "text": "How do you suggest I implement the power ups? Should they appear randomly in the levels or should each character have its own powerup, or some other way?",
+      "devlog_id": 34973,
+      "slack_id": "U04J5CM3T46",
+      "created_at": "2025-08-13T17:49:09.042Z"
+    },
+    {
+      "text": "Skip to 0:05",
+      "devlog_id": 35541,
+      "slack_id": "U091NDAL6AZ",
+      "created_at": "2025-08-13T17:52:53.593Z"
+    },
+    {
+      "text": "Very nice dude!",
+      "devlog_id": 35546,
+      "slack_id": "U09ANA31KMW",
+      "created_at": "2025-08-13T17:59:14.311Z"
+    },
+    {
+      "text": "I read about your unknown time 1 hours 22 minutes down the drain 😭",
+      "devlog_id": 35551,
+      "slack_id": "U09A3GV54QL",
+      "created_at": "2025-08-13T18:05:58.899Z"
+    },
+    {
+      "text": "Bro how’d you know? That’s kinda sad and now my logged time is not even logging lmao",
+      "devlog_id": 35551,
+      "slack_id": "U09ANA31KMW",
+      "created_at": "2025-08-13T18:06:41.769Z"
+    },
+    {
+      "text": "wow… fine-tuning? What AI are you using?",
+      "devlog_id": 35553,
+      "slack_id": "U09A3GV54QL",
+      "created_at": "2025-08-13T18:06:54.984Z"
+    },
+    {
+      "text": "Btw loveable can’t integrate APIs but it can integrate placeholder information quite well unfortunately😭",
+      "devlog_id": 35555,
+      "slack_id": "U09A3GV54QL",
+      "created_at": "2025-08-13T18:09:56.756Z"
+    },
+    {
+      "text": "Your journey’s quite an interesting one so I have you followed on everything.😁",
+      "devlog_id": 35551,
+      "slack_id": "U09A3GV54QL",
+      "created_at": "2025-08-13T18:10:58.465Z"
+    },
+    {
+      "text": "I tried going to your demo link… but its just your repo I can’t be asked to fork it💀",
+      "devlog_id": 35559,
+      "slack_id": "U09A3GV54QL",
+      "created_at": "2025-08-13T18:12:47.438Z"
+    },
+    {
+      "text": "Btw are you the one following me?",
+      "devlog_id": 35559,
+      "slack_id": "U09A3GV54QL",
+      "created_at": "2025-08-13T18:13:22.058Z"
+    },
+    {
+      "text": "Yeah I’m following you. By the way what happened on my repos?",
+      "devlog_id": 35559,
+      "slack_id": "U09ANA31KMW",
+      "created_at": "2025-08-13T18:18:24.868Z"
+    },
+    {
+      "text": "Oh, but it still cool. IDK any AI that can do the web so I’m doing a web database myself although IDK how to. I’m struggling with it alot bro. Do you know any AI that I can use?",
+      "devlog_id": 35555,
+      "slack_id": "U09ANA31KMW",
+      "created_at": "2025-08-13T18:19:22.757Z"
+    },
+    {
+      "text": "Cool! You know any good AI website maker or integrated AI in IDE?",
+      "devlog_id": 35303,
+      "slack_id": "U09ANA31KMW",
+      "created_at": "2025-08-13T18:20:15.604Z"
+    },
+    {
+      "text": "It’s just that I can’t be asked to fork them…. if you want to maximise votes on your project which I WANT for you. Give a direct link instead of making me fork stuff and run it myself. Cant you use some free domain like vercel or github domain",
+      "devlog_id": 35559,
+      "slack_id": "U09A3GV54QL",
+      "created_at": "2025-08-13T18:25:15.706Z"
+    },
+    {
+      "text": "Btw I did some more following stuff… and I realised what time it is at where you live… and yes I’ll get back to your AI question",
+      "devlog_id": 35559,
+      "slack_id": "U09A3GV54QL",
+      "created_at": "2025-08-13T18:26:27.242Z"
+    },
+    {
+      "text": "Talk to me on Slack pls",
+      "devlog_id": 35555,
+      "slack_id": "U09A3GV54QL",
+      "created_at": "2025-08-13T18:26:46.660Z"
+    },
+    {
+      "text": "gemini",
+      "devlog_id": 35553,
+      "slack_id": "U09A2PHRXQQ",
+      "created_at": "2025-08-13T18:26:58.791Z"
+    },
+    {
+      "text": "But I think the terminal to run c++ can’t be embedded into a website. Also, there’s a single file that you can download and run immediately, check the demo and scroll down, download the single file one. By the way, why can’t you fork my repos?",
+      "devlog_id": 35559,
+      "slack_id": "U09ANA31KMW",
+      "created_at": "2025-08-13T18:27:03.913Z"
+    },
+    {
+      "text": "It’s 1:30AM now",
+      "devlog_id": 35559,
+      "slack_id": "U09ANA31KMW",
+      "created_at": "2025-08-13T18:29:39.894Z"
+    },
+    {
+      "text": "Ooooh I’ve found a massive visual bug on your app… when you open it, it says type answer so when I pressed it, its says type question….. this is on the home page without clicking anything you’ll see type answer You surely owe me a follow now (;",
+      "devlog_id": 35563,
+      "slack_id": "U09A3GV54QL",
+      "created_at": "2025-08-13T18:29:44.432Z"
+    },
+    {
+      "text": "API key or do you have your own dataset? If yes could I see it on slack",
+      "devlog_id": 35553,
+      "slack_id": "U09A3GV54QL",
+      "created_at": "2025-08-13T18:30:21.235Z"
+    },
+    {
+      "text": "Too much effort to have something downloaded onto my computer… me as a voter would skip demoing the project if I had to download something which happens to a lot of the unity projects etc",
+      "devlog_id": 35559,
+      "slack_id": "U09A3GV54QL",
+      "created_at": "2025-08-13T18:33:19.278Z"
+    },
+    {
+      "text": "Could you talk on slack + what item are you aiming for from the shops",
+      "devlog_id": 35559,
+      "slack_id": "U09A3GV54QL",
+      "created_at": "2025-08-13T18:34:04.735Z"
+    },
+    {
+      "text": "I personally use Lovable.dev for my frontend as I’m only a master at backend when it comes to websites but someone here at the hackclub apparently made viable or vibeable idk but its an AI that does the same thing but loveable is %10000 better. After getting this created I move it to cursor and handle the backend. If your worried about paying… do what I do: create a new email then new account. Cursor and VS code github co-pilot are basically the same.",
+      "devlog_id": 35559,
+      "slack_id": "U09A3GV54QL",
+      "created_at": "2025-08-13T18:41:31.302Z"
+    },
+    {
+      "text": "Should I just post with images?",
+      "devlog_id": 32394,
+      "slack_id": "U080V8UG5BR",
+      "created_at": "2025-08-13T18:52:47.257Z"
+    },
+    {
+      "text": "Should I just post with images?",
+      "devlog_id": 32394,
+      "slack_id": "U080V8UG5BR",
+      "created_at": "2025-08-13T18:52:53.090Z"
+    },
+    {
+      "text": "Impressive Journey so far",
+      "devlog_id": 35612,
+      "slack_id": "U09A3GV54QL",
+      "created_at": "2025-08-13T19:44:01.783Z"
+    },
+    {
+      "text": "I like github actions",
+      "devlog_id": 32864,
+      "slack_id": "U096R9P8TS9",
+      "created_at": "2025-08-13T19:46:37.259Z"
+    },
+    {
+      "text": "Ship",
+      "devlog_id": 35671,
+      "slack_id": "U080V8UG5BR",
+      "created_at": "2025-08-13T21:59:28.874Z"
+    },
+    {
+      "text": "When are you adding support for FreeBSD?",
+      "devlog_id": 35671,
+      "slack_id": "U07DG5AQ0RK",
+      "created_at": "2025-08-13T21:59:37.801Z"
+    },
+    {
+      "text": "brroooo",
+      "devlog_id": 35671,
+      "slack_id": "U07E8H9A24A",
+      "created_at": "2025-08-13T22:00:52.850Z"
+    },
+    {
+      "text": "Peak",
+      "devlog_id": 35671,
+      "slack_id": "U08NXJL86KT",
+      "created_at": "2025-08-13T22:02:30.102Z"
+    },
+    {
+      "text": "peak again",
+      "devlog_id": 35671,
+      "slack_id": "U08NXJL86KT",
+      "created_at": "2025-08-13T22:02:46.094Z"
+    },
+    {
+      "text": "ship",
+      "devlog_id": 35671,
+      "slack_id": "U08NXJL86KT",
+      "created_at": "2025-08-13T22:02:56.517Z"
+    },
+    {
+      "text": "amazing page",
+      "devlog_id": 35671,
+      "slack_id": "U08NXJL86KT",
+      "created_at": "2025-08-13T22:03:07.577Z"
+    },
+    {
+      "text": "I was running on 20 fps 😅",
+      "devlog_id": 35674,
+      "slack_id": "U091NDAL6AZ",
+      "created_at": "2025-08-13T22:03:35.918Z"
+    },
+    {
+      "text": "Best project",
+      "devlog_id": 35640,
+      "slack_id": "U08NXJL86KT",
+      "created_at": "2025-08-13T22:07:39.834Z"
+    },
+    {
+      "text": "Components, I mean. Not connections, I haven’t started routing yet.",
+      "devlog_id": 35675,
+      "slack_id": "U09192704Q7",
+      "created_at": "2025-08-13T22:09:50.814Z"
+    },
+    {
+      "text": "W project",
+      "devlog_id": 35735,
+      "slack_id": "U08PW9U1PJN",
+      "created_at": "2025-08-14T02:13:27.026Z"
+    },
+    {
+      "text": "I’ve decided to make the bee movie one easier lmao",
+      "devlog_id": 35733,
+      "slack_id": "U0925Q3PB0Q",
+      "created_at": "2025-08-14T03:33:59.410Z"
+    },
+    {
+      "text": "peakkkkkk   (this website is so broken ong)",
+      "devlog_id": 35784,
+      "slack_id": "U07D59XCG4U",
+      "created_at": "2025-08-14T04:00:09.481Z"
+    },
+    {
+      "text": "btw i can use like a beta version of xcode right",
+      "devlog_id": 35750,
+      "slack_id": "U07958C9S5P",
+      "created_at": "2025-08-14T04:56:44.768Z"
+    },
+    {
+      "text": "WOW! Very useful Agent, SuperMemory as it says!!",
+      "devlog_id": 30711,
+      "slack_id": "U091XG26UQ5",
+      "created_at": "2025-08-14T05:41:38.669Z"
+    },
+    {
+      "text": "Good looking e-commerce website",
+      "devlog_id": 35801,
+      "slack_id": "U0946L72Z1T",
+      "created_at": "2025-08-14T05:43:18.465Z"
+    },
+    {
+      "text": "wow",
+      "devlog_id": 35775,
+      "slack_id": "U094LGRSQRJ",
+      "created_at": "2025-08-14T06:12:42.010Z"
+    },
+    {
+      "text": "wow",
+      "devlog_id": 34635,
+      "slack_id": "U094LGRSQRJ",
+      "created_at": "2025-08-14T06:22:39.645Z"
+    },
+    {
+      "text": "wow",
+      "devlog_id": 34627,
+      "slack_id": "U094LGRSQRJ",
+      "created_at": "2025-08-14T06:25:22.870Z"
+    },
+    {
+      "text": "For now im done tho",
+      "devlog_id": 35831,
+      "slack_id": "U07GRQPDCGZ",
+      "created_at": "2025-08-14T07:23:56.523Z"
+    },
+    {
+      "text": "This devlog should had been a video, but it failed to upload after I tried to upload it multiple times",
+      "devlog_id": 35815,
+      "slack_id": "U092KTDKGQ0",
+      "created_at": "2025-08-14T08:09:57.581Z"
+    },
+    {
+      "text": "This devlog also should had been a video, but it failed to upload again, therefore I should use photo ;-;",
+      "devlog_id": 35851,
+      "slack_id": "U092KTDKGQ0",
+      "created_at": "2025-08-14T08:10:26.148Z"
+    },
+    {
+      "text": "comment lmfao",
+      "devlog_id": 35859,
+      "slack_id": "U099VR6V5K4",
+      "created_at": "2025-08-14T08:38:39.075Z"
+    },
+    {
+      "text": "I think the collision detection and solve seem a little off. Can you fix it?",
+      "devlog_id": 35655,
+      "slack_id": "U091PHB2AG5",
+      "created_at": "2025-08-14T08:58:01.767Z"
+    },
+    {
+      "text": "I tested it yay it works",
+      "devlog_id": 35883,
+      "slack_id": "U096R9P8TS9",
+      "created_at": "2025-08-14T09:49:07.117Z"
+    },
+    {
+      "text": "nice",
+      "devlog_id": 17512,
+      "slack_id": "U096R9P8TS9",
+      "created_at": "2025-08-14T09:53:33.601Z"
+    },
+    {
+      "text": "Bro what :sob:",
+      "devlog_id": 35919,
+      "slack_id": "U08LQFRBL6S",
+      "created_at": "2025-08-14T11:15:26.011Z"
+    },
+    {
+      "text": "Collision detection seems to be working fine.  Can you provide more information on what looks off about it? Thanks",
+      "devlog_id": 35655,
+      "slack_id": "U080V8UG5BR",
+      "created_at": "2025-08-14T13:01:35.480Z"
+    },
+    {
+      "text": "Should I add friction and make the particles not move without interaction?",
+      "devlog_id": 35655,
+      "slack_id": "U080V8UG5BR",
+      "created_at": "2025-08-14T13:45:21.460Z"
+    },
+    {
+      "text": "absolute cinema",
+      "devlog_id": 35929,
+      "slack_id": "U07DG5AQ0RK",
+      "created_at": "2025-08-14T14:20:54.455Z"
+    },
+    {
+      "text": "Make the snooper.",
+      "devlog_id": 36005,
+      "slack_id": "U080V8UG5BR",
+      "created_at": "2025-08-14T14:35:23.006Z"
+    },
+    {
+      "text": "Pls don’t ship a complete ai project",
+      "devlog_id": 36054,
+      "slack_id": "U080V8UG5BR",
+      "created_at": "2025-08-14T15:59:19.076Z"
+    },
+    {
+      "text": "AW, dang it",
+      "devlog_id": 36054,
+      "slack_id": "U080V8UG5BR",
+      "created_at": "2025-08-14T15:59:34.942Z"
+    },
+    {
+      "text": "Nice staff",
+      "devlog_id": 36055,
+      "slack_id": "U080V8UG5BR",
+      "created_at": "2025-08-14T16:01:06.640Z"
+    },
+    {
+      "text": "Nice staff",
+      "devlog_id": 36055,
+      "slack_id": "U080V8UG5BR",
+      "created_at": "2025-08-14T16:01:08.598Z"
+    },
+    {
+      "text": "WOW a menu",
+      "devlog_id": 36028,
+      "slack_id": "U09A3GV54QL",
+      "created_at": "2025-08-14T16:31:40.748Z"
+    },
+    {
+      "text": "Hey Austin.",
+      "devlog_id": 35719,
+      "slack_id": "U080V8UG5BR",
+      "created_at": "2025-08-14T16:33:28.622Z"
+    },
+    {
+      "text": "The demo doesn’t work",
+      "devlog_id": 36020,
+      "slack_id": "U080V8UG5BR",
+      "created_at": "2025-08-14T16:37:29.600Z"
+    },
+    {
+      "text": "also yes, the ctrl+c to clear feature doesnt work that is why the video is cut at the end :p",
+      "devlog_id": 36093,
+      "slack_id": "U092S9MK917",
+      "created_at": "2025-08-14T17:47:07.087Z"
+    },
+    {
+      "text": "You can go here: https://github.com/wadwad-a/Boss-Fight-Blitz/tree/main/assets/icons   to view all my icons, since they all weren’t shown in the video",
+      "devlog_id": 36102,
+      "slack_id": "U04J5CM3T46",
+      "created_at": "2025-08-14T18:07:35.317Z"
+    },
+    {
+      "text": "this is really creative!!! I love all the pages :)   maybe give the text page a darker background so that the text is more readable, like the actual minecraft ending text 👍👍",
+      "devlog_id": 13200,
+      "slack_id": "U0925Q3PB0Q",
+      "created_at": "2025-08-14T19:41:55.281Z"
+    },
+    {
+      "text": "peak",
+      "devlog_id": 36153,
+      "slack_id": "U095NAKDYM6",
+      "created_at": "2025-08-14T19:51:22.497Z"
+    },
+    {
+      "text": "Very cool",
+      "devlog_id": 36180,
+      "slack_id": "U080V8UG5BR",
+      "created_at": "2025-08-14T20:51:33.358Z"
+    },
+    {
+      "text": "demo?",
+      "devlog_id": 36180,
+      "slack_id": "U080V8UG5BR",
+      "created_at": "2025-08-14T20:52:24.492Z"
+    },
+    {
+      "text": "dang bro has ideas 👍",
+      "devlog_id": 36204,
+      "slack_id": "U081XG0P6TH",
+      "created_at": "2025-08-14T21:51:52.953Z"
+    },
+    {
+      "text": "The game looks really nice. could you do like a demo vid so as to see what it looks like. Got High hopes 🙌",
+      "devlog_id": 36208,
+      "slack_id": "U0924EUNNUR",
+      "created_at": "2025-08-14T21:59:46.569Z"
+    },
+    {
+      "text": "the demo is live for anyone to try it, but the server side uses render so it needs to wait a bit for the wake up",
+      "devlog_id": 36208,
+      "slack_id": "U093XMLM1GA",
+      "created_at": "2025-08-14T22:01:12.266Z"
+    },
+    {
+      "text": "bro this is ai",
+      "devlog_id": 36297,
+      "slack_id": "U0826EBVBU1",
+      "created_at": "2025-08-15T02:33:56.070Z"
     }
   ],
   "cookies": {
-    "_journey_session": "GgZRwhiclwMOHx34nTzfID8k6tP1lYO2XnZJlaf%2BbqvFKlpBJ4X3QTinaNJUoX1toZoRpGiV5MOhaOQbHmUyLPABChDGNqYm%2F%2B1NccOMXSy9T1gWsK%2FP4Cy1E7bgh%2FedGKMgyBER5aF%2Bx4m%2BgvtVYPAz93SjctzN3y3R6QRwuEui8pFmb0Fbw8j0lzr6wO4atU1PtDbBnllUZ987ca6G%2BAmdeC%2Be%2F35dqBSo7U9OFrLdc4hI9fErEwTxA4of66EtDuAJa46Qz%2BAgQf%2FUuacnHsmnWEq3fJFW%2Fo2Xihdskys4C61jM2SYMgehmThtwPe%2FBOQTOsqKpS9DSbjNJ18yBAqFEEb0DNNKrV8x0c9g06nxjKyfnaGyr%2FNLUJ%2Bgfjk%2F91EJcTVryvVUAxnWfSpikrr4xpTcJlW3%2BsKDEF%2BXbTpNJPozpDZuTOPVFczko90BdZVTm7cw6QuwmP%2FOISRWCTVhYMLZa2CZZ4yV3ZshUMLEFxgAgzV8i6JBae6j9pRZb9ubg3dIbAZHT9SEWZJecSBx--wNZiKNB8qa6AoZEn--%2FFBLd3v8j9oFdQtz9O1G0Q%3D%3D",
-    "ahoy_visitor": "561c9e16-76c4-4c94-a12c-11c60ba48cb4",
-    "ahoy_visit": "1e021be2-9bb7-435f-97a6-fcf01a11910d"
+    "_journey_session": "Jt7qKsc0eJF%2F85Q%2B4aecJma02XVJK9OSinb4ZC58qpnK7E6r2Q7kty4H0wSXJ2WQct6s7QG%2BYM%2FRGyiZGDG6Di2ppn6H7B%2FYsL2G5woaZ31xGj9n0ivseVNGVts4mEb7W3WPg%2FRShkvF8QEhK%2FKfHKc5fLa2BbqK9Vl1GUkrEmzMX%2FVOlxxvIs1vsD6%2FPBBsiyU7KJRjKRgxKCc6SlbKlveIOVoT0qfko3jxjd%2FOKhae4hNWW7lstmQoou3idMyNj3vXwlGIe3ITOPH6DNUfLPCWrr8jromlmQkxwifrkqhcB%2FhaLaSBKvzBAox%2BY%2B7PtFoj6hym6bAt6hOLEo8NkISY6CipxrPnfMAN0oEEGxs6FkWcaIqJ1fV5OfJrk1psUGHYktDzFXVDf5baw4oGq9ybpAwkJ5NKu8cgAtgtZvhngbdIOiwR85J0j3vR%2BG0iz7EYdyxN6nI0qkz9iKVGeCaoBKX3FlG4E3gPSdnRGJs%2Bx6pxErrCIy44KrG3B2xAHfl3UZ9VYCyvPKFMtwM7dcA5--Wn1DUzT9vo%2BVTTJ7--QKDuk%2FrcM3f32wtW8OE3iA%3D%3D",
+    "ahoy_visitor": "aac3105c-1a34-4041-a6b7-493934dfdcc8",
+    "ahoy_visit": "f6fc6d6a-4dc4-46b1-9884-fc01a152e159"
   }
 }

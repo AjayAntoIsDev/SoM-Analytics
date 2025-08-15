@@ -1,6 +1,6 @@
 {
-  "scraped_at": "2025-08-15T03:07:00.898Z",
-  "total": 1369,
+  "scraped_at": "2025-08-15T04:09:38.271Z",
+  "total": 1372,
   "entries": [
     {
       "slack_id": "U080A3QP42C",
@@ -2430,6 +2430,12 @@
       "slack_id": "U0823APHVK7",
       "payouts": [
         {
+          "id": "13157",
+          "amount": "204.00",
+          "created_at": "2025-08-15T03:12:35.816Z",
+          "type": "ShipEvent"
+        },
+        {
           "id": "9696",
           "amount": "39.00",
           "created_at": "2025-07-19T23:38:41.399Z",
@@ -2448,7 +2454,7 @@
           "type": "ShipEvent"
         }
       ],
-      "shells": 1453
+      "shells": 1657
     },
     {
       "slack_id": "U07UH9DQA4B",
@@ -9117,6 +9123,18 @@
       ]
     },
     {
+      "slack_id": "U07DG1B3VHP",
+      "shells": 60,
+      "payouts": [
+        {
+          "id": "13159",
+          "amount": "60.00",
+          "created_at": "2025-08-15T03:17:09.361Z",
+          "type": "ShipEvent"
+        }
+      ]
+    },
+    {
       "slack_id": "U091PP29H0A",
       "shells": 488,
       "payouts": [
@@ -14080,7 +14098,7 @@
     },
     {
       "slack_id": "U091J854ABV",
-      "shells": 1053,
+      "shells": 303,
       "payouts": [
         {
           "id": "9552",
@@ -14099,6 +14117,12 @@
           "amount": "381.00",
           "created_at": "2025-08-14T20:34:04.697Z",
           "type": "ShipEvent"
+        },
+        {
+          "id": "13169",
+          "amount": "-750.00",
+          "created_at": "2025-08-15T04:01:04.490Z",
+          "type": "ShopOrder"
         },
         {
           "id": "11891",
@@ -15300,13 +15324,19 @@
           "type": "ShipEvent"
         },
         {
+          "id": "13167",
+          "amount": "-10.00",
+          "created_at": "2025-08-15T03:56:00.234Z",
+          "type": "ShopOrder"
+        },
+        {
           "id": "9577",
           "amount": "243.00",
           "created_at": "2025-07-18T16:17:38.831Z",
           "type": "ShipEvent"
         }
       ],
-      "shells": 70
+      "shells": 60
     },
     {
       "shells": 202,
@@ -19090,8 +19120,14 @@
     },
     {
       "slack_id": "U079V0A5CQ2",
-      "shells": 299,
+      "shells": 907,
       "payouts": [
+        {
+          "id": "13166",
+          "amount": "-850.00",
+          "created_at": "2025-08-15T03:49:56.694Z",
+          "type": "ShopOrder"
+        },
         {
           "id": "13151",
           "amount": "-2683.00",
@@ -19120,6 +19156,18 @@
           "id": "12549",
           "amount": "-850.00",
           "created_at": "2025-08-13T07:13:24.813Z",
+          "type": "ShopOrder"
+        },
+        {
+          "id": "13164",
+          "amount": "2683.00",
+          "created_at": "2025-08-15T03:47:40.321Z",
+          "type": "User"
+        },
+        {
+          "id": "13165",
+          "amount": "-1225.00",
+          "created_at": "2025-08-15T03:49:11.486Z",
           "type": "ShopOrder"
         },
         {
@@ -24658,13 +24706,25 @@
     },
     {
       "slack_id": "U092N5X4DH6",
-      "shells": 87,
+      "shells": 2,
       "payouts": [
         {
           "id": "10550",
           "amount": "46.00",
           "created_at": "2025-07-28T08:18:22.560Z",
           "type": "ShipEvent"
+        },
+        {
+          "id": "13162",
+          "amount": "-25.00",
+          "created_at": "2025-08-15T03:38:54.331Z",
+          "type": "ShopOrder"
+        },
+        {
+          "id": "13161",
+          "amount": "-60.00",
+          "created_at": "2025-08-15T03:38:06.277Z",
+          "type": "ShopOrder"
         },
         {
           "id": "13082",
@@ -25132,8 +25192,20 @@
     },
     {
       "slack_id": "U08RE7RUD9C",
-      "shells": 356,
+      "shells": 362,
       "payouts": [
+        {
+          "id": "13168",
+          "amount": "-10.00",
+          "created_at": "2025-08-15T03:58:31.429Z",
+          "type": "ShopOrder"
+        },
+        {
+          "id": "13163",
+          "amount": "16.00",
+          "created_at": "2025-08-15T03:46:35.418Z",
+          "type": "ShipEvent"
+        },
         {
           "id": "11031",
           "amount": "38.00",
@@ -29068,12 +29140,18 @@
     },
     {
       "slack_id": "U09344HR072",
-      "shells": 317,
+      "shells": 338,
       "payouts": [
         {
           "id": "10784",
           "amount": "101.00",
           "created_at": "2025-07-30T13:40:44.032Z",
+          "type": "ShipEvent"
+        },
+        {
+          "id": "13158",
+          "amount": "21.00",
+          "created_at": "2025-08-15T03:12:43.358Z",
           "type": "ShipEvent"
         },
         {
@@ -30046,6 +30124,18 @@
           "id": "12887",
           "amount": "123.00",
           "created_at": "2025-08-14T03:22:39.451Z",
+          "type": "ShipEvent"
+        }
+      ]
+    },
+    {
+      "slack_id": "U092BMGMK19",
+      "shells": 69,
+      "payouts": [
+        {
+          "id": "13155",
+          "amount": "69.00",
+          "created_at": "2025-08-15T03:06:14.556Z",
           "type": "ShipEvent"
         }
       ]
@@ -35278,9 +35368,15 @@
           "amount": "90.00",
           "created_at": "2025-08-05T02:52:55.699Z",
           "type": "ShipEvent"
+        },
+        {
+          "id": "13160",
+          "amount": "174.00",
+          "created_at": "2025-08-15T03:19:37.459Z",
+          "type": "ShipEvent"
         }
       ],
-      "shells": 90
+      "shells": 264
     },
     {
       "slack_id": "U095NAKDYM6",
@@ -35398,6 +35494,18 @@
           "id": "11694",
           "amount": "225.00",
           "created_at": "2025-08-06T15:07:50.130Z",
+          "type": "ShipEvent"
+        }
+      ]
+    },
+    {
+      "slack_id": "U07URV8HZEJ",
+      "shells": 2275,
+      "payouts": [
+        {
+          "id": "13156",
+          "amount": "2275.00",
+          "created_at": "2025-08-15T03:10:51.076Z",
           "type": "ShipEvent"
         }
       ]

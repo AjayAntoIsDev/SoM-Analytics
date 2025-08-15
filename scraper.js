@@ -49,25 +49,58 @@ function runNodeScript(filePath, extraArgs = []) {
   });
 }
 
+function formatDuration(ms) {
+  const sign = ms < 0 ? '-' : '';
+  ms = Math.abs(ms);
+  const h = Math.floor(ms / 3600000); ms %= 3600000;
+  const m = Math.floor(ms / 60000); ms %= 60000;
+  const s = Math.floor(ms / 1000);
+  const msRem = Math.floor(ms % 1000);
+  const pad = (n, w=2) => n.toString().padStart(w, '0');
+  const base = `${h ? h + ':' : ''}${h ? pad(m) : m}:${pad(s)}.${pad(msRem,3)}`;
+  return sign + base;
+}
+
 (async () => {
   for (const s of scripts) existsOrDie(s.file);
 
   const startedAt = new Date();
   console.log(`[runner] SoM scraper runner starting at ${startedAt.toISOString()}`);
 
+  const timings = [];
+
   for (const s of scripts) {
+    const t0 = Date.now();
+    let success = true;
     try {
       await runNodeScript(s.file, args);
     } catch (err) {
+      success = false;
       console.error(`[runner] Error running ${s.name}: ${err.message}`);
-      console.error('[runner] Stopping further execution.');
+    } finally {
+      const dt = Date.now() - t0;
+      timings.push({ name: s.name, ms: dt, success });
+      console.log(`[runner] Timing: ${s.name} took ${formatDuration(dt)}`);
+    }
+    if (!success) {
+      const totalSoFar = timings.reduce((acc, t) => acc + t.ms, 0);
+      console.log(`\n[runner] Summary so far:`);
+      for (const t of timings) {
+        console.log(` - ${t.name}: ${formatDuration(t.ms)} ${t.success ? '' : '(failed)'}`);
+      }
+      console.log(`[runner] Total elapsed: ${formatDuration(totalSoFar)}`);
       process.exitCode = 1;
       return;
     }
   }
 
   const finishedAt = new Date();
-  const mins = ((finishedAt - startedAt) / 60000).toFixed(2);
-  console.log(`\n[runner] All scrapers completed successfully in ${mins} minutes.`);
+  const totalMs = finishedAt - startedAt;
+
+  console.log(`\n[runner] Per-script timings:`);
+  for (const t of timings) {
+    console.log(` - ${t.name}: ${formatDuration(t.ms)}`);
+  }
+  console.log(`[runner] Total elapsed: ${formatDuration(totalMs)}`);
 })();
 
