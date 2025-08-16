@@ -1,0 +1,174 @@
+{
+    "numerical": {
+        "avg_minutes": {
+            "name": "Average time per devlog",
+            "description": "The average time spent on each devlog.",
+            "data": 179.54415021637323
+        },
+        "avg_devlogs": {
+            "name": "Average devlogs per project",
+            "description": "The average number of devlogs per project.",
+            "data": 6.7605548639516275
+        },
+        "avg_engagement": {
+            "name": "Average engagement per devlog",
+            "description": "The average engagement per devlog.",
+            "data": 0.3121821091943802
+        }
+    },
+    "top": {
+        "top_devlogs_time": {
+            "name": "Top 3 devlogs by time",
+            "description": "The top 3 devlogs by time spent (in minutes).",
+            "data": {
+                "0": {
+                    "devlog_id": 31494,
+                    "project_id": 4604,
+                    "devlog_label": "Huayushan.fun | #31494",
+                    "time_minutes_num": 7118.57,
+                    "project_link": "https://summer.hackclub.com/projects/4604"
+                },
+                "1": {
+                    "devlog_id": 23803,
+                    "project_id": 8234,
+                    "devlog_label": "(Project-2) Mind Garden. | #23803",
+                    "time_minutes_num": 6516.87,
+                    "project_link": "https://summer.hackclub.com/projects/8234"
+                },
+                "2": {
+                    "devlog_id": 35169,
+                    "project_id": 11068,
+                    "devlog_label": "e-commerce -websitte | #35169",
+                    "time_minutes_num": 6228.65,
+                    "project_link": "https://summer.hackclub.com/projects/11068"
+                }
+            }
+        },
+        "top_devlogs_text": {
+            "name": "Top 3 devlogs by text length",
+            "description": "The top 3 devlogs by text length (in characters).",
+            "data": {
+                "0": {
+                    "devlog_id": 22655,
+                    "project_id": 7916,
+                    "devlog_label": "Kale | #22655",
+                    "text_length_num": 11982,
+                    "project_link": "https://summer.hackclub.com/projects/7916"
+                },
+                "1": {
+                    "devlog_id": 26706,
+                    "project_id": 6251,
+                    "devlog_label": "Cosmic Ray Detector Simulati | #26706",
+                    "text_length_num": 10738,
+                    "project_link": "https://summer.hackclub.com/projects/6251"
+                },
+                "2": {
+                    "devlog_id": 11142,
+                    "project_id": 402,
+                    "devlog_label": "Unnamed Python Kahoot Genera | #11142",
+                    "text_length_num": 9799,
+                    "project_link": "https://summer.hackclub.com/projects/402"
+                }
+            }
+        },
+        "top_devlogs_engagement": {
+            "name": "Top 3 devlogs by engagement",
+            "description": "The top 3 devlogs by engagement (number of interactions).",
+            "data": {
+                "0": {
+                    "devlog_id": 563,
+                    "project_id": 1014,
+                    "devlog_label": "MemeOS \u2013 A Web-Based \u201cOperat | #563",
+                    "engagement_num": 13,
+                    "project_link": "https://summer.hackclub.com/projects/1014"
+                },
+                "1": {
+                    "devlog_id": 35559,
+                    "project_id": 11089,
+                    "devlog_label": "Terminal Pong | #35559",
+                    "engagement_num": 11,
+                    "project_link": "https://summer.hackclub.com/projects/11089"
+                },
+                "2": {
+                    "devlog_id": 352,
+                    "project_id": 26,
+                    "devlog_label": "Lunar | #352",
+                    "engagement_num": 10,
+                    "project_link": "https://summer.hackclub.com/projects/26"
+                }
+            }
+        }
+    },
+    "graphs": {
+        "devlogs_per_day": {
+            "name": "Devlogs per Day",
+            "description": "Number of devlogs per day with 7-day rolling mean",
+            "image_file": "devlogs_per_day.png"
+        },
+        "top_projects_and_devlogs_by_time": {
+            "name": "Top projects and devlogs by time",
+            "description": "Two horizontal bar charts: total time per project (top 12) and individual devlogs with the highest time",
+            "image_file": "top_projects_and_devlogs_by_time.png"
+        },
+        "devlogs_heatmap_dow_hour": {
+            "name": "Devlogs heatmap (DOW vs Hour)",
+            "description": "Heatmap of devlog counts by day of week and hour (UTC)",
+            "image_file": "devlogs_heatmap_dow_hour.png"
+        },
+        "cumulative_devlogs": {
+            "name": "Cumulative Devlogs",
+            "description": "Cumulative total of devlogs over time",
+            "image_file": "cumulative_devlogs.png"
+        },
+        "engagement_vs_time": {
+            "name": "Engagement vs Time",
+            "description": "Scatter plot of engagement versus time spent per devlog",
+            "image_file": "engagement_vs_time.png"
+        },
+        "time_distribution": {
+            "name": "Time Distribution",
+            "description": "Histogram of time per devlog",
+            "image_file": "time_distribution.png"
+        },
+        "avg_time_by_category": {
+            "name": "Average Time by Category",
+            "description": "Average time spent per devlog by category",
+            "image_file": "avg_time_by_category.png"
+        },
+        "category_distribution": {
+            "name": "Category Distribution",
+            "description": "Donut chart showing share of devlogs by category (top-k + Other)",
+            "image_file": "category_distribution.png"
+        },
+        "attachment_extension_distribution": {
+            "name": "Attachment Extension Distribution",
+            "description": "Donut chart showing share by attachment file extension (top-k + Other)",
+            "image_file": "attachment_extension_distribution.png"
+        },
+        "devlog_word_cloud": {
+            "name": "Devlog Word Cloud",
+            "description": "Word cloud of most frequent devlog words",
+            "image_file": "devlog_word_cloud.png"
+        },
+        "text_length_distribution": {
+            "name": "Text Length Distribution",
+            "description": "Histogram of devlog text length",
+            "image_file": "text_length_distribution.png"
+        },
+        "text_length_vs_time": {
+            "name": "Text Length vs Time",
+            "description": "Scatter plot of text length vs time spent",
+            "image_file": "text_length_vs_time.png"
+        },
+        "text_length_vs_engagement": {
+            "name": "Text Length vs Engagement",
+            "description": "Scatter plot of text length vs engagement",
+            "image_file": "text_length_vs_engagement.png"
+        },
+        "avg_engagement_by_category": {
+            "name": "Avg Engagement by Category",
+            "description": "Average engagement by category with 95% CI (top categories)",
+            "image_file": "avg_engagement_by_category.png"
+        }
+    }
+}
