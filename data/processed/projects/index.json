@@ -1,0 +1,150 @@
+{
+    "numerical": {
+        "project_count": {
+            "name": "Total projects",
+            "description": "Total number of projects",
+            "data": 8598
+        },
+        "avg_devlogs_per_project": {
+            "name": "Avg devlogs per project",
+            "description": "Average of devlogs_count across projects",
+            "data": 3.2700628053035588
+        },
+        "avg_hours_per_project": {
+            "name": "Avg coding hours per project",
+            "description": "Average coding time in hours across projects",
+            "data": 9.784996090822155
+        },
+        "devlogs_per_hour_avg": {
+            "name": "Avg devlogs per hour",
+            "description": "Average devlogs produced per coding hour across projects",
+            "data": 0.8486357758940261
+        },
+        "devlogs_per_10h_avg": {
+            "name": "Avg devlogs per 10 hours",
+            "description": "Average number of devlogs per 10 coding hours across projects",
+            "data": 8.486357758940262
+        }
+    },
+    "top": {
+        "top_projects_by_hours": {
+            "name": "Top projects by coding time",
+            "description": "Top projects ranked by total coding hours",
+            "data": {
+                "0": {
+                    "id": 1916,
+                    "label": "syvredits (portfolio-ish web)",
+                    "hours": 276.29,
+                    "project_link": "https://summer.hackclub.com/projects/1916"
+                },
+                "1": {
+                    "id": 46,
+                    "label": "Walley",
+                    "hours": 272.26,
+                    "project_link": "https://summer.hackclub.com/projects/46"
+                },
+                "2": {
+                    "id": 2581,
+                    "label": "Chaos Abyss",
+                    "hours": 265.78,
+                    "project_link": "https://summer.hackclub.com/projects/2581"
+                },
+                "3": {
+                    "id": 3491,
+                    "label": "ReeTui",
+                    "hours": 251.69,
+                    "project_link": "https://summer.hackclub.com/projects/3491"
+                },
+                "4": {
+                    "id": 4304,
+                    "label": "SCREAM++ | Protein Structure & Drug Desi",
+                    "hours": 217.24,
+                    "project_link": "https://summer.hackclub.com/projects/4304"
+                }
+            }
+        },
+        "top_projects_by_devlogs": {
+            "name": "Top projects by devlogs count",
+            "description": "Top projects ranked by devlogs_count",
+            "data": {
+                "0": {
+                    "id": 2753,
+                    "label": "trout",
+                    "devlogs_count": 75,
+                    "project_link": "https://summer.hackclub.com/projects/2753"
+                },
+                "1": {
+                    "id": 26,
+                    "label": "Lunar",
+                    "devlogs_count": 72,
+                    "project_link": "https://summer.hackclub.com/projects/26"
+                },
+                "2": {
+                    "id": 1014,
+                    "label": "MemeOS \u2013 A Web-Based \u201cOperating System\u201d ",
+                    "devlogs_count": 71,
+                    "project_link": "https://summer.hackclub.com/projects/1014"
+                },
+                "3": {
+                    "id": 7196,
+                    "label": "SAT Practice Platform",
+                    "devlogs_count": 67,
+                    "project_link": "https://summer.hackclub.com/projects/7196"
+                },
+                "4": {
+                    "id": 1522,
+                    "label": "stock simulator",
+                    "devlogs_count": 66,
+                    "project_link": "https://summer.hackclub.com/projects/1522"
+                }
+            }
+        }
+    },
+    "graphs": {
+        "projects_per_day": {
+            "name": "Projects per Day",
+            "description": "Number of projects per day with 7-day rolling mean",
+            "image_file": "projects_per_day.png"
+        },
+        "cumulative_projects": {
+            "name": "Cumulative Projects",
+            "description": "Cumulative total of projects over time",
+            "image_file": "cumulative_projects.png"
+        },
+        "top_projects_time_and_devlogs": {
+            "name": "Top projects by time and devlogs",
+            "description": "Two horizontal bar charts: top projects by total coding time and by devlogs_count",
+            "image_file": "top_projects_time_and_devlogs.png"
+        },
+        "projects_heatmap_dow_hour": {
+            "name": "Projects heatmap (DOW vs Hour)",
+            "description": "Heatmap of project creation by day of week and hour (UTC)",
+            "image_file": "projects_heatmap_dow_hour.png"
+        },
+        "project_map_scatter": {
+            "name": "Projects Map (scatter)",
+            "description": "Scatter plot of project pins using x/y map coordinates",
+            "image_file": "project_map_scatter.png"
+        },
+        "project_category_distribution": {
+            "name": "Category Distribution (Projects)",
+            "description": "Donut chart showing share of projects by category (top-k + Other)",
+            "image_file": "project_category_distribution.png"
+        },
+        "project_time_distribution": {
+            "name": "Time Distribution (Projects)",
+            "description": "Histogram of coding time per project",
+            "image_file": "project_time_distribution.png"
+        },
+        "devlogs_count_vs_hours": {
+            "name": "Devlogs Count vs Hours",
+            "description": "Scatter of devlogs_count versus coding time (hours)",
+            "image_file": "devlogs_count_vs_hours.png"
+        },
+        "project_description_wordcloud": {
+            "name": "Project description word cloud",
+            "description": "Word cloud of project descriptions",
+            "image_file": "project_description_wordcloud.png"
+        }
+    }
+}
