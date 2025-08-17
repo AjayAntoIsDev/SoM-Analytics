@@ -173,7 +173,7 @@ async function main() {
         page += 1;
     }
 
-    fs.writeFileSync(OUTPUT_FILE, JSON.stringify({ scraped_at: new Date().toISOString(), total: users.length, expected_total: totalCount, users, cookies: serializeCookies() }, null, 2));
+    fs.writeFileSync(OUTPUT_FILE, JSON.stringify({ scraped_at: new Date().toISOString(), total: users.length, expected_total: totalCount, users }, null, 2));
     if (fs.existsSync(RESUME_FILE)) fs.unlinkSync(RESUME_FILE);
     console.log(`Done. Saved ${users.length} users to ${path.basename(OUTPUT_FILE)}.`);
 }

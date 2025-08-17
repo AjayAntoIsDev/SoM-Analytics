@@ -3,27 +3,27 @@
         "project_count": {
             "name": "Total projects",
             "description": "Total number of projects",
-            "data": 8598
+            "data": 8695
         },
         "avg_devlogs_per_project": {
             "name": "Avg devlogs per project",
             "description": "Average of devlogs_count across projects",
-            "data": 3.2700628053035588
+            "data": 3.3136285221391604
         },
         "avg_hours_per_project": {
             "name": "Avg coding hours per project",
             "description": "Average coding time in hours across projects",
-            "data": 9.784996090822155
+            "data": 9.860904542840712
         },
         "devlogs_per_hour_avg": {
             "name": "Avg devlogs per hour",
             "description": "Average devlogs produced per coding hour across projects",
-            "data": 0.8486357758940261
+            "data": 0.8388331082018293
         },
         "devlogs_per_10h_avg": {
             "name": "Avg devlogs per 10 hours",
             "description": "Average number of devlogs per 10 coding hours across projects",
-            "data": 8.486357758940262
+            "data": 8.388331082018293
         }
     },
     "top": {
@@ -32,16 +32,16 @@
             "description": "Top projects ranked by total coding hours",
             "data": {
                 "0": {
-                    "id": 1916,
-                    "label": "syvredits (portfolio-ish web)",
-                    "hours": 276.29,
-                    "project_link": "https://summer.hackclub.com/projects/1916"
-                },
-                "1": {
                     "id": 46,
                     "label": "Walley",
-                    "hours": 272.26,
+                    "hours": 304.69,
                     "project_link": "https://summer.hackclub.com/projects/46"
+                },
+                "1": {
+                    "id": 1916,
+                    "label": "syvredits (portfolio-ish web)",
+                    "hours": 294.57,
+                    "project_link": "https://summer.hackclub.com/projects/1916"
                 },
                 "2": {
                     "id": 2581,
@@ -52,13 +52,13 @@
                 "3": {
                     "id": 3491,
                     "label": "ReeTui",
-                    "hours": 251.69,
+                    "hours": 254.46,
                     "project_link": "https://summer.hackclub.com/projects/3491"
                 },
                 "4": {
                     "id": 4304,
                     "label": "SCREAM++ | Protein Structure & Drug Desi",
-                    "hours": 217.24,
+                    "hours": 226.19,
                     "project_link": "https://summer.hackclub.com/projects/4304"
                 }
             }
@@ -88,7 +88,7 @@
                 "3": {
                     "id": 7196,
                     "label": "SAT Practice Platform",
-                    "devlogs_count": 67,
+                    "devlogs_count": 69,
                     "project_link": "https://summer.hackclub.com/projects/7196"
                 },
                 "4": {
@@ -116,6 +116,11 @@
             "description": "Two horizontal bar charts: top projects by total coding time and by devlogs_count",
             "image_file": "top_projects_time_and_devlogs.png"
         },
+        "project_description_wordcloud": {
+            "name": "Project description word cloud",
+            "description": "Word cloud of project descriptions",
+            "image_file": "project_description_wordcloud.png"
+        },
         "projects_heatmap_dow_hour": {
             "name": "Projects heatmap (DOW vs Hour)",
             "description": "Heatmap of project creation by day of week and hour (UTC)",
@@ -140,11 +145,6 @@
             "name": "Devlogs Count vs Hours",
             "description": "Scatter of devlogs_count versus coding time (hours)",
             "image_file": "devlogs_count_vs_hours.png"
-        },
-        "project_description_wordcloud": {
-            "name": "Project description word cloud",
-            "description": "Word cloud of project descriptions",
-            "image_file": "project_description_wordcloud.png"
         }
     }
 }

@@ -184,8 +184,7 @@ async function main() {
     scraped_at: new Date().toISOString(),
     total: comments.length,
     expected_total: totalCount,
-    comments,
-    cookies: serializeCookies()
+    comments
   }, null, 2));
   if (fs.existsSync(RESUME_FILE)) fs.unlinkSync(RESUME_FILE);
   console.log(`Done. Saved ${comments.length} comments to ${path.basename(OUTPUT_FILE)}.`);

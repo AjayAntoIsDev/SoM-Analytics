@@ -1,0 +1,191 @@
+{
+    "numerical": {
+        "total_comments": {
+            "name": "Total number of comments",
+            "description": "The total number of comments in the dataset.",
+            "data": 1367
+        },
+        "unique_devlogs_with_comments": {
+            "name": "Unique devlogs with comments",
+            "description": "The number of unique devlogs that have comments.",
+            "data": 988
+        },
+        "unique_commenting_users": {
+            "name": "Unique commenting users",
+            "description": "The number of unique users who have made comments.",
+            "data": 559
+        },
+        "avg_comments_per_devlog": {
+            "name": "Average comments per devlog",
+            "description": "The average number of comments per devlog.",
+            "data": 1.3836032388663968
+        },
+        "avg_comment_length": {
+            "name": "Average comment length",
+            "description": "The average length of comments in characters.",
+            "data": 67.5764447695684
+        }
+    },
+    "top": {
+        "top_devlogs_by_comments": {
+            "name": "Top 5 devlogs by comment count",
+            "description": "The top 5 devlogs with the most comments.",
+            "data": {
+                "0": {
+                    "devlog_id": 35559,
+                    "comment_count": 11,
+                    "created_at": "2025-08-13T18:12:47.438000+00:00",
+                    "devlog_link": "https://summer.hackclub.com/devlogs/35559"
+                },
+                "1": {
+                    "devlog_id": 563,
+                    "comment_count": 8,
+                    "created_at": "2025-06-19T21:36:15.991000+00:00",
+                    "devlog_link": "https://summer.hackclub.com/devlogs/563"
+                },
+                "2": {
+                    "devlog_id": 31905,
+                    "comment_count": 7,
+                    "created_at": "2025-08-08T00:07:50.947000+00:00",
+                    "devlog_link": "https://summer.hackclub.com/devlogs/31905"
+                },
+                "3": {
+                    "devlog_id": 35671,
+                    "comment_count": 7,
+                    "created_at": "2025-08-13T21:59:28.874000+00:00",
+                    "devlog_link": "https://summer.hackclub.com/devlogs/35671"
+                },
+                "4": {
+                    "devlog_id": 5868,
+                    "comment_count": 5,
+                    "created_at": "2025-06-24T15:00:03.133000+00:00",
+                    "devlog_link": "https://summer.hackclub.com/devlogs/5868"
+                }
+            }
+        },
+        "top_users_by_comments": {
+            "name": "Top 5 users by comment count",
+            "description": "The top 5 users who have made the most comments.",
+            "data": {
+                "0": {
+                    "slack_id": "U07E8H9A24A",
+                    "comment_count": 36,
+                    "created_at": "2025-06-25T16:42:23.507000+00:00",
+                    "user_profile": "Slack ID: U07E8H9A24A"
+                },
+                "1": {
+                    "slack_id": "U0925Q3PB0Q",
+                    "comment_count": 30,
+                    "created_at": "2025-07-31T08:45:16.240000+00:00",
+                    "user_profile": "Slack ID: U0925Q3PB0Q"
+                },
+                "2": {
+                    "slack_id": "U09A3GV54QL",
+                    "comment_count": 30,
+                    "created_at": "2025-08-12T19:30:48.410000+00:00",
+                    "user_profile": "Slack ID: U09A3GV54QL"
+                },
+                "3": {
+                    "slack_id": "U091KJSPK6X",
+                    "comment_count": 25,
+                    "created_at": "2025-06-18T13:44:27.637000+00:00",
+                    "user_profile": "Slack ID: U091KJSPK6X"
+                },
+                "4": {
+                    "slack_id": "U080V8UG5BR",
+                    "comment_count": 21,
+                    "created_at": "2025-07-31T14:20:15.173000+00:00",
+                    "user_profile": "Slack ID: U080V8UG5BR"
+                }
+            }
+        },
+        "longest_comments": {
+            "name": "Top 5 longest comments",
+            "description": "The top 5 longest comments by character count.",
+            "data": {
+                "0": {
+                    "devlog_id": 2609,
+                    "slack_id": "U09232V6XUH",
+                    "text_length": 945,
+                    "text": "thanks to you both!Regarding the cursor: yes, by default the ncurses cursor is a \u201cblock\u201d type cursor. ncurses doesn\u2019t provide any functions to change the type, but, as you said, I can use ANSI codes to change it\u2014was just putting it off lol. I\u2019ll make it so normal mode has a block cursor and insert mode the usual \u201cline\u201d cursor. Maybe I\u2019ll add the dreaded replace mode too, with the little slab cursor (it just overwrites characters rather than \u201csmartly\u201d insert them)About the command mode: this is perhaps a bit weird if you don\u2019t use vim\u2026 command mode lets you type commands like \u201cq\u201d (to quit the editor,) \u201cw\u201d (to write/save the file,) \u201ce [filename]\u201d (to open text files,) etc. That\u2019s what I\u2019m implementing here. However, if you type \u201c:!\u201c in Vim, you can run terminal commands like you suggested! I\u2019ll try to implement those too\u2026And yeah. This is kind of sick\u2014as in, all of the finicky string manipulation makes me dizzy.hope you two the best!",
+                    "created_at": "2025-06-21T15:16:57.979000+00:00",
+                    "text_preview": "thanks to you both!Regarding the cursor: yes, by default the ncurses cursor is a \u201cblock\u201d type cursor...",
+                    "devlog_link": "https://summer.hackclub.com/devlogs/2609"
+                },
+                "1": {
+                    "devlog_id": 34977,
+                    "slack_id": "U08PDGDPR0F",
+                    "text_length": 874,
+                    "text": "so actually, i did not use AI, but here\u2019s what i did to get my homepage look clean   I used pnpm create t3-app, which gives you a nice homepage as part of setting up your Next.js project. (you can try this out too) (https://hc-cdn.hel1.your-objectstorage.com/s/v3/30ea228abfaa424d12996d74bf6b607909927c30_image.png) \u2192 here\u2019s link to t3-app looks like, routes all your files and makes it really easy to do a next.js project After that, I went to Google and found a background image that looks nice. If you want to fact-check that, you can. You can copy the background image and search it up with Google, and you\u2019ll find that.  If you are wondering about the four buttons, two of them come with t3-app, so I added two more underneath, and changed the links to what happens when you click those buttons, it now reroutes to another page. Lemme know if you have anymore questions",
+                    "created_at": "2025-08-12T20:11:30.030000+00:00",
+                    "text_preview": "so actually, i did not use AI, but here\u2019s what i did to get my homepage look clean   I used pnpm cre...",
+                    "devlog_link": "https://summer.hackclub.com/devlogs/34977"
+                },
+                "2": {
+                    "devlog_id": 5313,
+                    "slack_id": "U08L7671TDG",
+                    "text_length": 610,
+                    "text": "Hey ! for the Svelte part; I\u2019m actually not really sure; i feel like i didnt use enough of it\u2019s features to actually have good advice here; I mostly learned HTML, CSS and JS while doing this; but what i can tell you is that when i used svelte it felt very convinient (i originally wanted to switch to vanilla html css js but then went back to svelte because of how convinient it is)\u2026For the links; they look small because of the space they are in but imo having them this size is the whole spirit of 88\u00d731\u2019s :) really like thoseAnd lastly just thanks for checking it out and giving feedback, i appriciate it :)",
+                    "created_at": "2025-06-25T19:36:48.970000+00:00",
+                    "text_preview": "Hey ! for the Svelte part; I\u2019m actually not really sure; i feel like i didnt use enough of it\u2019s feat...",
+                    "devlog_link": "https://summer.hackclub.com/devlogs/5313"
+                },
+                "3": {
+                    "devlog_id": 1177,
+                    "slack_id": "U091KJSPK6X",
+                    "text_length": 578,
+                    "text": "GL with learning Rust! I nearly finished the Rust Book, I really liked it, I had, like never before, a really strong feeling that some people really put thoughts into everything. Also, it doesn\u2019t suffer from some past debt (like the null-mistake) as some other languages. It also mostly takes slightly different approaches to some common concepts like async, but in a good way, as well as some other nice things like zero-cost abstractions i.e. with .iter(). So, if you really want to learn it, I hope you don\u2019t regret this decision in some years and maybe have same feeling :-)",
+                    "created_at": "2025-06-18T18:54:00.774000+00:00",
+                    "text_preview": "GL with learning Rust! I nearly finished the Rust Book, I really liked it, I had, like never before,...",
+                    "devlog_link": "https://summer.hackclub.com/devlogs/1177"
+                },
+                "4": {
+                    "devlog_id": 2609,
+                    "slack_id": "U08P78KTA3C",
+                    "text_length": 522,
+                    "text": "Really cool!Is it intentional that the cursor is just setting the background color of the character after it or is that a side effect of using ncurses?I know ANSI has cursor manipulation (that\u2019s what i use for my terminal ide), but I wasn\u2019t sure if you could use it via ncursesCan the command mode actually run all the commands you could in a normal terminal, or do you have custom commands that the user can run that only effect the editor?P.S. i see we used the same method for handling multi-digit line numbers hehe .w.",
+                    "created_at": "2025-06-21T00:24:37.816000+00:00",
+                    "text_preview": "Really cool!Is it intentional that the cursor is just setting the background color of the character ...",
+                    "devlog_link": "https://summer.hackclub.com/devlogs/2609"
+                }
+            }
+        }
+    },
+    "graphs": {
+        "comments_per_day": {
+            "name": "Comments Posted per Day",
+            "description": "Number of comments posted per day with 7-day rolling mean",
+            "image_file": "comments_per_day.png"
+        },
+        "cumulative_comments": {
+            "name": "Cumulative Comments",
+            "description": "Cumulative total of comments over time",
+            "image_file": "cumulative_comments.png"
+        },
+        "comment_length_distribution": {
+            "name": "Comment Length Distribution",
+            "description": "Histogram of comment lengths in characters",
+            "image_file": "comment_length_distribution.png"
+        },
+        "top_devlogs_and_users_by_comments": {
+            "name": "Top devlogs and users by comments",
+            "description": "Two horizontal bar charts: top devlogs and users by comment count",
+            "image_file": "top_devlogs_and_users_by_comments.png"
+        },
+        "comments_heatmap_dow_hour": {
+            "name": "Comment Activity Heatmap",
+            "description": "Heatmap showing when comments are posted by day of week and hour",
+            "image_file": "comments_heatmap_dow_hour.png"
+        },
+        "comment_word_cloud": {
+            "name": "Comment Word Cloud",
+            "description": "Word cloud of most frequent words in comments",
+            "image_file": "comment_word_cloud.png"
+        },
+        "comments_per_devlog_distribution": {
+            "name": "Comments per Devlog Distribution",
+            "description": "Histogram of how many comments each devlog receives",
+            "image_file": "comments_per_devlog_distribution.png"
+        }
+    }
+}

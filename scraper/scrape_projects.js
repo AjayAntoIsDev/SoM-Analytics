@@ -180,8 +180,7 @@ async function main() {
     scraped_at: new Date().toISOString(),
     total: projects.length,
     expected_total: totalCount,
-    projects,
-    cookies: serializeCookies()
+    projects
   }, null, 2));
   if (fs.existsSync(RESUME_FILE)) fs.unlinkSync(RESUME_FILE);
   console.log(`Done. Saved ${projects.length} projects to ${path.basename(OUTPUT_FILE)}.`);
