@@ -1,0 +1,175 @@
+{
+  "numerical": {
+    "total_badges": {
+      "name": "Total badges",
+      "description": "The total number of badges in the dataset.",
+      "data": 2474
+    },
+    "unique_badges": {
+      "name": "Unique badge types",
+      "description": "The number of unique badge types in the dataset.",
+      "data": 16
+    },
+    "users_with_badges": {
+      "name": "Users with badges",
+      "description": "The number of unique users who have at least one badge.",
+      "data": 2014
+    },
+    "avg_badges_per_user": {
+      "name": "Average badges per user",
+      "description": "The average number of badges per user.",
+      "data": 1.2284011916583912
+    }
+  },
+  "top": {
+    "top_users_badges": {
+      "name": "Top 3 users by badge count",
+      "description": "The top 3 users by number of badges.",
+      "data": {
+        "0": {
+          "user_id": 5,
+          "user_name_clean": "Neon",
+          "badge_count": 13,
+          "profile_link": "https://summer.hackclub.com/users/5"
+        },
+        "1": {
+          "user_id": 3,
+          "user_name_clean": "nora",
+          "badge_count": 9,
+          "profile_link": "https://summer.hackclub.com/users/3"
+        },
+        "2": {
+          "user_id": 14,
+          "user_name_clean": "Toshit",
+          "badge_count": 8,
+          "profile_link": "https://summer.hackclub.com/users/14"
+        }
+      }
+    },
+    "top_badges_common": {
+      "name": "Top 3 most common badges",
+      "description": "The top 3 most frequently awarded badge types.",
+      "data": {
+        "0": {
+          "badge_name": "Maiden Voyage",
+          "count": 1995,
+          "badge_text": "you shipped your first project! the journey begins..."
+        },
+        "1": {
+          "badge_name": "Ballot Stuffer",
+          "count": 245,
+          "badge_text": "vote 100 times."
+        },
+        "2": {
+          "badge_name": "Yapper I",
+          "count": 59,
+          "badge_text": "Posted 10 comments on devlogs."
+        }
+      }
+    }
+  },
+  "graphs": {
+    "badge_distribution": {
+      "name": "Badge distribution",
+      "description": "Distribution of the top 10 most common badge types",
+      "image_file": "badge_distribution.png"
+    },
+    "badges_per_user_distribution": {
+      "name": "Badges per user distribution",
+      "description": "Distribution showing how many badges users typically have",
+      "image_file": "badges_per_user_distribution.png"
+    },
+    "badges_over_time": {
+      "name": "Badges over time",
+      "description": "Timeline showing badge awards per day",
+      "image_file": "badges_over_time.png"
+    },
+    "badge_rarity_distribution": {
+      "name": "Badge rarity distribution",
+      "description": "Distribution of badges by rarity (based on award frequency)",
+      "image_file": "badge_rarity_distribution.png"
+    }
+  },
+  "badge_statistics": [
+    {
+      "badge_name": "Maiden Voyage",
+      "badge_description": "you shipped your first project! the journey begins...",
+      "num": 1995
+    },
+    {
+      "badge_name": "Ballot Stuffer",
+      "badge_description": "vote 100 times.",
+      "num": 245
+    },
+    {
+      "badge_name": "Yapper I",
+      "badge_description": "Posted 10 comments on devlogs.",
+      "num": 59
+    },
+    {
+      "badge_name": "Graphic Design is My Passion",
+      "badge_description": "Oh God How Did This Get Here I Am Not Good With Computer",
+      "num": 47
+    },
+    {
+      "badge_name": "Spider",
+      "badge_description": "this user has a pet!",
+      "num": 39
+    },
+    {
+      "badge_name": "<%= admin_tool do %>",
+      "badge_description": "with great power comes great responsibility... and a ban hammer.",
+      "num": 27
+    },
+    {
+      "badge_name": "Lived Mas",
+      "badge_description": "you know what you did.",
+      "num": 20
+    },
+    {
+      "badge_name": "Verified",
+      "badge_description": "this user is verified (i.e. gave us $8)",
+      "num": 16
+    },
+    {
+      "badge_name": "No Fun",
+      "badge_description": "opt-out added for the whimsy-impaired",
+      "num": 7
+    },
+    {
+      "badge_name": "Preferred Customer",
+      "badge_description": "you'll never know what this does...",
+      "num": 6
+    },
+    {
+      "badge_name": "Gold Verified",
+      "badge_description": "this user is REALLY verified (i.e. gave us $32)",
+      "num": 3
+    },
+    {
+      "badge_name": "Offshore Bank Account",
+      "badge_description": "away from the watchful eyes...",
+      "num": 3
+    },
+    {
+      "badge_name": "Pocket Watcher",
+      "badge_description": "you're a nosy one, aren't you?",
+      "num": 2
+    },
+    {
+      "badge_name": "Follower",
+      "badge_description": "Following more then 100 projects!",
+      "num": 2
+    },
+    {
+      "badge_name": "Popular",
+      "badge_description": "Mrs popular over here with 100+ combined followers",
+      "num": 2
+    },
+    {
+      "badge_name": "Sunglasses",
+      "badge_description": "protect your eyes from other people's... creative... CSS choices.",
+      "num": 1
+    }
+  ]
+}
