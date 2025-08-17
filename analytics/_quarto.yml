@@ -1,0 +1,62 @@
+project:
+  type: website
+  output-dir: output
+
+website:
+  announcement: 
+    icon: info-circle
+    dismissable: true
+    content: "**Info** - I try to keep the data updated to the last 24 hours, so some data might be outdated"
+    type: info
+    position: below-navbar
+  
+  title: "SoM Analytics"
+  
+  navbar:
+    search: false
+
+    tools:
+      - icon: github
+        href: "https://github.com/AjayAntoIsDev/SoM-Analytics"
+
+    right:
+      - href: projects.ipynb
+        text: "Projects"
+      - href: users.ipynb
+        text: "Users"
+      - href: devlogs.ipynb
+        text: "Devlogs"
+      - href: badges.ipynb
+        text: "Badges"
+      - href: comments.ipynb
+        text: "Comments"
+      - href: "followers.ipynb"
+        text: "Followers"
+
+
+
+format:
+  html:
+    toc-location: left
+    toc: true
+    smooth-scroll: true
+
+    include-in-header:
+      text: |
+        <style>
+          .js-plotly-plot, .plotly {
+            width: 100% !important;
+            height: auto !important;
+          }
+        </style>
+    page-layout: full
+
+    code-fold: true
+    code-summary: ""
+
+    code-block-bg: true
+    code-block-border-left: "#31BAE9" 
+    respect-user-color-scheme: false
+    theme:
+      light: litera
+      dark: darkly

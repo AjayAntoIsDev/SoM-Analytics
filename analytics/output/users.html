@@ -1,0 +1,2236 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.7.33">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Data analysis on users – SoM Analytics</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script><script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<script src="site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-ea385d0e468b0dd5ea5bf0780b1290d9.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark-bc185b5c5bdbcb35c2eb49d8a876ef70.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-ea385d0e468b0dd5ea5bf0780b1290d9.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap-1686a283b13d617e7201ff1d001d4c2a.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-dark-a2ff51828bac1197662a169d6c2d0535.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="site_libs/bootstrap/bootstrap-1686a283b13d617e7201ff1d001d4c2a.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<style>html{ scroll-behavior: smooth; }</style>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" integrity="sha512-c3Nl8+7g4LMSTdrm621y7kf9v3SDPnhxLNhcjFJbKECVnmZHTdo+IRO05sNLTH/D3vA6u1X32ehoLC7WFVdheg==" crossorigin="anonymous"></script>
+
+<script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
+<style>
+  .js-plotly-plot, .plotly {
+    width: 100% !important;
+    height: auto !important;
+  }
+</style>
+
+
+</head>
+
+<body class="floating nav-fixed quarto-light"><script id="quarto-html-before-body" type="application/javascript">
+    const toggleBodyColorMode = (bsSheetEl) => {
+      const mode = bsSheetEl.getAttribute("data-mode");
+      const bodyEl = window.document.querySelector("body");
+      if (mode === "dark") {
+        bodyEl.classList.add("quarto-dark");
+        bodyEl.classList.remove("quarto-light");
+      } else {
+        bodyEl.classList.add("quarto-light");
+        bodyEl.classList.remove("quarto-dark");
+      }
+    }
+    const toggleBodyColorPrimary = () => {
+      const bsSheetEl = window.document.querySelector("link#quarto-bootstrap:not([rel=disabled-stylesheet])");
+      if (bsSheetEl) {
+        toggleBodyColorMode(bsSheetEl);
+      }
+    }
+    const setColorSchemeToggle = (alternate) => {
+      const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+      for (let i=0; i < toggles.length; i++) {
+        const toggle = toggles[i];
+        if (toggle) {
+          if (alternate) {
+            toggle.classList.add("alternate");
+          } else {
+            toggle.classList.remove("alternate");
+          }
+        }
+      }
+    };
+    const toggleColorMode = (alternate) => {
+      // Switch the stylesheets
+      const primaryStylesheets = window.document.querySelectorAll('link.quarto-color-scheme:not(.quarto-color-alternate)');
+      const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+      manageTransitions('#quarto-margin-sidebar .nav-link', false);
+      if (alternate) {
+        // note: dark is layered on light, we don't disable primary!
+        enableStylesheet(alternateStylesheets);
+        for (const sheetNode of alternateStylesheets) {
+          if (sheetNode.id === "quarto-bootstrap") {
+            toggleBodyColorMode(sheetNode);
+          }
+        }
+      } else {
+        disableStylesheet(alternateStylesheets);
+        enableStylesheet(primaryStylesheets)
+        toggleBodyColorPrimary();
+      }
+      manageTransitions('#quarto-margin-sidebar .nav-link', true);
+      // Switch the toggles
+      setColorSchemeToggle(alternate)
+      // Hack to workaround the fact that safari doesn't
+      // properly recolor the scrollbar when toggling (#1455)
+      if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+        manageTransitions("body", false);
+        window.scrollTo(0, 1);
+        setTimeout(() => {
+          window.scrollTo(0, 0);
+          manageTransitions("body", true);
+        }, 40);
+      }
+    }
+    const disableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        stylesheet.rel = 'disabled-stylesheet';
+      }
+    }
+    const enableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        if(stylesheet.rel !== 'stylesheet') { // for Chrome, which will still FOUC without this check
+          stylesheet.rel = 'stylesheet';
+        }
+      }
+    }
+    const manageTransitions = (selector, allowTransitions) => {
+      const els = window.document.querySelectorAll(selector);
+      for (let i=0; i < els.length; i++) {
+        const el = els[i];
+        if (allowTransitions) {
+          el.classList.remove('notransition');
+        } else {
+          el.classList.add('notransition');
+        }
+      }
+    }
+    const isFileUrl = () => {
+      return window.location.protocol === 'file:';
+    }
+    const hasAlternateSentinel = () => {
+      let styleSentinel = getColorSchemeSentinel();
+      if (styleSentinel !== null) {
+        return styleSentinel === "alternate";
+      } else {
+        return false;
+      }
+    }
+    const setStyleSentinel = (alternate) => {
+      const value = alternate ? "alternate" : "default";
+      if (!isFileUrl()) {
+        window.localStorage.setItem("quarto-color-scheme", value);
+      } else {
+        localAlternateSentinel = value;
+      }
+    }
+    const getColorSchemeSentinel = () => {
+      if (!isFileUrl()) {
+        const storageValue = window.localStorage.getItem("quarto-color-scheme");
+        return storageValue != null ? storageValue : localAlternateSentinel;
+      } else {
+        return localAlternateSentinel;
+      }
+    }
+    const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+      const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+      const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+      let newTheme = '';
+      if(authorPrefersDark) {
+        newTheme = isAlternate ? baseTheme : alternateTheme;
+      } else {
+        newTheme = isAlternate ? alternateTheme : baseTheme;
+      }
+      const changeGiscusTheme = () => {
+        // From: https://github.com/giscus/giscus/issues/336
+        const sendMessage = (message) => {
+          const iframe = document.querySelector('iframe.giscus-frame');
+          if (!iframe) return;
+          iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+        }
+        sendMessage({
+          setConfig: {
+            theme: newTheme
+          }
+        });
+      }
+      const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+      if (isGiscussLoaded) {
+        changeGiscusTheme();
+      }
+    };
+    const authorPrefersDark = false;
+    const darkModeDefault = authorPrefersDark;
+      document.querySelector('link#quarto-text-highlighting-styles.quarto-color-scheme-extra').rel = 'disabled-stylesheet';
+      document.querySelector('link#quarto-bootstrap.quarto-color-scheme-extra').rel = 'disabled-stylesheet';
+    let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
+    // Dark / light mode switch
+    window.quartoToggleColorScheme = () => {
+      // Read the current dark / light value
+      let toAlternate = !hasAlternateSentinel();
+      toggleColorMode(toAlternate);
+      setStyleSentinel(toAlternate);
+      toggleGiscusIfUsed(toAlternate, darkModeDefault);
+      window.dispatchEvent(new Event('resize'));
+    };
+    // Switch to dark mode if need be
+    if (hasAlternateSentinel()) {
+      toggleColorMode(true);
+    } else {
+      toggleColorMode(false);
+    }
+  </script>
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="./index.html">
+    <span class="navbar-title">SoM Analytics</span>
+    </a>
+  </div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="./projects.html"> 
+<span class="menu-text">Projects</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link active" href="./users.html" aria-current="page"> 
+<span class="menu-text">Users</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./devlogs.html"> 
+<span class="menu-text">Devlogs</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./badges.html"> 
+<span class="menu-text">Badges</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./comments.html"> 
+<span class="menu-text">Comments</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./followers.html"> 
+<span class="menu-text">Followers</span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+    <a href="https://github.com/AjayAntoIsDev/SoM-Analytics" title="" class="quarto-navigation-tool px-1" aria-label=""><i class="bi bi-github"></i></a>
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+  <div id="quarto-announcement" data-announcement-id="88ba6c04928bab21cf4d93f0e32fdf64" class="alert alert-info hidden"><i class="bi bi-info-circle quarto-announcement-icon"></i><div class="quarto-announcement-content">
+<p><strong>Info</strong> - I try to keep the data updated to the last 24 hours, so some data might be outdated</p>
+</div><i class="bi bi-x-lg quarto-announcement-action"></i></div>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-full page-navbar">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#imports-and-setup" id="toc-imports-and-setup" class="nav-link active" data-scroll-target="#imports-and-setup">Imports and setup</a></li>
+  <li><a href="#numerical-data" id="toc-numerical-data" class="nav-link" data-scroll-target="#numerical-data"><strong>Numerical data</strong></a>
+  <ul class="collapse">
+  <li><a href="#average-projects-per-user" id="toc-average-projects-per-user" class="nav-link" data-scroll-target="#average-projects-per-user">Average projects per user</a></li>
+  <li><a href="#average-devlogs-per-user" id="toc-average-devlogs-per-user" class="nav-link" data-scroll-target="#average-devlogs-per-user">Average devlogs per user</a></li>
+  <li><a href="#average-coding-time-per-user-hours" id="toc-average-coding-time-per-user-hours" class="nav-link" data-scroll-target="#average-coding-time-per-user-hours">Average coding time per user (hours)</a></li>
+  <li><a href="#average-balance-per-user" id="toc-average-balance-per-user" class="nav-link" data-scroll-target="#average-balance-per-user">Average balance per user</a></li>
+  <li><a href="#average-votes-per-user" id="toc-average-votes-per-user" class="nav-link" data-scroll-target="#average-votes-per-user">Average votes per user</a></li>
+  <li><a href="#average-ships-per-user" id="toc-average-ships-per-user" class="nav-link" data-scroll-target="#average-ships-per-user">Average ships per user</a></li>
+  <li><a href="#inactive-users-analysis" id="toc-inactive-users-analysis" class="nav-link" data-scroll-target="#inactive-users-analysis">Inactive users analysis</a></li>
+  <li><a href="#custom-css-usage" id="toc-custom-css-usage" class="nav-link" data-scroll-target="#custom-css-usage">Custom CSS usage</a></li>
+  </ul></li>
+  <li><a href="#top-stuff" id="toc-top-stuff" class="nav-link" data-scroll-target="#top-stuff"><strong>Top stuff</strong></a>
+  <ul class="collapse">
+  <li><a href="#top-3-users-by-projects-count" id="toc-top-3-users-by-projects-count" class="nav-link" data-scroll-target="#top-3-users-by-projects-count">Top 3 users by projects count</a></li>
+  <li><a href="#top-3-users-by-coding-time" id="toc-top-3-users-by-coding-time" class="nav-link" data-scroll-target="#top-3-users-by-coding-time">Top 3 users by coding time</a></li>
+  <li><a href="#top-3-users-by-balance" id="toc-top-3-users-by-balance" class="nav-link" data-scroll-target="#top-3-users-by-balance">Top 3 users by balance</a></li>
+  <li><a href="#top-3-users-by-votes" id="toc-top-3-users-by-votes" class="nav-link" data-scroll-target="#top-3-users-by-votes">Top 3 users by votes</a></li>
+  <li><a href="#top-3-users-by-ships" id="toc-top-3-users-by-ships" class="nav-link" data-scroll-target="#top-3-users-by-ships">Top 3 users by ships</a></li>
+  </ul></li>
+  <li><a href="#graphical-data" id="toc-graphical-data" class="nav-link" data-scroll-target="#graphical-data"><strong>Graphical Data</strong></a></li>
+  <li><a href="#no-of-users-registered-per-date" id="toc-no-of-users-registered-per-date" class="nav-link" data-scroll-target="#no-of-users-registered-per-date">No of Users registered per Date</a></li>
+  <li><a href="#top-users-by-projects-and-coding-time" id="toc-top-users-by-projects-and-coding-time" class="nav-link" data-scroll-target="#top-users-by-projects-and-coding-time">Top users by projects and coding time</a></li>
+  <li><a href="#growth-of-users-over-time" id="toc-growth-of-users-over-time" class="nav-link" data-scroll-target="#growth-of-users-over-time">Growth of users over time</a></li>
+  <li><a href="#projects-vs-coding-time" id="toc-projects-vs-coding-time" class="nav-link" data-scroll-target="#projects-vs-coding-time">Projects vs coding time</a></li>
+  <li><a href="#distribution-of-coding-time" id="toc-distribution-of-coding-time" class="nav-link" data-scroll-target="#distribution-of-coding-time">Distribution of coding time</a></li>
+  <li><a href="#distribution-of-projects-count" id="toc-distribution-of-projects-count" class="nav-link" data-scroll-target="#distribution-of-projects-count">Distribution of projects count</a></li>
+  <li><a href="#distribution-of-user-balances" id="toc-distribution-of-user-balances" class="nav-link" data-scroll-target="#distribution-of-user-balances">Distribution of user balances</a></li>
+  <li><a href="#distribution-of-votes-count" id="toc-distribution-of-votes-count" class="nav-link" data-scroll-target="#distribution-of-votes-count">Distribution of votes count</a></li>
+  <li><a href="#distribution-of-ships-count" id="toc-distribution-of-ships-count" class="nav-link" data-scroll-target="#distribution-of-ships-count">Distribution of ships count</a></li>
+  <li><a href="#inactive-users-breakdown" id="toc-inactive-users-breakdown" class="nav-link" data-scroll-target="#inactive-users-breakdown">Inactive users breakdown</a></li>
+  <li><a href="#custom-css-usage-breakdown" id="toc-custom-css-usage-breakdown" class="nav-link" data-scroll-target="#custom-css-usage-breakdown">Custom CSS usage breakdown</a></li>
+  <li><a href="#bio-text-analysis" id="toc-bio-text-analysis" class="nav-link" data-scroll-target="#bio-text-analysis">Bio text analysis</a></li>
+  <li><a href="#user-activity-metrics" id="toc-user-activity-metrics" class="nav-link" data-scroll-target="#user-activity-metrics">User activity metrics</a></li>
+  <li><a href="#save-all-the-info-to-a-index-for-web-stuff" id="toc-save-all-the-info-to-a-index-for-web-stuff" class="nav-link" data-scroll-target="#save-all-the-info-to-a-index-for-web-stuff">Save all the info to a index for web stuff</a></li>
+  </ul>
+</nav>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
+    </div>
+<!-- main -->
+<main class="content column-page-right" id="quarto-document-content">
+
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title"><strong>Data analysis on users</strong></h1>
+</div>
+
+
+
+<div class="quarto-title-meta column-page-right">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<p>This notebook runs a bunch of data analysis on the users and saves the analysis to <code>data/processed/users</code>.</p>
+<div id="8558ba4d" class="cell" data-execution_count="1">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> sys</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> subprocess</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>subprocess.check_call([</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>    sys.executable, <span class="st">"-m"</span>, <span class="st">"pip"</span>, <span class="st">"install"</span>, <span class="st">"--upgrade"</span>,</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>    <span class="st">"pandas"</span>,</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>    <span class="st">"plotly"</span>,</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>    <span class="st">"wordcloud"</span>,</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>    <span class="st">"matplotlib"</span>,</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>    <span class="st">"numpy"</span>,</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>    <span class="st">"kaleido"</span>,</span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>    <span class="st">"pyarrow"</span></span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>Requirement already satisfied: pandas in /home/ajayanto/jupyter-env/.venv/lib/python3.13/site-packages (2.3.1)
+Requirement already satisfied: plotly in /home/ajayanto/jupyter-env/.venv/lib/python3.13/site-packages (6.3.0)
+Requirement already satisfied: wordcloud in /home/ajayanto/jupyter-env/.venv/lib/python3.13/site-packages (1.9.4)
+Requirement already satisfied: matplotlib in /home/ajayanto/jupyter-env/.venv/lib/python3.13/site-packages (3.10.5)
+Requirement already satisfied: numpy in /home/ajayanto/jupyter-env/.venv/lib/python3.13/site-packages (2.3.2)
+Requirement already satisfied: kaleido in /home/ajayanto/jupyter-env/.venv/lib/python3.13/site-packages (1.0.0)
+Requirement already satisfied: pyarrow in /home/ajayanto/jupyter-env/.venv/lib/python3.13/site-packages (21.0.0)
+Requirement already satisfied: python-dateutil&gt;=2.8.2 in /home/ajayanto/jupyter-env/.venv/lib/python3.13/site-packages (from pandas) (2.9.0.post0)
+Requirement already satisfied: pytz&gt;=2020.1 in /home/ajayanto/jupyter-env/.venv/lib/python3.13/site-packages (from pandas) (2025.2)
+Requirement already satisfied: tzdata&gt;=2022.7 in /home/ajayanto/jupyter-env/.venv/lib/python3.13/site-packages (from pandas) (2025.2)
+Requirement already satisfied: narwhals&gt;=1.15.1 in /home/ajayanto/jupyter-env/.venv/lib/python3.13/site-packages (from plotly) (2.1.1)
+Requirement already satisfied: packaging in /home/ajayanto/jupyter-env/.venv/lib/python3.13/site-packages (from plotly) (25.0)
+Requirement already satisfied: pillow in /home/ajayanto/jupyter-env/.venv/lib/python3.13/site-packages (from wordcloud) (11.3.0)
+Requirement already satisfied: contourpy&gt;=1.0.1 in /home/ajayanto/jupyter-env/.venv/lib/python3.13/site-packages (from matplotlib) (1.3.3)
+Requirement already satisfied: cycler&gt;=0.10 in /home/ajayanto/jupyter-env/.venv/lib/python3.13/site-packages (from matplotlib) (0.12.1)
+Requirement already satisfied: fonttools&gt;=4.22.0 in /home/ajayanto/jupyter-env/.venv/lib/python3.13/site-packages (from matplotlib) (4.59.1)
+Requirement already satisfied: kiwisolver&gt;=1.3.1 in /home/ajayanto/jupyter-env/.venv/lib/python3.13/site-packages (from matplotlib) (1.4.9)
+Requirement already satisfied: pyparsing&gt;=2.3.1 in /home/ajayanto/jupyter-env/.venv/lib/python3.13/site-packages (from matplotlib) (3.2.3)
+Requirement already satisfied: choreographer&gt;=1.0.5 in /home/ajayanto/jupyter-env/.venv/lib/python3.13/site-packages (from kaleido) (1.0.9)
+Requirement already satisfied: logistro&gt;=1.0.8 in /home/ajayanto/jupyter-env/.venv/lib/python3.13/site-packages (from kaleido) (1.1.0)
+Requirement already satisfied: orjson&gt;=3.10.15 in /home/ajayanto/jupyter-env/.venv/lib/python3.13/site-packages (from kaleido) (3.11.2)
+Requirement already satisfied: simplejson&gt;=3.19.3 in /home/ajayanto/jupyter-env/.venv/lib/python3.13/site-packages (from choreographer&gt;=1.0.5-&gt;kaleido) (3.20.1)
+Requirement already satisfied: six&gt;=1.5 in /home/ajayanto/jupyter-env/.venv/lib/python3.13/site-packages (from python-dateutil&gt;=2.8.2-&gt;pandas) (1.17.0)</code></pre>
+</div>
+<div class="cell-output cell-output-display" data-execution_count="1">
+<pre><code>0</code></pre>
+</div>
+</div>
+<section id="imports-and-setup" class="level1">
+<h1>Imports and setup</h1>
+<div id="8e035e58" class="cell" data-execution_count="20">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> plotly.express <span class="im">as</span> px</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> plotly.graph_objects <span class="im">as</span> go</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> plotly.subplots <span class="im">import</span> make_subplots</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> wordcloud <span class="im">import</span> WordCloud</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> re</span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt  </span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> pathlib <span class="im">import</span> Path</span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> json</span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> plotly.io <span class="im">as</span> pio</span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.read_parquet(<span class="st">'../data/users.parquet'</span>)</span>
+<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a>index <span class="op">=</span> {</span>
+<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a>    <span class="st">"numerical"</span>:{},</span>
+<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a>    <span class="st">"top"</span>:{},</span>
+<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a>    <span class="st">"graphs"</span>:{},</span>
+<span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<div id="41f4dace" class="cell" data-execution_count="21">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Dataset shape:"</span>, df.shape)</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"</span><span class="ch">\n</span><span class="st">Columns:"</span>, df.columns.tolist())</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"</span><span class="ch">\n</span><span class="st">Data types:"</span>)</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(df.dtypes)</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"</span><span class="ch">\n</span><span class="st">First few rows:"</span>)</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>df.head()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>Dataset shape: (21718, 16)
+
+Columns: ['id', 'slack_id', 'display_name', 'bio', 'projects_count', 'devlogs_count', 'votes_count', 'ships_count', 'coding_time_seconds', 'coding_time_seconds_today', 'balance', 'created_at', 'updated_at', 'avatar', 'custom_css', 'scraped_at']
+
+Data types:
+id                                         int64
+slack_id                                  object
+display_name                              object
+bio                                       object
+projects_count                             int64
+devlogs_count                              int64
+votes_count                                int64
+ships_count                                int64
+coding_time_seconds                        int64
+coding_time_seconds_today                  int64
+balance                                    Int64
+created_at                   datetime64[ns, UTC]
+updated_at                   datetime64[ns, UTC]
+avatar                                    object
+custom_css                                object
+scraped_at                   datetime64[ns, UTC]
+dtype: object
+
+First few rows:</code></pre>
+</div>
+<div class="cell-output cell-output-display" data-execution_count="21">
+<div>
+
+
+<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">id</th>
+<th data-quarto-table-cell-role="th">slack_id</th>
+<th data-quarto-table-cell-role="th">display_name</th>
+<th data-quarto-table-cell-role="th">bio</th>
+<th data-quarto-table-cell-role="th">projects_count</th>
+<th data-quarto-table-cell-role="th">devlogs_count</th>
+<th data-quarto-table-cell-role="th">votes_count</th>
+<th data-quarto-table-cell-role="th">ships_count</th>
+<th data-quarto-table-cell-role="th">coding_time_seconds</th>
+<th data-quarto-table-cell-role="th">coding_time_seconds_today</th>
+<th data-quarto-table-cell-role="th">balance</th>
+<th data-quarto-table-cell-role="th">created_at</th>
+<th data-quarto-table-cell-role="th">updated_at</th>
+<th data-quarto-table-cell-role="th">avatar</th>
+<th data-quarto-table-cell-role="th">custom_css</th>
+<th data-quarto-table-cell-role="th">scraped_at</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>1</td>
+<td>U03DFNYGPCN</td>
+<td>Malted</td>
+<td>None</td>
+<td>1</td>
+<td>1</td>
+<td>12</td>
+<td>1</td>
+<td>133510</td>
+<td>0</td>
+<td>0</td>
+<td>2025-06-15 16:27:55.496000+00:00</td>
+<td>2025-08-10 00:54:37.885000+00:00</td>
+<td>https://avatars.slack-edge.com/2025-04-02/8691...</td>
+<td>None</td>
+<td>2025-08-17 04:33:20.917000+00:00</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>2</td>
+<td>U080A3QP42C</td>
+<td>Rowan</td>
+<td>we ball hard</td>
+<td>2</td>
+<td>0</td>
+<td>2</td>
+<td>0</td>
+<td>606002</td>
+<td>0</td>
+<td>498</td>
+<td>2025-06-15 16:30:11.969000+00:00</td>
+<td>2025-08-10 02:48:09.410000+00:00</td>
+<td>https://avatars.slack-edge.com/2025-06-28/9118...</td>
+<td>None</td>
+<td>2025-08-17 04:33:20.917000+00:00</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2</td>
+<td>3</td>
+<td>U06QK6AG3RD</td>
+<td>nora</td>
+<td>i'm like if a girl was working on Summer of Ma...</td>
+<td>2</td>
+<td>3</td>
+<td>2</td>
+<td>2</td>
+<td>335751</td>
+<td>0</td>
+<td>385</td>
+<td>2025-06-15 16:54:28.478000+00:00</td>
+<td>2025-08-06 19:48:37.175000+00:00</td>
+<td>https://avatars.slack-edge.com/2024-10-26/7934...</td>
+<td>body { filter: invert(1); font-family: "Papyrus"}</td>
+<td>2025-08-17 04:33:20.917000+00:00</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">3</td>
+<td>4</td>
+<td>U05F4B48GBF</td>
+<td>cskartikey</td>
+<td>uhhhh?</td>
+<td>3</td>
+<td>5</td>
+<td>42</td>
+<td>0</td>
+<td>273972</td>
+<td>0</td>
+<td>239</td>
+<td>2025-06-15 17:35:55.246000+00:00</td>
+<td>2025-07-09 15:02:58.138000+00:00</td>
+<td>https://avatars.slack-edge.com/2025-05-17/8913...</td>
+<td>body {\n display: none;\n}\n</td>
+<td>2025-08-17 04:33:20.917000+00:00</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">4</td>
+<td>5</td>
+<td>U07L45W79E1</td>
+<td>Neon</td>
+<td>Meow meow - https://saahild.com</td>
+<td>11</td>
+<td>27</td>
+<td>59</td>
+<td>6</td>
+<td>707710</td>
+<td>360</td>
+<td>365</td>
+<td>2025-06-15 18:46:29.520000+00:00</td>
+<td>2025-08-13 04:52:22.561000+00:00</td>
+<td>https://avatars.slack-edge.com/2025-04-22/8794...</td>
+<td>body::after {\r\n content: "";\r\n position:...</td>
+<td>2025-08-17 04:33:20.917000+00:00</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+<div id="f99d233b" class="cell" data-execution_count="22">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>EXPORT_DIR <span class="op">=</span> Path(<span class="st">'../data/processed/users'</span>).resolve()</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>EXPORT_DIR.mkdir(parents<span class="op">=</span><span class="va">True</span>, exist_ok<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>DEFAULT_WIDTH <span class="op">=</span> <span class="dv">1100</span></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>DEFAULT_HEIGHT <span class="op">=</span> <span class="dv">420</span></span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>som_wide <span class="op">=</span> go.layout.Template(layout<span class="op">=</span><span class="bu">dict</span>(</span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>    width<span class="op">=</span>DEFAULT_WIDTH,</span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>    margin<span class="op">=</span><span class="bu">dict</span>(l<span class="op">=</span><span class="dv">60</span>, r<span class="op">=</span><span class="dv">30</span>, t<span class="op">=</span><span class="dv">60</span>, b<span class="op">=</span><span class="dv">50</span>),</span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>))</span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a>pio.templates[<span class="st">'som_wide'</span>] <span class="op">=</span> som_wide</span>
+<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a>pio.templates.default <span class="op">=</span> <span class="st">'plotly_white+som_wide'</span></span>
+<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a><span class="cf">try</span>:</span>
+<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a>    pio.renderers.default <span class="op">=</span> <span class="st">'vscode'</span></span>
+<span id="cb7-16"><a href="#cb7-16" aria-hidden="true" tabindex="-1"></a><span class="cf">except</span> <span class="pp">Exception</span>:</span>
+<span id="cb7-17"><a href="#cb7-17" aria-hidden="true" tabindex="-1"></a>    <span class="cf">pass</span></span>
+<span id="cb7-18"><a href="#cb7-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-19"><a href="#cb7-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-20"><a href="#cb7-20" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> register_graph(key: <span class="bu">str</span>,name:<span class="bu">str</span>, description: <span class="bu">str</span>, image_file: <span class="bu">str</span>):</span>
+<span id="cb7-21"><a href="#cb7-21" aria-hidden="true" tabindex="-1"></a>    index[<span class="st">'graphs'</span>][key] <span class="op">=</span> {</span>
+<span id="cb7-22"><a href="#cb7-22" aria-hidden="true" tabindex="-1"></a>        <span class="st">'name'</span>: name,</span>
+<span id="cb7-23"><a href="#cb7-23" aria-hidden="true" tabindex="-1"></a>        <span class="st">'description'</span>: description,</span>
+<span id="cb7-24"><a href="#cb7-24" aria-hidden="true" tabindex="-1"></a>        <span class="st">'image_file'</span>: Path(image_file).name</span>
+<span id="cb7-25"><a href="#cb7-25" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb7-26"><a href="#cb7-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-27"><a href="#cb7-27" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> save_plotly(fig, name: <span class="bu">str</span>, description: <span class="bu">str</span>, scale: <span class="bu">int</span> <span class="op">=</span> <span class="dv">2</span>, width<span class="op">=</span><span class="va">None</span>, height<span class="op">=</span><span class="va">None</span>, friendly_name: <span class="bu">str</span> <span class="op">=</span> <span class="st">""</span>):</span>
+<span id="cb7-28"><a href="#cb7-28" aria-hidden="true" tabindex="-1"></a>    filename <span class="op">=</span> <span class="ss">f"</span><span class="sc">{</span>name<span class="sc">}</span><span class="ss">.png"</span></span>
+<span id="cb7-29"><a href="#cb7-29" aria-hidden="true" tabindex="-1"></a>    out_path <span class="op">=</span> EXPORT_DIR <span class="op">/</span> filename</span>
+<span id="cb7-30"><a href="#cb7-30" aria-hidden="true" tabindex="-1"></a>    <span class="cf">try</span>:</span>
+<span id="cb7-31"><a href="#cb7-31" aria-hidden="true" tabindex="-1"></a>        exp_width <span class="op">=</span> width <span class="cf">if</span> width <span class="kw">is</span> <span class="kw">not</span> <span class="va">None</span> <span class="cf">else</span> (fig.layout.width <span class="kw">or</span> DEFAULT_WIDTH)</span>
+<span id="cb7-32"><a href="#cb7-32" aria-hidden="true" tabindex="-1"></a>        exp_height <span class="op">=</span> height <span class="cf">if</span> height <span class="kw">is</span> <span class="kw">not</span> <span class="va">None</span> <span class="cf">else</span> (fig.layout.height <span class="kw">or</span> DEFAULT_HEIGHT)</span>
+<span id="cb7-33"><a href="#cb7-33" aria-hidden="true" tabindex="-1"></a>        fig.write_image(<span class="bu">str</span>(out_path), scale<span class="op">=</span>scale, width<span class="op">=</span>exp_width,</span>
+<span id="cb7-34"><a href="#cb7-34" aria-hidden="true" tabindex="-1"></a>                        height<span class="op">=</span>exp_height)</span>
+<span id="cb7-35"><a href="#cb7-35" aria-hidden="true" tabindex="-1"></a>        register_graph(name,friendly_name, description, filename)</span>
+<span id="cb7-36"><a href="#cb7-36" aria-hidden="true" tabindex="-1"></a>    <span class="cf">except</span> <span class="pp">Exception</span> <span class="im">as</span> e:</span>
+<span id="cb7-37"><a href="#cb7-37" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="ss">f'Failed to save Plotly figure </span><span class="sc">{</span>name<span class="sc">}</span><span class="ss">: </span><span class="sc">{</span>e<span class="sc">}</span><span class="ss">'</span>)</span>
+<span id="cb7-38"><a href="#cb7-38" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-39"><a href="#cb7-39" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-40"><a href="#cb7-40" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> save_matplotlib_current(name: <span class="bu">str</span>, description: <span class="bu">str</span>, dpi: <span class="bu">int</span> <span class="op">=</span> <span class="dv">150</span>, friendly_name: <span class="bu">str</span> <span class="op">=</span> <span class="st">""</span>):</span>
+<span id="cb7-41"><a href="#cb7-41" aria-hidden="true" tabindex="-1"></a>    filename <span class="op">=</span> <span class="ss">f"</span><span class="sc">{</span>name<span class="sc">}</span><span class="ss">.png"</span></span>
+<span id="cb7-42"><a href="#cb7-42" aria-hidden="true" tabindex="-1"></a>    out_path <span class="op">=</span> EXPORT_DIR <span class="op">/</span> filename</span>
+<span id="cb7-43"><a href="#cb7-43" aria-hidden="true" tabindex="-1"></a>    <span class="cf">try</span>:</span>
+<span id="cb7-44"><a href="#cb7-44" aria-hidden="true" tabindex="-1"></a>        plt.gcf().savefig(out_path, bbox_inches<span class="op">=</span><span class="st">'tight'</span>, dpi<span class="op">=</span>dpi, facecolor<span class="op">=</span><span class="st">'white'</span>)</span>
+<span id="cb7-45"><a href="#cb7-45" aria-hidden="true" tabindex="-1"></a>        register_graph(name, friendly_name, description, filename)</span>
+<span id="cb7-46"><a href="#cb7-46" aria-hidden="true" tabindex="-1"></a>    <span class="cf">except</span> <span class="pp">Exception</span> <span class="im">as</span> e:</span>
+<span id="cb7-47"><a href="#cb7-47" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="ss">f'Failed to save Matplotlib figure </span><span class="sc">{</span>name<span class="sc">}</span><span class="ss">: </span><span class="sc">{</span>e<span class="sc">}</span><span class="ss">'</span>)</span>
+<span id="cb7-48"><a href="#cb7-48" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-49"><a href="#cb7-49" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> save_to_index(key: <span class="bu">str</span>,name:<span class="bu">str</span>,description:<span class="bu">str</span>, data, <span class="bu">type</span><span class="op">=</span><span class="st">"numerical"</span>):</span>
+<span id="cb7-50"><a href="#cb7-50" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> <span class="bu">isinstance</span>(data, pd.DataFrame):</span>
+<span id="cb7-51"><a href="#cb7-51" aria-hidden="true" tabindex="-1"></a>        records <span class="op">=</span> data.to_dict(orient<span class="op">=</span><span class="st">'records'</span>)</span>
+<span id="cb7-52"><a href="#cb7-52" aria-hidden="true" tabindex="-1"></a>        indexed <span class="op">=</span> {i: rec <span class="cf">for</span> i, rec <span class="kw">in</span> <span class="bu">enumerate</span>(records)}</span>
+<span id="cb7-53"><a href="#cb7-53" aria-hidden="true" tabindex="-1"></a>        index[<span class="bu">type</span>][key] <span class="op">=</span> {</span>
+<span id="cb7-54"><a href="#cb7-54" aria-hidden="true" tabindex="-1"></a>            <span class="st">'name'</span>: name,</span>
+<span id="cb7-55"><a href="#cb7-55" aria-hidden="true" tabindex="-1"></a>            <span class="st">'description'</span>: description,</span>
+<span id="cb7-56"><a href="#cb7-56" aria-hidden="true" tabindex="-1"></a>            <span class="st">'data'</span>: indexed,</span>
+<span id="cb7-57"><a href="#cb7-57" aria-hidden="true" tabindex="-1"></a>        }</span>
+<span id="cb7-58"><a href="#cb7-58" aria-hidden="true" tabindex="-1"></a>    <span class="cf">else</span>:</span>
+<span id="cb7-59"><a href="#cb7-59" aria-hidden="true" tabindex="-1"></a>        index[<span class="bu">type</span>][key] <span class="op">=</span> {</span>
+<span id="cb7-60"><a href="#cb7-60" aria-hidden="true" tabindex="-1"></a>            <span class="st">'name'</span>: name,</span>
+<span id="cb7-61"><a href="#cb7-61" aria-hidden="true" tabindex="-1"></a>            <span class="st">'description'</span>: description,</span>
+<span id="cb7-62"><a href="#cb7-62" aria-hidden="true" tabindex="-1"></a>            <span class="st">'data'</span>: data</span>
+<span id="cb7-63"><a href="#cb7-63" aria-hidden="true" tabindex="-1"></a>        }</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+</section>
+<section id="numerical-data" class="level1">
+<h1><strong>Numerical data</strong></h1>
+<p>Shows some numerical data</p>
+<section id="average-projects-per-user" class="level3">
+<h3 class="anchored" data-anchor-id="average-projects-per-user">Average projects per user</h3>
+<p>Compute and display the average of <code>projects_count</code>.</p>
+<div id="066b614e" class="cell" data-execution_count="23">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>avg_projects <span class="op">=</span> pd.to_numeric(df[<span class="st">'projects_count'</span>], errors<span class="op">=</span><span class="st">'coerce'</span>).mean()</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Average projects per user: </span><span class="sc">{</span>avg_projects<span class="sc">:.2f}</span><span class="ss">"</span>)</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>save_to_index(<span class="st">'avg_projects'</span>, name<span class="op">=</span><span class="st">'Average projects per user'</span>, description<span class="op">=</span><span class="st">'The average number of projects per user.'</span>, data<span class="op">=</span><span class="bu">float</span>(avg_projects), <span class="bu">type</span><span class="op">=</span><span class="st">'numerical'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>Average projects per user: 0.40</code></pre>
+</div>
+</div>
+</section>
+<section id="average-devlogs-per-user" class="level3">
+<h3 class="anchored" data-anchor-id="average-devlogs-per-user">Average devlogs per user</h3>
+<p>Compute and display the average of <code>devlogs_count</code>.</p>
+<div id="decd795b" class="cell" data-execution_count="24">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>avg_devlogs <span class="op">=</span> pd.to_numeric(df[<span class="st">'devlogs_count'</span>], errors<span class="op">=</span><span class="st">'coerce'</span>).mean()</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Average devlogs per user: </span><span class="sc">{</span>avg_devlogs<span class="sc">:.2f}</span><span class="ss">"</span>)</span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>save_to_index(<span class="st">'avg_devlogs'</span>, name<span class="op">=</span><span class="st">'Average devlogs per user'</span>, description<span class="op">=</span><span class="st">'The average number of devlogs per user.'</span>, data<span class="op">=</span><span class="bu">float</span>(avg_devlogs), <span class="bu">type</span><span class="op">=</span><span class="st">'numerical'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>Average devlogs per user: 1.61</code></pre>
+</div>
+</div>
+</section>
+<section id="average-coding-time-per-user-hours" class="level3">
+<h3 class="anchored" data-anchor-id="average-coding-time-per-user-hours">Average coding time per user (hours)</h3>
+<p>Compute and display the average of <code>coding_time_seconds</code> converted to hours.</p>
+<div id="bb94167c" class="cell" data-execution_count="25">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>avg_coding_hours <span class="op">=</span> pd.to_numeric(df[<span class="st">'coding_time_seconds'</span>], errors<span class="op">=</span><span class="st">'coerce'</span>).mean() <span class="op">/</span> <span class="dv">3600</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Average coding time per user: </span><span class="sc">{</span>avg_coding_hours<span class="sc">:.2f}</span><span class="ss"> hours"</span>)</span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>save_to_index(<span class="st">'avg_coding_hours'</span>, name<span class="op">=</span><span class="st">'Average coding time per user'</span>, description<span class="op">=</span><span class="st">'The average coding time per user in hours.'</span>, data<span class="op">=</span><span class="bu">float</span>(avg_coding_hours), <span class="bu">type</span><span class="op">=</span><span class="st">'numerical'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>Average coding time per user: 12.20 hours</code></pre>
+</div>
+</div>
+</section>
+<section id="average-balance-per-user" class="level3">
+<h3 class="anchored" data-anchor-id="average-balance-per-user">Average balance per user</h3>
+<p>Compute and display the average of <code>balance</code>.</p>
+<div id="17fc3dc2" class="cell" data-execution_count="26">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>avg_balance <span class="op">=</span> pd.to_numeric(df[<span class="st">'balance'</span>], errors<span class="op">=</span><span class="st">'coerce'</span>).mean()</span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Average balance per user: </span><span class="sc">{</span>avg_balance<span class="sc">:.2f}</span><span class="ss">"</span>)</span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>save_to_index(<span class="st">'avg_balance'</span>, name<span class="op">=</span><span class="st">'Average balance per user'</span>, description<span class="op">=</span><span class="st">'The average balance per user.'</span>, data<span class="op">=</span><span class="bu">float</span>(avg_balance), <span class="bu">type</span><span class="op">=</span><span class="st">'numerical'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>Average balance per user: 19.12</code></pre>
+</div>
+</div>
+</section>
+<section id="average-votes-per-user" class="level3">
+<h3 class="anchored" data-anchor-id="average-votes-per-user">Average votes per user</h3>
+<p>Compute and display the average of <code>votes_count</code>.</p>
+<div id="5394f6a3" class="cell" data-execution_count="27">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>avg_votes <span class="op">=</span> pd.to_numeric(df[<span class="st">'votes_count'</span>], errors<span class="op">=</span><span class="st">'coerce'</span>).mean()</span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Average votes per user: </span><span class="sc">{</span>avg_votes<span class="sc">:.2f}</span><span class="ss">"</span>)</span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>save_to_index(<span class="st">'avg_votes'</span>, name<span class="op">=</span><span class="st">'Average votes per user'</span>, description<span class="op">=</span><span class="st">'The average number of votes per user.'</span>, data<span class="op">=</span><span class="bu">float</span>(avg_votes), <span class="bu">type</span><span class="op">=</span><span class="st">'numerical'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>Average votes per user: 4.18</code></pre>
+</div>
+</div>
+</section>
+<section id="average-ships-per-user" class="level3">
+<h3 class="anchored" data-anchor-id="average-ships-per-user">Average ships per user</h3>
+<p>Compute and display the average of <code>ships_count</code>.</p>
+<div id="58cdfa0f" class="cell" data-execution_count="28">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>avg_ships <span class="op">=</span> pd.to_numeric(df[<span class="st">'ships_count'</span>], errors<span class="op">=</span><span class="st">'coerce'</span>).mean()</span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Average ships per user: </span><span class="sc">{</span>avg_ships<span class="sc">:.2f}</span><span class="ss">"</span>)</span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a>save_to_index(<span class="st">'avg_ships'</span>, name<span class="op">=</span><span class="st">'Average ships per user'</span>, description<span class="op">=</span><span class="st">'The average number of ships per user.'</span>, data<span class="op">=</span><span class="bu">float</span>(avg_ships), <span class="bu">type</span><span class="op">=</span><span class="st">'numerical'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>Average ships per user: 0.16</code></pre>
+</div>
+</div>
+</section>
+<section id="inactive-users-analysis" class="level3">
+<h3 class="anchored" data-anchor-id="inactive-users-analysis">Inactive users analysis</h3>
+<p>Count users with zero activity across different metrics to identify inactive accounts.</p>
+<div id="3509a521" class="cell" data-execution_count="29">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>_df <span class="op">=</span> df.copy()</span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> col <span class="kw">in</span> [<span class="st">'balance'</span>, <span class="st">'coding_time_seconds'</span>, <span class="st">'ships_count'</span>, <span class="st">'projects_count'</span>, <span class="st">'devlogs_count'</span>, <span class="st">'votes_count'</span>]:</span>
+<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a>    _df[<span class="ss">f'</span><span class="sc">{</span>col<span class="sc">}</span><span class="ss">_num'</span>] <span class="op">=</span> pd.to_numeric(_df[col], errors<span class="op">=</span><span class="st">'coerce'</span>).fillna(<span class="dv">0</span>)</span>
+<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a>inactive_stats <span class="op">=</span> {</span>
+<span id="cb20-7"><a href="#cb20-7" aria-hidden="true" tabindex="-1"></a>    <span class="st">'zero_balance'</span>: (_df[<span class="st">'balance_num'</span>] <span class="op">==</span> <span class="dv">0</span>).<span class="bu">sum</span>(),</span>
+<span id="cb20-8"><a href="#cb20-8" aria-hidden="true" tabindex="-1"></a>    <span class="st">'zero_coding_time'</span>: (_df[<span class="st">'coding_time_seconds_num'</span>] <span class="op">==</span> <span class="dv">0</span>).<span class="bu">sum</span>(),</span>
+<span id="cb20-9"><a href="#cb20-9" aria-hidden="true" tabindex="-1"></a>    <span class="st">'zero_ships'</span>: (_df[<span class="st">'ships_count_num'</span>] <span class="op">==</span> <span class="dv">0</span>).<span class="bu">sum</span>(),</span>
+<span id="cb20-10"><a href="#cb20-10" aria-hidden="true" tabindex="-1"></a>    <span class="st">'zero_projects'</span>: (_df[<span class="st">'projects_count_num'</span>] <span class="op">==</span> <span class="dv">0</span>).<span class="bu">sum</span>(),</span>
+<span id="cb20-11"><a href="#cb20-11" aria-hidden="true" tabindex="-1"></a>    <span class="st">'zero_devlogs'</span>: (_df[<span class="st">'devlogs_count_num'</span>] <span class="op">==</span> <span class="dv">0</span>).<span class="bu">sum</span>(),</span>
+<span id="cb20-12"><a href="#cb20-12" aria-hidden="true" tabindex="-1"></a>    <span class="st">'zero_votes'</span>: (_df[<span class="st">'votes_count_num'</span>] <span class="op">==</span> <span class="dv">0</span>).<span class="bu">sum</span>()</span>
+<span id="cb20-13"><a href="#cb20-13" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb20-14"><a href="#cb20-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-15"><a href="#cb20-15" aria-hidden="true" tabindex="-1"></a>completely_inactive <span class="op">=</span> _df[</span>
+<span id="cb20-16"><a href="#cb20-16" aria-hidden="true" tabindex="-1"></a>    (_df[<span class="st">'balance_num'</span>] <span class="op">==</span> <span class="dv">0</span>) <span class="op">&amp;</span> </span>
+<span id="cb20-17"><a href="#cb20-17" aria-hidden="true" tabindex="-1"></a>    (_df[<span class="st">'coding_time_seconds_num'</span>] <span class="op">==</span> <span class="dv">0</span>) <span class="op">&amp;</span> </span>
+<span id="cb20-18"><a href="#cb20-18" aria-hidden="true" tabindex="-1"></a>    (_df[<span class="st">'ships_count_num'</span>] <span class="op">==</span> <span class="dv">0</span>) <span class="op">&amp;</span> </span>
+<span id="cb20-19"><a href="#cb20-19" aria-hidden="true" tabindex="-1"></a>    (_df[<span class="st">'projects_count_num'</span>] <span class="op">==</span> <span class="dv">0</span>) <span class="op">&amp;</span> </span>
+<span id="cb20-20"><a href="#cb20-20" aria-hidden="true" tabindex="-1"></a>    (_df[<span class="st">'devlogs_count_num'</span>] <span class="op">==</span> <span class="dv">0</span>) <span class="op">&amp;</span> </span>
+<span id="cb20-21"><a href="#cb20-21" aria-hidden="true" tabindex="-1"></a>    (_df[<span class="st">'votes_count_num'</span>] <span class="op">==</span> <span class="dv">0</span>)</span>
+<span id="cb20-22"><a href="#cb20-22" aria-hidden="true" tabindex="-1"></a>].shape[<span class="dv">0</span>]</span>
+<span id="cb20-23"><a href="#cb20-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-24"><a href="#cb20-24" aria-hidden="true" tabindex="-1"></a>inactive_stats[<span class="st">'completely_inactive'</span>] <span class="op">=</span> completely_inactive</span>
+<span id="cb20-25"><a href="#cb20-25" aria-hidden="true" tabindex="-1"></a>total_users <span class="op">=</span> <span class="bu">len</span>(_df)</span>
+<span id="cb20-26"><a href="#cb20-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-27"><a href="#cb20-27" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Inactive Users Analysis:"</span>)</span>
+<span id="cb20-28"><a href="#cb20-28" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Total users: </span><span class="sc">{</span>total_users<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb20-29"><a href="#cb20-29" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Users with zero balance: </span><span class="sc">{</span>inactive_stats[<span class="st">'zero_balance'</span>]<span class="sc">}</span><span class="ss"> (</span><span class="sc">{</span>inactive_stats[<span class="st">'zero_balance'</span>]<span class="op">/</span>total_users<span class="op">*</span><span class="dv">100</span><span class="sc">:.1f}</span><span class="ss">%)"</span>)</span>
+<span id="cb20-30"><a href="#cb20-30" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Users with zero coding time: </span><span class="sc">{</span>inactive_stats[<span class="st">'zero_coding_time'</span>]<span class="sc">}</span><span class="ss"> (</span><span class="sc">{</span>inactive_stats[<span class="st">'zero_coding_time'</span>]<span class="op">/</span>total_users<span class="op">*</span><span class="dv">100</span><span class="sc">:.1f}</span><span class="ss">%)"</span>)</span>
+<span id="cb20-31"><a href="#cb20-31" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Users with zero ships: </span><span class="sc">{</span>inactive_stats[<span class="st">'zero_ships'</span>]<span class="sc">}</span><span class="ss"> (</span><span class="sc">{</span>inactive_stats[<span class="st">'zero_ships'</span>]<span class="op">/</span>total_users<span class="op">*</span><span class="dv">100</span><span class="sc">:.1f}</span><span class="ss">%)"</span>)</span>
+<span id="cb20-32"><a href="#cb20-32" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Users with zero projects: </span><span class="sc">{</span>inactive_stats[<span class="st">'zero_projects'</span>]<span class="sc">}</span><span class="ss"> (</span><span class="sc">{</span>inactive_stats[<span class="st">'zero_projects'</span>]<span class="op">/</span>total_users<span class="op">*</span><span class="dv">100</span><span class="sc">:.1f}</span><span class="ss">%)"</span>)</span>
+<span id="cb20-33"><a href="#cb20-33" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Users with zero devlogs: </span><span class="sc">{</span>inactive_stats[<span class="st">'zero_devlogs'</span>]<span class="sc">}</span><span class="ss"> (</span><span class="sc">{</span>inactive_stats[<span class="st">'zero_devlogs'</span>]<span class="op">/</span>total_users<span class="op">*</span><span class="dv">100</span><span class="sc">:.1f}</span><span class="ss">%)"</span>)</span>
+<span id="cb20-34"><a href="#cb20-34" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Users with zero votes: </span><span class="sc">{</span>inactive_stats[<span class="st">'zero_votes'</span>]<span class="sc">}</span><span class="ss"> (</span><span class="sc">{</span>inactive_stats[<span class="st">'zero_votes'</span>]<span class="op">/</span>total_users<span class="op">*</span><span class="dv">100</span><span class="sc">:.1f}</span><span class="ss">%)"</span>)</span>
+<span id="cb20-35"><a href="#cb20-35" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Completely inactive users (all zeros): </span><span class="sc">{</span>completely_inactive<span class="sc">}</span><span class="ss"> (</span><span class="sc">{</span>completely_inactive<span class="op">/</span>total_users<span class="op">*</span><span class="dv">100</span><span class="sc">:.1f}</span><span class="ss">%)"</span>)</span>
+<span id="cb20-36"><a href="#cb20-36" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-37"><a href="#cb20-37" aria-hidden="true" tabindex="-1"></a>inactive_with_percentages <span class="op">=</span> {}</span>
+<span id="cb20-38"><a href="#cb20-38" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> key, value <span class="kw">in</span> inactive_stats.items():</span>
+<span id="cb20-39"><a href="#cb20-39" aria-hidden="true" tabindex="-1"></a>    inactive_with_percentages[key] <span class="op">=</span> {</span>
+<span id="cb20-40"><a href="#cb20-40" aria-hidden="true" tabindex="-1"></a>        <span class="st">'count'</span>: <span class="bu">int</span>(value),</span>
+<span id="cb20-41"><a href="#cb20-41" aria-hidden="true" tabindex="-1"></a>        <span class="st">'percentage'</span>: <span class="bu">round</span>(value<span class="op">/</span>total_users<span class="op">*</span><span class="dv">100</span>, <span class="dv">1</span>)</span>
+<span id="cb20-42"><a href="#cb20-42" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb20-43"><a href="#cb20-43" aria-hidden="true" tabindex="-1"></a>inactive_with_percentages[<span class="st">'total_users'</span>] <span class="op">=</span> <span class="bu">int</span>(total_users)</span>
+<span id="cb20-44"><a href="#cb20-44" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-45"><a href="#cb20-45" aria-hidden="true" tabindex="-1"></a>save_to_index(<span class="st">'inactive_users'</span>, name<span class="op">=</span><span class="st">'Inactive users analysis'</span>, description<span class="op">=</span><span class="st">'Count and percentage of users with zero activity across different metrics.'</span>, data<span class="op">=</span>inactive_with_percentages, <span class="bu">type</span><span class="op">=</span><span class="st">'numerical'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>Inactive Users Analysis:
+Total users: 21718
+Users with zero balance: 20303 (93.5%)
+Users with zero coding time: 12726 (58.6%)
+Users with zero ships: 19868 (91.5%)
+Users with zero projects: 17497 (80.6%)
+Users with zero devlogs: 18341 (84.5%)
+Users with zero votes: 18858 (86.8%)
+Completely inactive users (all zeros): 12641 (58.2%)</code></pre>
+</div>
+</div>
+</section>
+<section id="custom-css-usage" class="level3">
+<h3 class="anchored" data-anchor-id="custom-css-usage">Custom CSS usage</h3>
+<p>Analyze how many users have custom CSS.</p>
+<div id="56351778" class="cell" data-execution_count="30">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>custom_css_not_null <span class="op">=</span> df[<span class="st">'custom_css'</span>].notna() <span class="op">&amp;</span> (df[<span class="st">'custom_css'</span>].astype(<span class="bu">str</span>).<span class="bu">str</span>.strip() <span class="op">!=</span> <span class="st">''</span>) <span class="op">&amp;</span> (df[<span class="st">'custom_css'</span>].astype(<span class="bu">str</span>) <span class="op">!=</span> <span class="st">'nan'</span>)</span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>users_with_css <span class="op">=</span> custom_css_not_null.<span class="bu">sum</span>()</span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>total_users <span class="op">=</span> <span class="bu">len</span>(df)</span>
+<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a>css_percentage <span class="op">=</span> (users_with_css <span class="op">/</span> total_users) <span class="op">*</span> <span class="dv">100</span></span>
+<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-6"><a href="#cb22-6" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Users with custom CSS: </span><span class="sc">{</span>users_with_css<span class="sc">}</span><span class="ss"> out of </span><span class="sc">{</span>total_users<span class="sc">}</span><span class="ss"> (</span><span class="sc">{</span>css_percentage<span class="sc">:.1f}</span><span class="ss">%)"</span>)</span>
+<span id="cb22-7"><a href="#cb22-7" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Users without custom CSS: </span><span class="sc">{</span>total_users <span class="op">-</span> users_with_css<span class="sc">}</span><span class="ss"> (</span><span class="sc">{</span><span class="dv">100</span> <span class="op">-</span> css_percentage<span class="sc">:.1f}</span><span class="ss">%)"</span>)</span>
+<span id="cb22-8"><a href="#cb22-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-9"><a href="#cb22-9" aria-hidden="true" tabindex="-1"></a>css_stats <span class="op">=</span> {</span>
+<span id="cb22-10"><a href="#cb22-10" aria-hidden="true" tabindex="-1"></a>    <span class="st">'users_with_css'</span>: <span class="bu">int</span>(users_with_css),</span>
+<span id="cb22-11"><a href="#cb22-11" aria-hidden="true" tabindex="-1"></a>    <span class="st">'users_without_css'</span>: <span class="bu">int</span>(total_users <span class="op">-</span> users_with_css),</span>
+<span id="cb22-12"><a href="#cb22-12" aria-hidden="true" tabindex="-1"></a>    <span class="st">'percentage_with_css'</span>: <span class="bu">round</span>(css_percentage, <span class="dv">1</span>),</span>
+<span id="cb22-13"><a href="#cb22-13" aria-hidden="true" tabindex="-1"></a>    <span class="st">'percentage_without_css'</span>: <span class="bu">round</span>(<span class="dv">100</span> <span class="op">-</span> css_percentage, <span class="dv">1</span>),</span>
+<span id="cb22-14"><a href="#cb22-14" aria-hidden="true" tabindex="-1"></a>    <span class="st">'total_users'</span>: <span class="bu">int</span>(total_users)</span>
+<span id="cb22-15"><a href="#cb22-15" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb22-16"><a href="#cb22-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb22-17"><a href="#cb22-17" aria-hidden="true" tabindex="-1"></a>save_to_index(<span class="st">'custom_css_usage'</span>, name<span class="op">=</span><span class="st">'Custom CSS usage'</span>, description<span class="op">=</span><span class="st">'Analysis of how many users have custom CSS.'</span>, data<span class="op">=</span>css_stats, <span class="bu">type</span><span class="op">=</span><span class="st">'numerical'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>Users with custom CSS: 37 out of 21718 (0.2%)
+Users without custom CSS: 21681 (99.8%)</code></pre>
+</div>
+</div>
+</section>
+</section>
+<section id="top-stuff" class="level1">
+<h1><strong>Top stuff</strong></h1>
+<p>Shows the top stuff</p>
+<section id="top-3-users-by-projects-count" class="level3">
+<h3 class="anchored" data-anchor-id="top-3-users-by-projects-count">Top 3 users by projects count</h3>
+<p>Show the top 3 users sorted by projects count</p>
+<div id="03383bcb" class="cell" data-execution_count="31">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>_df <span class="op">=</span> df.copy()</span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>_df[<span class="st">'projects_count_num'</span>] <span class="op">=</span> pd.to_numeric(_df[<span class="st">'projects_count'</span>], errors<span class="op">=</span><span class="st">'coerce'</span>)</span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>_df[<span class="st">'display_name_clean'</span>] <span class="op">=</span> _df[<span class="st">'display_name'</span>].astype(<span class="st">'object'</span>).fillna(<span class="st">'(unnamed)'</span>).astype(<span class="bu">str</span>)</span>
+<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-5"><a href="#cb24-5" aria-hidden="true" tabindex="-1"></a>top3 <span class="op">=</span> (_df[[<span class="st">'id'</span>, <span class="st">'display_name_clean'</span>, <span class="st">'projects_count_num'</span>]]</span>
+<span id="cb24-6"><a href="#cb24-6" aria-hidden="true" tabindex="-1"></a>        .dropna()</span>
+<span id="cb24-7"><a href="#cb24-7" aria-hidden="true" tabindex="-1"></a>        .nlargest(<span class="dv">3</span>, <span class="st">'projects_count_num'</span>)</span>
+<span id="cb24-8"><a href="#cb24-8" aria-hidden="true" tabindex="-1"></a>        .copy())</span>
+<span id="cb24-9"><a href="#cb24-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-10"><a href="#cb24-10" aria-hidden="true" tabindex="-1"></a>top3[<span class="st">'projects_count_num'</span>] <span class="op">=</span> top3[<span class="st">'projects_count_num'</span>].astype(<span class="bu">int</span>)</span>
+<span id="cb24-11"><a href="#cb24-11" aria-hidden="true" tabindex="-1"></a>top3[<span class="st">'profile_link'</span>] <span class="op">=</span> top3[<span class="st">'id'</span>].<span class="bu">apply</span>(</span>
+<span id="cb24-12"><a href="#cb24-12" aria-hidden="true" tabindex="-1"></a>    <span class="kw">lambda</span> x: <span class="ss">f"https://summer.hackclub.com/users/</span><span class="sc">{</span>x<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb24-13"><a href="#cb24-13" aria-hidden="true" tabindex="-1"></a>top3.reset_index(drop<span class="op">=</span><span class="va">True</span>, inplace<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb24-14"><a href="#cb24-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-15"><a href="#cb24-15" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Top 3 users by projects count:"</span>)</span>
+<span id="cb24-16"><a href="#cb24-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-17"><a href="#cb24-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb24-18"><a href="#cb24-18" aria-hidden="true" tabindex="-1"></a>save_to_index(<span class="st">'top_users_projects'</span>, name<span class="op">=</span><span class="st">'Top 3 users by projects count'</span>,</span>
+<span id="cb24-19"><a href="#cb24-19" aria-hidden="true" tabindex="-1"></a>              description<span class="op">=</span><span class="st">'The top 3 users by number of projects.'</span>, data<span class="op">=</span>top3, <span class="bu">type</span><span class="op">=</span><span class="st">'top'</span>)</span>
+<span id="cb24-20"><a href="#cb24-20" aria-hidden="true" tabindex="-1"></a>top3</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>Top 3 users by projects count:</code></pre>
+</div>
+<div class="cell-output cell-output-display" data-execution_count="31">
+<div>
+
+
+<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">id</th>
+<th data-quarto-table-cell-role="th">display_name_clean</th>
+<th data-quarto-table-cell-role="th">projects_count_num</th>
+<th data-quarto-table-cell-role="th">profile_link</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>9550</td>
+<td>Suhail</td>
+<td>20</td>
+<td>https://summer.hackclub.com/users/9550</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>1297</td>
+<td>YASH PANCHAL</td>
+<td>19</td>
+<td>https://summer.hackclub.com/users/1297</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2</td>
+<td>191</td>
+<td>Anirudh</td>
+<td>16</td>
+<td>https://summer.hackclub.com/users/191</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+</section>
+<section id="top-3-users-by-coding-time" class="level3">
+<h3 class="anchored" data-anchor-id="top-3-users-by-coding-time">Top 3 users by coding time</h3>
+<p>Show the top 3 users sorted by coding time (hours)</p>
+<div id="c467e631" class="cell" data-execution_count="32">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>_df <span class="op">=</span> df.copy()</span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>_df[<span class="st">'coding_time_hours'</span>] <span class="op">=</span> pd.to_numeric(_df[<span class="st">'coding_time_seconds'</span>], errors<span class="op">=</span><span class="st">'coerce'</span>) <span class="op">/</span> <span class="dv">3600</span></span>
+<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a>_df[<span class="st">'display_name_clean'</span>] <span class="op">=</span> _df[<span class="st">'display_name'</span>].astype(<span class="st">'object'</span>).fillna(<span class="st">'(unnamed)'</span>).astype(<span class="bu">str</span>)</span>
+<span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-5"><a href="#cb26-5" aria-hidden="true" tabindex="-1"></a>top3 <span class="op">=</span> (_df[[<span class="st">'id'</span>, <span class="st">'display_name_clean'</span>, <span class="st">'coding_time_hours'</span>]]</span>
+<span id="cb26-6"><a href="#cb26-6" aria-hidden="true" tabindex="-1"></a>        .dropna()</span>
+<span id="cb26-7"><a href="#cb26-7" aria-hidden="true" tabindex="-1"></a>        .nlargest(<span class="dv">3</span>, <span class="st">'coding_time_hours'</span>)</span>
+<span id="cb26-8"><a href="#cb26-8" aria-hidden="true" tabindex="-1"></a>        .copy())</span>
+<span id="cb26-9"><a href="#cb26-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-10"><a href="#cb26-10" aria-hidden="true" tabindex="-1"></a>top3[<span class="st">'coding_time_hours'</span>] <span class="op">=</span> top3[<span class="st">'coding_time_hours'</span>].<span class="bu">round</span>(<span class="dv">2</span>)</span>
+<span id="cb26-11"><a href="#cb26-11" aria-hidden="true" tabindex="-1"></a>top3[<span class="st">'profile_link'</span>] <span class="op">=</span> top3[<span class="st">'id'</span>].<span class="bu">apply</span>(</span>
+<span id="cb26-12"><a href="#cb26-12" aria-hidden="true" tabindex="-1"></a>    <span class="kw">lambda</span> x: <span class="ss">f"https://summer.hackclub.com/users/</span><span class="sc">{</span>x<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb26-13"><a href="#cb26-13" aria-hidden="true" tabindex="-1"></a>top3.reset_index(drop<span class="op">=</span><span class="va">True</span>, inplace<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb26-14"><a href="#cb26-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-15"><a href="#cb26-15" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Top 3 users by coding time (hours):"</span>)</span>
+<span id="cb26-16"><a href="#cb26-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb26-17"><a href="#cb26-17" aria-hidden="true" tabindex="-1"></a>save_to_index(<span class="st">'top_users_coding_time'</span>, name<span class="op">=</span><span class="st">'Top 3 users by coding time'</span>,</span>
+<span id="cb26-18"><a href="#cb26-18" aria-hidden="true" tabindex="-1"></a>              description<span class="op">=</span><span class="st">'The top 3 users by coding time (in hours).'</span>, data<span class="op">=</span>top3, <span class="bu">type</span><span class="op">=</span><span class="st">'top'</span>)</span>
+<span id="cb26-19"><a href="#cb26-19" aria-hidden="true" tabindex="-1"></a>top3</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>Top 3 users by coding time (hours):</code></pre>
+</div>
+<div class="cell-output cell-output-display" data-execution_count="32">
+<div>
+
+
+<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">id</th>
+<th data-quarto-table-cell-role="th">display_name_clean</th>
+<th data-quarto-table-cell-role="th">coding_time_hours</th>
+<th data-quarto-table-cell-role="th">profile_link</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>16574</td>
+<td>OneCheetah</td>
+<td>1561.54</td>
+<td>https://summer.hackclub.com/users/16574</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>11921</td>
+<td>Shivam Gupta</td>
+<td>1537.10</td>
+<td>https://summer.hackclub.com/users/11921</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2</td>
+<td>4693</td>
+<td>Trou</td>
+<td>549.74</td>
+<td>https://summer.hackclub.com/users/4693</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+</section>
+<section id="top-3-users-by-balance" class="level3">
+<h3 class="anchored" data-anchor-id="top-3-users-by-balance">Top 3 users by balance</h3>
+<p>Show the top 3 users sorted by balance</p>
+<div id="ec018168" class="cell" data-execution_count="33">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>_df <span class="op">=</span> df.copy()</span>
+<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>_df[<span class="st">'balance_num'</span>] <span class="op">=</span> pd.to_numeric(_df[<span class="st">'balance'</span>], errors<span class="op">=</span><span class="st">'coerce'</span>)</span>
+<span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a>_df[<span class="st">'display_name_clean'</span>] <span class="op">=</span> _df[<span class="st">'display_name'</span>].astype(<span class="st">'object'</span>).fillna(<span class="st">'(unnamed)'</span>).astype(<span class="bu">str</span>)</span>
+<span id="cb28-4"><a href="#cb28-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-5"><a href="#cb28-5" aria-hidden="true" tabindex="-1"></a>top3 <span class="op">=</span> (_df[[<span class="st">'id'</span>, <span class="st">'display_name_clean'</span>, <span class="st">'balance_num'</span>]]</span>
+<span id="cb28-6"><a href="#cb28-6" aria-hidden="true" tabindex="-1"></a>        .dropna()</span>
+<span id="cb28-7"><a href="#cb28-7" aria-hidden="true" tabindex="-1"></a>        .nlargest(<span class="dv">3</span>, <span class="st">'balance_num'</span>)</span>
+<span id="cb28-8"><a href="#cb28-8" aria-hidden="true" tabindex="-1"></a>        .copy())</span>
+<span id="cb28-9"><a href="#cb28-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-10"><a href="#cb28-10" aria-hidden="true" tabindex="-1"></a>top3[<span class="st">'balance_num'</span>] <span class="op">=</span> top3[<span class="st">'balance_num'</span>].astype(<span class="bu">int</span>)</span>
+<span id="cb28-11"><a href="#cb28-11" aria-hidden="true" tabindex="-1"></a>top3[<span class="st">'profile_link'</span>] <span class="op">=</span> top3[<span class="st">'id'</span>].<span class="bu">apply</span>(</span>
+<span id="cb28-12"><a href="#cb28-12" aria-hidden="true" tabindex="-1"></a>    <span class="kw">lambda</span> x: <span class="ss">f"https://summer.hackclub.com/users/</span><span class="sc">{</span>x<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb28-13"><a href="#cb28-13" aria-hidden="true" tabindex="-1"></a>top3.reset_index(drop<span class="op">=</span><span class="va">True</span>, inplace<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb28-14"><a href="#cb28-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-15"><a href="#cb28-15" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Top 3 users by balance:"</span>)</span>
+<span id="cb28-16"><a href="#cb28-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-17"><a href="#cb28-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb28-18"><a href="#cb28-18" aria-hidden="true" tabindex="-1"></a>save_to_index(<span class="st">'top_users_balance'</span>, name<span class="op">=</span><span class="st">'Top 3 users by balance'</span>,</span>
+<span id="cb28-19"><a href="#cb28-19" aria-hidden="true" tabindex="-1"></a>              description<span class="op">=</span><span class="st">'The top 3 users by balance.'</span>, data<span class="op">=</span>top3, <span class="bu">type</span><span class="op">=</span><span class="st">'top'</span>)</span>
+<span id="cb28-20"><a href="#cb28-20" aria-hidden="true" tabindex="-1"></a>top3</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>Top 3 users by balance:</code></pre>
+</div>
+<div class="cell-output cell-output-display" data-execution_count="33">
+<div>
+
+
+<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">id</th>
+<th data-quarto-table-cell-role="th">display_name_clean</th>
+<th data-quarto-table-cell-role="th">balance_num</th>
+<th data-quarto-table-cell-role="th">profile_link</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>1027</td>
+<td>Maksiks</td>
+<td>5093</td>
+<td>https://summer.hackclub.com/users/1027</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>11144</td>
+<td>89 votes to go</td>
+<td>4186</td>
+<td>https://summer.hackclub.com/users/11144</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2</td>
+<td>112</td>
+<td>Checkers</td>
+<td>3661</td>
+<td>https://summer.hackclub.com/users/112</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+</section>
+<section id="top-3-users-by-votes" class="level3">
+<h3 class="anchored" data-anchor-id="top-3-users-by-votes">Top 3 users by votes</h3>
+<p>Show the top 3 users sorted by votes count</p>
+<div id="75b30488" class="cell" data-execution_count="34">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>_df <span class="op">=</span> df.copy()</span>
+<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a>_df[<span class="st">'votes_count_num'</span>] <span class="op">=</span> pd.to_numeric(_df[<span class="st">'votes_count'</span>], errors<span class="op">=</span><span class="st">'coerce'</span>)</span>
+<span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a>_df[<span class="st">'display_name_clean'</span>] <span class="op">=</span> _df[<span class="st">'display_name'</span>].astype(<span class="st">'object'</span>).fillna(<span class="st">'(unnamed)'</span>).astype(<span class="bu">str</span>)</span>
+<span id="cb30-4"><a href="#cb30-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-5"><a href="#cb30-5" aria-hidden="true" tabindex="-1"></a>top3 <span class="op">=</span> (_df[[<span class="st">'id'</span>, <span class="st">'display_name_clean'</span>, <span class="st">'votes_count_num'</span>]]</span>
+<span id="cb30-6"><a href="#cb30-6" aria-hidden="true" tabindex="-1"></a>        .dropna()</span>
+<span id="cb30-7"><a href="#cb30-7" aria-hidden="true" tabindex="-1"></a>        .nlargest(<span class="dv">3</span>, <span class="st">'votes_count_num'</span>)</span>
+<span id="cb30-8"><a href="#cb30-8" aria-hidden="true" tabindex="-1"></a>        .copy())</span>
+<span id="cb30-9"><a href="#cb30-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-10"><a href="#cb30-10" aria-hidden="true" tabindex="-1"></a>top3[<span class="st">'votes_count_num'</span>] <span class="op">=</span> top3[<span class="st">'votes_count_num'</span>].astype(<span class="bu">int</span>)</span>
+<span id="cb30-11"><a href="#cb30-11" aria-hidden="true" tabindex="-1"></a>top3[<span class="st">'profile_link'</span>] <span class="op">=</span> top3[<span class="st">'id'</span>].<span class="bu">apply</span>(</span>
+<span id="cb30-12"><a href="#cb30-12" aria-hidden="true" tabindex="-1"></a>    <span class="kw">lambda</span> x: <span class="ss">f"https://summer.hackclub.com/users/</span><span class="sc">{</span>x<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb30-13"><a href="#cb30-13" aria-hidden="true" tabindex="-1"></a>top3.reset_index(drop<span class="op">=</span><span class="va">True</span>, inplace<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb30-14"><a href="#cb30-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-15"><a href="#cb30-15" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Top 3 users by votes:"</span>)</span>
+<span id="cb30-16"><a href="#cb30-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-17"><a href="#cb30-17" aria-hidden="true" tabindex="-1"></a>save_to_index(<span class="st">'top_users_votes'</span>, name<span class="op">=</span><span class="st">'Top 3 users by votes'</span>,</span>
+<span id="cb30-18"><a href="#cb30-18" aria-hidden="true" tabindex="-1"></a>              description<span class="op">=</span><span class="st">'The top 3 users by number of votes.'</span>, data<span class="op">=</span>top3, <span class="bu">type</span><span class="op">=</span><span class="st">'top'</span>)</span>
+<span id="cb30-19"><a href="#cb30-19" aria-hidden="true" tabindex="-1"></a>top3</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>Top 3 users by votes:</code></pre>
+</div>
+<div class="cell-output cell-output-display" data-execution_count="34">
+<div>
+
+
+<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">id</th>
+<th data-quarto-table-cell-role="th">display_name_clean</th>
+<th data-quarto-table-cell-role="th">votes_count_num</th>
+<th data-quarto-table-cell-role="th">profile_link</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>20438</td>
+<td>Rudaiba</td>
+<td>537</td>
+<td>https://summer.hackclub.com/users/20438</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>3446</td>
+<td>Saketh Baddam</td>
+<td>536</td>
+<td>https://summer.hackclub.com/users/3446</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2</td>
+<td>5989</td>
+<td>Chee Yong</td>
+<td>500</td>
+<td>https://summer.hackclub.com/users/5989</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+</section>
+<section id="top-3-users-by-ships" class="level3">
+<h3 class="anchored" data-anchor-id="top-3-users-by-ships">Top 3 users by ships</h3>
+<p>Show the top 3 users sorted by ships count</p>
+<div id="6703d068" class="cell" data-execution_count="35">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>_df <span class="op">=</span> df.copy()</span>
+<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a>_df[<span class="st">'ships_count_num'</span>] <span class="op">=</span> pd.to_numeric(_df[<span class="st">'ships_count'</span>], errors<span class="op">=</span><span class="st">'coerce'</span>)</span>
+<span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a>_df[<span class="st">'display_name_clean'</span>] <span class="op">=</span> _df[<span class="st">'display_name'</span>].astype(<span class="st">'object'</span>).fillna(<span class="st">'(unnamed)'</span>).astype(<span class="bu">str</span>)</span>
+<span id="cb32-4"><a href="#cb32-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-5"><a href="#cb32-5" aria-hidden="true" tabindex="-1"></a>top3 <span class="op">=</span> (_df[[<span class="st">'id'</span>, <span class="st">'display_name_clean'</span>, <span class="st">'ships_count_num'</span>]]</span>
+<span id="cb32-6"><a href="#cb32-6" aria-hidden="true" tabindex="-1"></a>        .dropna()</span>
+<span id="cb32-7"><a href="#cb32-7" aria-hidden="true" tabindex="-1"></a>        .nlargest(<span class="dv">3</span>, <span class="st">'ships_count_num'</span>)</span>
+<span id="cb32-8"><a href="#cb32-8" aria-hidden="true" tabindex="-1"></a>        .copy())</span>
+<span id="cb32-9"><a href="#cb32-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-10"><a href="#cb32-10" aria-hidden="true" tabindex="-1"></a>top3[<span class="st">'ships_count_num'</span>] <span class="op">=</span> top3[<span class="st">'ships_count_num'</span>].astype(<span class="bu">int</span>)</span>
+<span id="cb32-11"><a href="#cb32-11" aria-hidden="true" tabindex="-1"></a>top3[<span class="st">'profile_link'</span>] <span class="op">=</span> top3[<span class="st">'id'</span>].<span class="bu">apply</span>(</span>
+<span id="cb32-12"><a href="#cb32-12" aria-hidden="true" tabindex="-1"></a>    <span class="kw">lambda</span> x: <span class="ss">f"https://summer.hackclub.com/users/</span><span class="sc">{</span>x<span class="sc">}</span><span class="ss">"</span>)</span>
+<span id="cb32-13"><a href="#cb32-13" aria-hidden="true" tabindex="-1"></a>top3.reset_index(drop<span class="op">=</span><span class="va">True</span>, inplace<span class="op">=</span><span class="va">True</span>)</span>
+<span id="cb32-14"><a href="#cb32-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-15"><a href="#cb32-15" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="st">"Top 3 users by ships:"</span>)</span>
+<span id="cb32-16"><a href="#cb32-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-17"><a href="#cb32-17" aria-hidden="true" tabindex="-1"></a>save_to_index(<span class="st">'top_users_ships'</span>, name<span class="op">=</span><span class="st">'Top 3 users by ships'</span>,</span>
+<span id="cb32-18"><a href="#cb32-18" aria-hidden="true" tabindex="-1"></a>              description<span class="op">=</span><span class="st">'The top 3 users by number of ships.'</span>, data<span class="op">=</span>top3, <span class="bu">type</span><span class="op">=</span><span class="st">'top'</span>)</span>
+<span id="cb32-19"><a href="#cb32-19" aria-hidden="true" tabindex="-1"></a>top3</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>Top 3 users by ships:</code></pre>
+</div>
+<div class="cell-output cell-output-display" data-execution_count="35">
+<div>
+
+
+<table class="dataframe caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">id</th>
+<th data-quarto-table-cell-role="th">display_name_clean</th>
+<th data-quarto-table-cell-role="th">ships_count_num</th>
+<th data-quarto-table-cell-role="th">profile_link</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">0</td>
+<td>9550</td>
+<td>Suhail</td>
+<td>19</td>
+<td>https://summer.hackclub.com/users/9550</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">1</td>
+<td>1297</td>
+<td>YASH PANCHAL</td>
+<td>17</td>
+<td>https://summer.hackclub.com/users/1297</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2</td>
+<td>5396</td>
+<td>Abū al-Barāʾ</td>
+<td>14</td>
+<td>https://summer.hackclub.com/users/5396</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="graphical-data" class="level1">
+<h1><strong>Graphical Data</strong></h1>
+<p>Shows quite a few graphs on the data</p>
+</section>
+<section id="no-of-users-registered-per-date" class="level1">
+<h1>No of Users registered per Date</h1>
+<p>This chart shows the number of users registered on each date using the <code>created_at</code> column.</p>
+<div id="f17a996c" class="cell" data-execution_count="36">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a>date_series <span class="op">=</span> pd.to_datetime(df[<span class="st">'created_at'</span>], errors<span class="op">=</span><span class="st">'coerce'</span>)</span>
+<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a>counts <span class="op">=</span> (</span>
+<span id="cb34-4"><a href="#cb34-4" aria-hidden="true" tabindex="-1"></a>    pd.DataFrame({<span class="st">'date'</span>: date_series.dt.date})</span>
+<span id="cb34-5"><a href="#cb34-5" aria-hidden="true" tabindex="-1"></a>      .dropna(subset<span class="op">=</span>[<span class="st">'date'</span>])</span>
+<span id="cb34-6"><a href="#cb34-6" aria-hidden="true" tabindex="-1"></a>      .groupby(<span class="st">'date'</span>)</span>
+<span id="cb34-7"><a href="#cb34-7" aria-hidden="true" tabindex="-1"></a>      .size()</span>
+<span id="cb34-8"><a href="#cb34-8" aria-hidden="true" tabindex="-1"></a>      .reset_index(name<span class="op">=</span><span class="st">'user_count'</span>)</span>
+<span id="cb34-9"><a href="#cb34-9" aria-hidden="true" tabindex="-1"></a>      .sort_values(<span class="st">'date'</span>)</span>
+<span id="cb34-10"><a href="#cb34-10" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb34-11"><a href="#cb34-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-12"><a href="#cb34-12" aria-hidden="true" tabindex="-1"></a>counts[<span class="st">'date'</span>] <span class="op">=</span> pd.to_datetime(counts[<span class="st">'date'</span>])</span>
+<span id="cb34-13"><a href="#cb34-13" aria-hidden="true" tabindex="-1"></a>counts[<span class="st">'rolling_7d'</span>] <span class="op">=</span> counts[<span class="st">'user_count'</span>].rolling(<span class="dv">7</span>, min_periods<span class="op">=</span><span class="dv">1</span>).mean()</span>
+<span id="cb34-14"><a href="#cb34-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-15"><a href="#cb34-15" aria-hidden="true" tabindex="-1"></a>fig <span class="op">=</span> px.bar(</span>
+<span id="cb34-16"><a href="#cb34-16" aria-hidden="true" tabindex="-1"></a>    counts, x<span class="op">=</span><span class="st">'date'</span>, y<span class="op">=</span><span class="st">'user_count'</span>,</span>
+<span id="cb34-17"><a href="#cb34-17" aria-hidden="true" tabindex="-1"></a>    title<span class="op">=</span><span class="st">'Users Registered per Day'</span>,</span>
+<span id="cb34-18"><a href="#cb34-18" aria-hidden="true" tabindex="-1"></a>    labels<span class="op">=</span>{<span class="st">'date'</span>: <span class="st">'Date'</span>, <span class="st">'user_count'</span>: <span class="st">'Users'</span>},</span>
+<span id="cb34-19"><a href="#cb34-19" aria-hidden="true" tabindex="-1"></a>    color_discrete_sequence<span class="op">=</span>[<span class="st">'#636EFA'</span>]</span>
+<span id="cb34-20"><a href="#cb34-20" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb34-21"><a href="#cb34-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-22"><a href="#cb34-22" aria-hidden="true" tabindex="-1"></a>fig.add_scatter(</span>
+<span id="cb34-23"><a href="#cb34-23" aria-hidden="true" tabindex="-1"></a>    x<span class="op">=</span>counts[<span class="st">'date'</span>], y<span class="op">=</span>counts[<span class="st">'rolling_7d'</span>],</span>
+<span id="cb34-24"><a href="#cb34-24" aria-hidden="true" tabindex="-1"></a>    name<span class="op">=</span><span class="st">'7-day average'</span>, mode<span class="op">=</span><span class="st">'lines'</span>,</span>
+<span id="cb34-25"><a href="#cb34-25" aria-hidden="true" tabindex="-1"></a>    line<span class="op">=</span><span class="bu">dict</span>(color<span class="op">=</span><span class="st">'#EF553B'</span>, width<span class="op">=</span><span class="dv">2</span>)</span>
+<span id="cb34-26"><a href="#cb34-26" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb34-27"><a href="#cb34-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-28"><a href="#cb34-28" aria-hidden="true" tabindex="-1"></a>fig.update_traces(hovertemplate<span class="op">=</span><span class="st">'Date=%{x|%Y-%m-</span><span class="sc">%d</span><span class="st">}&lt;br&gt;Users=%</span><span class="sc">{y}</span><span class="st">'</span>)</span>
+<span id="cb34-29"><a href="#cb34-29" aria-hidden="true" tabindex="-1"></a>fig.update_layout(</span>
+<span id="cb34-30"><a href="#cb34-30" aria-hidden="true" tabindex="-1"></a>    hovermode<span class="op">=</span><span class="st">'x unified'</span>, bargap<span class="op">=</span><span class="fl">0.15</span>,</span>
+<span id="cb34-31"><a href="#cb34-31" aria-hidden="true" tabindex="-1"></a>    height<span class="op">=</span><span class="bu">max</span>(DEFAULT_HEIGHT, <span class="dv">420</span>),</span>
+<span id="cb34-32"><a href="#cb34-32" aria-hidden="true" tabindex="-1"></a>    xaxis<span class="op">=</span><span class="bu">dict</span>(title<span class="op">=</span><span class="st">'Date'</span>, tickformat<span class="op">=</span><span class="st">'%b %Y'</span>,</span>
+<span id="cb34-33"><a href="#cb34-33" aria-hidden="true" tabindex="-1"></a>               showgrid<span class="op">=</span><span class="va">False</span>, rangeslider<span class="op">=</span><span class="bu">dict</span>(visible<span class="op">=</span><span class="va">True</span>)),</span>
+<span id="cb34-34"><a href="#cb34-34" aria-hidden="true" tabindex="-1"></a>    yaxis<span class="op">=</span><span class="bu">dict</span>(title<span class="op">=</span><span class="st">'Users'</span>, showgrid<span class="op">=</span><span class="va">True</span>, gridcolor<span class="op">=</span><span class="st">'rgba(0,0,0,0.08)'</span>)</span>
+<span id="cb34-35"><a href="#cb34-35" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb34-36"><a href="#cb34-36" aria-hidden="true" tabindex="-1"></a>fig.show()</span>
+<span id="cb34-37"><a href="#cb34-37" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-38"><a href="#cb34-38" aria-hidden="true" tabindex="-1"></a>save_plotly(fig, name<span class="op">=</span><span class="st">'users_per_day'</span>, description<span class="op">=</span><span class="st">'Number of users registered per day with 7-day rolling mean'</span>, friendly_name<span class="op">=</span><span class="st">'Users Registered per Day'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-display">
+<pre><code>Unable to display output for mime type(s): application/vnd.plotly.v1+json</code></pre>
+</div>
+</div>
+</section>
+<section id="top-users-by-projects-and-coding-time" class="level1">
+<h1>Top users by projects and coding time</h1>
+<p>Two horizontal bar charts: total projects per user (top 12) and individual users with the highest coding time (top 12).</p>
+<div id="cd05851f" class="cell" data-execution_count="37">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a>TOP_N <span class="op">=</span> <span class="dv">12</span></span>
+<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-3"><a href="#cb36-3" aria-hidden="true" tabindex="-1"></a>_df <span class="op">=</span> df.copy()</span>
+<span id="cb36-4"><a href="#cb36-4" aria-hidden="true" tabindex="-1"></a>_df[<span class="st">'projects_count_num'</span>] <span class="op">=</span> pd.to_numeric(_df[<span class="st">'projects_count'</span>], errors<span class="op">=</span><span class="st">'coerce'</span>)</span>
+<span id="cb36-5"><a href="#cb36-5" aria-hidden="true" tabindex="-1"></a>_df[<span class="st">'coding_time_hours'</span>] <span class="op">=</span> pd.to_numeric(_df[<span class="st">'coding_time_seconds'</span>], errors<span class="op">=</span><span class="st">'coerce'</span>) <span class="op">/</span> <span class="dv">3600</span></span>
+<span id="cb36-6"><a href="#cb36-6" aria-hidden="true" tabindex="-1"></a>_df[<span class="st">'display_name_clean'</span>] <span class="op">=</span> _df[<span class="st">'display_name'</span>].astype(<span class="st">'object'</span>).fillna(<span class="st">'(unnamed)'</span>).astype(<span class="bu">str</span>)</span>
+<span id="cb36-7"><a href="#cb36-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-8"><a href="#cb36-8" aria-hidden="true" tabindex="-1"></a>proj_top <span class="op">=</span> (</span>
+<span id="cb36-9"><a href="#cb36-9" aria-hidden="true" tabindex="-1"></a>    _df[[<span class="st">'id'</span>, <span class="st">'display_name_clean'</span>, <span class="st">'projects_count_num'</span>]]</span>
+<span id="cb36-10"><a href="#cb36-10" aria-hidden="true" tabindex="-1"></a>    .dropna(subset<span class="op">=</span>[<span class="st">'projects_count_num'</span>])</span>
+<span id="cb36-11"><a href="#cb36-11" aria-hidden="true" tabindex="-1"></a>    .sort_values(<span class="st">'projects_count_num'</span>, ascending<span class="op">=</span><span class="va">False</span>)</span>
+<span id="cb36-12"><a href="#cb36-12" aria-hidden="true" tabindex="-1"></a>    .head(TOP_N)</span>
+<span id="cb36-13"><a href="#cb36-13" aria-hidden="true" tabindex="-1"></a>    .copy()</span>
+<span id="cb36-14"><a href="#cb36-14" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb36-15"><a href="#cb36-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-16"><a href="#cb36-16" aria-hidden="true" tabindex="-1"></a>proj_top[<span class="st">'user_label'</span>] <span class="op">=</span> (proj_top[<span class="st">'display_name_clean'</span>].<span class="bu">str</span>.<span class="bu">slice</span>(<span class="dv">0</span>, <span class="dv">25</span>) <span class="op">+</span> </span>
+<span id="cb36-17"><a href="#cb36-17" aria-hidden="true" tabindex="-1"></a>                         <span class="st">' ['</span> <span class="op">+</span> proj_top[<span class="st">'id'</span>].astype(<span class="bu">str</span>) <span class="op">+</span> <span class="st">']'</span>)</span>
+<span id="cb36-18"><a href="#cb36-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-19"><a href="#cb36-19" aria-hidden="true" tabindex="-1"></a>time_top <span class="op">=</span> (</span>
+<span id="cb36-20"><a href="#cb36-20" aria-hidden="true" tabindex="-1"></a>    _df[[<span class="st">'id'</span>, <span class="st">'display_name_clean'</span>, <span class="st">'coding_time_hours'</span>]]</span>
+<span id="cb36-21"><a href="#cb36-21" aria-hidden="true" tabindex="-1"></a>    .dropna(subset<span class="op">=</span>[<span class="st">'coding_time_hours'</span>])</span>
+<span id="cb36-22"><a href="#cb36-22" aria-hidden="true" tabindex="-1"></a>    .sort_values(<span class="st">'coding_time_hours'</span>, ascending<span class="op">=</span><span class="va">False</span>)</span>
+<span id="cb36-23"><a href="#cb36-23" aria-hidden="true" tabindex="-1"></a>    .head(TOP_N)</span>
+<span id="cb36-24"><a href="#cb36-24" aria-hidden="true" tabindex="-1"></a>    .copy()</span>
+<span id="cb36-25"><a href="#cb36-25" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb36-26"><a href="#cb36-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-27"><a href="#cb36-27" aria-hidden="true" tabindex="-1"></a>time_top[<span class="st">'user_label'</span>] <span class="op">=</span> (time_top[<span class="st">'display_name_clean'</span>].<span class="bu">str</span>.<span class="bu">slice</span>(<span class="dv">0</span>, <span class="dv">25</span>) <span class="op">+</span> </span>
+<span id="cb36-28"><a href="#cb36-28" aria-hidden="true" tabindex="-1"></a>                         <span class="st">' ['</span> <span class="op">+</span> time_top[<span class="st">'id'</span>].astype(<span class="bu">str</span>) <span class="op">+</span> <span class="st">']'</span>)</span>
+<span id="cb36-29"><a href="#cb36-29" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-30"><a href="#cb36-30" aria-hidden="true" tabindex="-1"></a>height <span class="op">=</span> <span class="bu">max</span>(<span class="bu">len</span>(proj_top), <span class="bu">len</span>(time_top)) <span class="op">*</span> <span class="dv">44</span> <span class="op">+</span> <span class="dv">240</span></span>
+<span id="cb36-31"><a href="#cb36-31" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-32"><a href="#cb36-32" aria-hidden="true" tabindex="-1"></a>fig <span class="op">=</span> make_subplots(</span>
+<span id="cb36-33"><a href="#cb36-33" aria-hidden="true" tabindex="-1"></a>    rows<span class="op">=</span><span class="dv">1</span>, cols<span class="op">=</span><span class="dv">2</span>, column_widths<span class="op">=</span>[<span class="fl">0.5</span>, <span class="fl">0.5</span>],</span>
+<span id="cb36-34"><a href="#cb36-34" aria-hidden="true" tabindex="-1"></a>    subplot_titles<span class="op">=</span>(</span>
+<span id="cb36-35"><a href="#cb36-35" aria-hidden="true" tabindex="-1"></a>        <span class="st">'Top Users by Projects Count'</span>,</span>
+<span id="cb36-36"><a href="#cb36-36" aria-hidden="true" tabindex="-1"></a>        <span class="st">'Top Users by Coding Time (hours)'</span></span>
+<span id="cb36-37"><a href="#cb36-37" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb36-38"><a href="#cb36-38" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb36-39"><a href="#cb36-39" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-40"><a href="#cb36-40" aria-hidden="true" tabindex="-1"></a>fig.add_trace(</span>
+<span id="cb36-41"><a href="#cb36-41" aria-hidden="true" tabindex="-1"></a>    go.Bar(</span>
+<span id="cb36-42"><a href="#cb36-42" aria-hidden="true" tabindex="-1"></a>        x<span class="op">=</span>proj_top[<span class="st">'projects_count_num'</span>][::<span class="op">-</span><span class="dv">1</span>],</span>
+<span id="cb36-43"><a href="#cb36-43" aria-hidden="true" tabindex="-1"></a>        y<span class="op">=</span>proj_top[<span class="st">'user_label'</span>][::<span class="op">-</span><span class="dv">1</span>],</span>
+<span id="cb36-44"><a href="#cb36-44" aria-hidden="true" tabindex="-1"></a>        orientation<span class="op">=</span><span class="st">'h'</span>,</span>
+<span id="cb36-45"><a href="#cb36-45" aria-hidden="true" tabindex="-1"></a>        marker_color<span class="op">=</span><span class="st">'#636EFA'</span>,</span>
+<span id="cb36-46"><a href="#cb36-46" aria-hidden="true" tabindex="-1"></a>        hovertemplate<span class="op">=</span><span class="st">'%</span><span class="sc">{y}</span><span class="st">&lt;br&gt;Projects=%</span><span class="sc">{x}</span><span class="st">'</span></span>
+<span id="cb36-47"><a href="#cb36-47" aria-hidden="true" tabindex="-1"></a>    ), row<span class="op">=</span><span class="dv">1</span>, col<span class="op">=</span><span class="dv">1</span></span>
+<span id="cb36-48"><a href="#cb36-48" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb36-49"><a href="#cb36-49" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-50"><a href="#cb36-50" aria-hidden="true" tabindex="-1"></a>fig.add_trace(</span>
+<span id="cb36-51"><a href="#cb36-51" aria-hidden="true" tabindex="-1"></a>    go.Bar(</span>
+<span id="cb36-52"><a href="#cb36-52" aria-hidden="true" tabindex="-1"></a>        x<span class="op">=</span>time_top[<span class="st">'coding_time_hours'</span>][::<span class="op">-</span><span class="dv">1</span>],</span>
+<span id="cb36-53"><a href="#cb36-53" aria-hidden="true" tabindex="-1"></a>        y<span class="op">=</span>time_top[<span class="st">'user_label'</span>][::<span class="op">-</span><span class="dv">1</span>],</span>
+<span id="cb36-54"><a href="#cb36-54" aria-hidden="true" tabindex="-1"></a>        orientation<span class="op">=</span><span class="st">'h'</span>,</span>
+<span id="cb36-55"><a href="#cb36-55" aria-hidden="true" tabindex="-1"></a>        marker_color<span class="op">=</span><span class="st">'#EF553B'</span>,</span>
+<span id="cb36-56"><a href="#cb36-56" aria-hidden="true" tabindex="-1"></a>        hovertemplate<span class="op">=</span><span class="st">'%</span><span class="sc">{y}</span><span class="st">&lt;br&gt;Time=%</span><span class="sc">{x:.1f}</span><span class="st"> hours'</span></span>
+<span id="cb36-57"><a href="#cb36-57" aria-hidden="true" tabindex="-1"></a>    ), row<span class="op">=</span><span class="dv">1</span>, col<span class="op">=</span><span class="dv">2</span></span>
+<span id="cb36-58"><a href="#cb36-58" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb36-59"><a href="#cb36-59" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-60"><a href="#cb36-60" aria-hidden="true" tabindex="-1"></a>fig.update_layout(</span>
+<span id="cb36-61"><a href="#cb36-61" aria-hidden="true" tabindex="-1"></a>    height<span class="op">=</span><span class="bu">max</span>(DEFAULT_HEIGHT <span class="op">+</span> (<span class="bu">len</span>(proj_top)<span class="op">*</span><span class="dv">18</span>), height),</span>
+<span id="cb36-62"><a href="#cb36-62" aria-hidden="true" tabindex="-1"></a>    margin<span class="op">=</span><span class="bu">dict</span>(l<span class="op">=</span><span class="dv">220</span>, r<span class="op">=</span><span class="dv">30</span>, t<span class="op">=</span><span class="dv">80</span>, b<span class="op">=</span><span class="dv">40</span>),</span>
+<span id="cb36-63"><a href="#cb36-63" aria-hidden="true" tabindex="-1"></a>    showlegend<span class="op">=</span><span class="va">False</span>,</span>
+<span id="cb36-64"><a href="#cb36-64" aria-hidden="true" tabindex="-1"></a>    bargap<span class="op">=</span><span class="fl">0.25</span></span>
+<span id="cb36-65"><a href="#cb36-65" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb36-66"><a href="#cb36-66" aria-hidden="true" tabindex="-1"></a>fig.update_xaxes(title_text<span class="op">=</span><span class="st">'Projects'</span>, row<span class="op">=</span><span class="dv">1</span>, col<span class="op">=</span><span class="dv">1</span>)</span>
+<span id="cb36-67"><a href="#cb36-67" aria-hidden="true" tabindex="-1"></a>fig.update_xaxes(title_text<span class="op">=</span><span class="st">'Hours'</span>, row<span class="op">=</span><span class="dv">1</span>, col<span class="op">=</span><span class="dv">2</span>)</span>
+<span id="cb36-68"><a href="#cb36-68" aria-hidden="true" tabindex="-1"></a>fig.update_yaxes(title_text<span class="op">=</span><span class="st">'User'</span>, row<span class="op">=</span><span class="dv">1</span>, col<span class="op">=</span><span class="dv">1</span>,</span>
+<span id="cb36-69"><a href="#cb36-69" aria-hidden="true" tabindex="-1"></a>                 automargin<span class="op">=</span><span class="va">True</span>, tickfont<span class="op">=</span><span class="bu">dict</span>(size<span class="op">=</span><span class="dv">11</span>))</span>
+<span id="cb36-70"><a href="#cb36-70" aria-hidden="true" tabindex="-1"></a>fig.update_yaxes(title_text<span class="op">=</span><span class="st">'User'</span>, row<span class="op">=</span><span class="dv">1</span>, col<span class="op">=</span><span class="dv">2</span>,</span>
+<span id="cb36-71"><a href="#cb36-71" aria-hidden="true" tabindex="-1"></a>                 automargin<span class="op">=</span><span class="va">True</span>, tickfont<span class="op">=</span><span class="bu">dict</span>(size<span class="op">=</span><span class="dv">11</span>))</span>
+<span id="cb36-72"><a href="#cb36-72" aria-hidden="true" tabindex="-1"></a>fig.show()</span>
+<span id="cb36-73"><a href="#cb36-73" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-74"><a href="#cb36-74" aria-hidden="true" tabindex="-1"></a>save_plotly(fig, name<span class="op">=</span><span class="st">'top_users_projects_and_time'</span>, description<span class="op">=</span><span class="st">'Two horizontal bar charts: top users by projects count and coding time'</span>, friendly_name<span class="op">=</span><span class="st">'Top users by projects and coding time'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-display">
+<pre><code>Unable to display output for mime type(s): application/vnd.plotly.v1+json</code></pre>
+</div>
+</div>
+</section>
+<section id="growth-of-users-over-time" class="level1">
+<h1>Growth of users over time</h1>
+<p>Cumulative total of users across dates.</p>
+<div id="8a7703dc" class="cell" data-execution_count="38">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a>_ds <span class="op">=</span> pd.to_datetime(df[<span class="st">'created_at'</span>], errors<span class="op">=</span><span class="st">'coerce'</span>)</span>
+<span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a>series <span class="op">=</span> (</span>
+<span id="cb38-3"><a href="#cb38-3" aria-hidden="true" tabindex="-1"></a>    pd.DataFrame({<span class="st">'date'</span>: _ds.dt.date})</span>
+<span id="cb38-4"><a href="#cb38-4" aria-hidden="true" tabindex="-1"></a>      .dropna()</span>
+<span id="cb38-5"><a href="#cb38-5" aria-hidden="true" tabindex="-1"></a>      .groupby(<span class="st">'date'</span>)</span>
+<span id="cb38-6"><a href="#cb38-6" aria-hidden="true" tabindex="-1"></a>      .size()</span>
+<span id="cb38-7"><a href="#cb38-7" aria-hidden="true" tabindex="-1"></a>      .reset_index(name<span class="op">=</span><span class="st">'count'</span>)</span>
+<span id="cb38-8"><a href="#cb38-8" aria-hidden="true" tabindex="-1"></a>      .sort_values(<span class="st">'date'</span>)</span>
+<span id="cb38-9"><a href="#cb38-9" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb38-10"><a href="#cb38-10" aria-hidden="true" tabindex="-1"></a>series[<span class="st">'date'</span>] <span class="op">=</span> pd.to_datetime(series[<span class="st">'date'</span>])</span>
+<span id="cb38-11"><a href="#cb38-11" aria-hidden="true" tabindex="-1"></a>series[<span class="st">'cumulative'</span>] <span class="op">=</span> series[<span class="st">'count'</span>].cumsum()</span>
+<span id="cb38-12"><a href="#cb38-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb38-13"><a href="#cb38-13" aria-hidden="true" tabindex="-1"></a>fig <span class="op">=</span> px.area(series, x<span class="op">=</span><span class="st">'date'</span>, y<span class="op">=</span><span class="st">'cumulative'</span>,</span>
+<span id="cb38-14"><a href="#cb38-14" aria-hidden="true" tabindex="-1"></a>              title<span class="op">=</span><span class="st">'Cumulative Users'</span>,</span>
+<span id="cb38-15"><a href="#cb38-15" aria-hidden="true" tabindex="-1"></a>              labels<span class="op">=</span>{<span class="st">'date'</span>: <span class="st">'Date'</span>, <span class="st">'cumulative'</span>: <span class="st">'Total Users'</span>},</span>
+<span id="cb38-16"><a href="#cb38-16" aria-hidden="true" tabindex="-1"></a>              color_discrete_sequence<span class="op">=</span>[<span class="st">'#19A974'</span>])</span>
+<span id="cb38-17"><a href="#cb38-17" aria-hidden="true" tabindex="-1"></a>fig.update_layout(height<span class="op">=</span><span class="bu">max</span>(DEFAULT_HEIGHT, <span class="dv">420</span>))</span>
+<span id="cb38-18"><a href="#cb38-18" aria-hidden="true" tabindex="-1"></a>fig.show()</span>
+<span id="cb38-19"><a href="#cb38-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb38-20"><a href="#cb38-20" aria-hidden="true" tabindex="-1"></a>save_plotly(fig, name<span class="op">=</span><span class="st">'cumulative_users'</span>, description<span class="op">=</span><span class="st">'Cumulative total of users over time'</span>, friendly_name<span class="op">=</span><span class="st">'Cumulative Users'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-display">
+<pre><code>Unable to display output for mime type(s): application/vnd.plotly.v1+json</code></pre>
+</div>
+</div>
+</section>
+<section id="projects-vs-coding-time" class="level1">
+<h1>Projects vs coding time</h1>
+<p>Which users have high project count and high coding time?</p>
+<div id="a7d93bd2" class="cell" data-execution_count="39">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a>_df <span class="op">=</span> df.copy()</span>
+<span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a>_df[<span class="st">'projects_count_num'</span>] <span class="op">=</span> pd.to_numeric(_df[<span class="st">'projects_count'</span>], errors<span class="op">=</span><span class="st">'coerce'</span>)</span>
+<span id="cb40-3"><a href="#cb40-3" aria-hidden="true" tabindex="-1"></a>_df[<span class="st">'coding_time_hours'</span>] <span class="op">=</span> pd.to_numeric(_df[<span class="st">'coding_time_seconds'</span>], errors<span class="op">=</span><span class="st">'coerce'</span>) <span class="op">/</span> <span class="dv">3600</span></span>
+<span id="cb40-4"><a href="#cb40-4" aria-hidden="true" tabindex="-1"></a>_df[<span class="st">'devlogs_count_num'</span>] <span class="op">=</span> pd.to_numeric(_df[<span class="st">'devlogs_count'</span>], errors<span class="op">=</span><span class="st">'coerce'</span>)</span>
+<span id="cb40-5"><a href="#cb40-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-6"><a href="#cb40-6" aria-hidden="true" tabindex="-1"></a>plot_df <span class="op">=</span> _df.dropna(subset<span class="op">=</span>[<span class="st">'projects_count_num'</span>, <span class="st">'coding_time_hours'</span>]).copy()</span>
+<span id="cb40-7"><a href="#cb40-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-8"><a href="#cb40-8" aria-hidden="true" tabindex="-1"></a>kwargs <span class="op">=</span> {}</span>
+<span id="cb40-9"><a href="#cb40-9" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> plot_df[<span class="st">'devlogs_count_num'</span>].notna().<span class="bu">any</span>():</span>
+<span id="cb40-10"><a href="#cb40-10" aria-hidden="true" tabindex="-1"></a>    kwargs[<span class="st">'size'</span>] <span class="op">=</span> <span class="st">'devlogs_count_num'</span></span>
+<span id="cb40-11"><a href="#cb40-11" aria-hidden="true" tabindex="-1"></a>    kwargs[<span class="st">'size_max'</span>] <span class="op">=</span> <span class="dv">24</span></span>
+<span id="cb40-12"><a href="#cb40-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-13"><a href="#cb40-13" aria-hidden="true" tabindex="-1"></a>fig <span class="op">=</span> px.scatter(</span>
+<span id="cb40-14"><a href="#cb40-14" aria-hidden="true" tabindex="-1"></a>    plot_df,</span>
+<span id="cb40-15"><a href="#cb40-15" aria-hidden="true" tabindex="-1"></a>    x<span class="op">=</span><span class="st">'projects_count_num'</span>, y<span class="op">=</span><span class="st">'coding_time_hours'</span>,</span>
+<span id="cb40-16"><a href="#cb40-16" aria-hidden="true" tabindex="-1"></a>    hover_data<span class="op">=</span>{<span class="st">'display_name'</span>: <span class="va">True</span>, <span class="st">'id'</span>: <span class="va">True</span>,</span>
+<span id="cb40-17"><a href="#cb40-17" aria-hidden="true" tabindex="-1"></a>                <span class="st">'projects_count_num'</span>: <span class="va">True</span>, <span class="st">'coding_time_hours'</span>: <span class="st">':.1f'</span>},</span>
+<span id="cb40-18"><a href="#cb40-18" aria-hidden="true" tabindex="-1"></a>    labels<span class="op">=</span>{<span class="st">'projects_count_num'</span>: <span class="st">'Projects Count'</span>, <span class="st">'coding_time_hours'</span>: <span class="st">'Coding Time (hours)'</span>,</span>
+<span id="cb40-19"><a href="#cb40-19" aria-hidden="true" tabindex="-1"></a>            <span class="st">'devlogs_count_num'</span>: <span class="st">'Devlogs Count'</span>},</span>
+<span id="cb40-20"><a href="#cb40-20" aria-hidden="true" tabindex="-1"></a>    title<span class="op">=</span><span class="st">'Projects vs Coding Time'</span>,</span>
+<span id="cb40-21"><a href="#cb40-21" aria-hidden="true" tabindex="-1"></a>    <span class="op">**</span>kwargs</span>
+<span id="cb40-22"><a href="#cb40-22" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb40-23"><a href="#cb40-23" aria-hidden="true" tabindex="-1"></a>fig.update_layout(height<span class="op">=</span><span class="bu">max</span>(DEFAULT_HEIGHT, <span class="dv">450</span>),</span>
+<span id="cb40-24"><a href="#cb40-24" aria-hidden="true" tabindex="-1"></a>                  margin<span class="op">=</span><span class="bu">dict</span>(l<span class="op">=</span><span class="dv">60</span>, r<span class="op">=</span><span class="dv">30</span>, t<span class="op">=</span><span class="dv">60</span>, b<span class="op">=</span><span class="dv">50</span>))</span>
+<span id="cb40-25"><a href="#cb40-25" aria-hidden="true" tabindex="-1"></a>fig.show()</span>
+<span id="cb40-26"><a href="#cb40-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-27"><a href="#cb40-27" aria-hidden="true" tabindex="-1"></a>save_plotly(fig, name<span class="op">=</span><span class="st">'projects_vs_coding_time'</span>, description<span class="op">=</span><span class="st">'Scatter plot of projects count versus coding time per user'</span>, friendly_name<span class="op">=</span><span class="st">'Projects vs Coding Time'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-display">
+<pre><code>Unable to display output for mime type(s): application/vnd.plotly.v1+json</code></pre>
+</div>
+</div>
+</section>
+<section id="distribution-of-coding-time" class="level1">
+<h1>Distribution of coding time</h1>
+<p>How is the coding time spread out?</p>
+<div id="5718e2e1" class="cell" data-execution_count="40">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a>s <span class="op">=</span> pd.to_numeric(df[<span class="st">'coding_time_seconds'</span>], errors<span class="op">=</span><span class="st">'coerce'</span>) <span class="op">/</span> <span class="dv">3600</span>  <span class="co"># Convert to hours</span></span>
+<span id="cb42-2"><a href="#cb42-2" aria-hidden="true" tabindex="-1"></a>fig <span class="op">=</span> px.histogram(</span>
+<span id="cb42-3"><a href="#cb42-3" aria-hidden="true" tabindex="-1"></a>    s.dropna(), nbins<span class="op">=</span><span class="dv">40</span>,</span>
+<span id="cb42-4"><a href="#cb42-4" aria-hidden="true" tabindex="-1"></a>    title<span class="op">=</span><span class="st">'Distribution of Coding Time per User'</span>,</span>
+<span id="cb42-5"><a href="#cb42-5" aria-hidden="true" tabindex="-1"></a>    labels<span class="op">=</span>{<span class="st">'value'</span>: <span class="st">'Hours'</span>, <span class="st">'count'</span>: <span class="st">'Users'</span>},</span>
+<span id="cb42-6"><a href="#cb42-6" aria-hidden="true" tabindex="-1"></a>    color_discrete_sequence<span class="op">=</span>[<span class="st">'#636EFA'</span>]</span>
+<span id="cb42-7"><a href="#cb42-7" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb42-8"><a href="#cb42-8" aria-hidden="true" tabindex="-1"></a>fig.update_traces(marker_line_color<span class="op">=</span><span class="st">'white'</span>, marker_line_width<span class="op">=</span><span class="fl">0.5</span>)</span>
+<span id="cb42-9"><a href="#cb42-9" aria-hidden="true" tabindex="-1"></a>fig.update_layout(bargap<span class="op">=</span><span class="fl">0.05</span>,</span>
+<span id="cb42-10"><a href="#cb42-10" aria-hidden="true" tabindex="-1"></a>                  height<span class="op">=</span><span class="bu">max</span>(DEFAULT_HEIGHT <span class="op">-</span> <span class="dv">20</span>, <span class="dv">400</span>),</span>
+<span id="cb42-11"><a href="#cb42-11" aria-hidden="true" tabindex="-1"></a>                  xaxis_title<span class="op">=</span><span class="st">'Hours'</span>, yaxis_title<span class="op">=</span><span class="st">'Users'</span>)</span>
+<span id="cb42-12"><a href="#cb42-12" aria-hidden="true" tabindex="-1"></a>fig.show()</span>
+<span id="cb42-13"><a href="#cb42-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb42-14"><a href="#cb42-14" aria-hidden="true" tabindex="-1"></a>save_plotly(fig, name<span class="op">=</span><span class="st">'coding_time_distribution'</span>, description<span class="op">=</span><span class="st">'Histogram of coding time per user'</span>, friendly_name<span class="op">=</span><span class="st">'Coding Time Distribution'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-display">
+<pre><code>Unable to display output for mime type(s): application/vnd.plotly.v1+json</code></pre>
+</div>
+</div>
+</section>
+<section id="distribution-of-projects-count" class="level1">
+<h1>Distribution of projects count</h1>
+<p>How many projects do users typically have?</p>
+<div id="f188980b" class="cell" data-execution_count="41">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a>s <span class="op">=</span> pd.to_numeric(df[<span class="st">'projects_count'</span>], errors<span class="op">=</span><span class="st">'coerce'</span>)</span>
+<span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a>fig <span class="op">=</span> px.histogram(</span>
+<span id="cb44-3"><a href="#cb44-3" aria-hidden="true" tabindex="-1"></a>    s.dropna(), nbins<span class="op">=</span><span class="dv">30</span>,</span>
+<span id="cb44-4"><a href="#cb44-4" aria-hidden="true" tabindex="-1"></a>    title<span class="op">=</span><span class="st">'Distribution of Projects Count per User'</span>,</span>
+<span id="cb44-5"><a href="#cb44-5" aria-hidden="true" tabindex="-1"></a>    labels<span class="op">=</span>{<span class="st">'value'</span>: <span class="st">'Projects'</span>, <span class="st">'count'</span>: <span class="st">'Users'</span>},</span>
+<span id="cb44-6"><a href="#cb44-6" aria-hidden="true" tabindex="-1"></a>    color_discrete_sequence<span class="op">=</span>[<span class="st">'#EF553B'</span>]</span>
+<span id="cb44-7"><a href="#cb44-7" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb44-8"><a href="#cb44-8" aria-hidden="true" tabindex="-1"></a>fig.update_traces(marker_line_color<span class="op">=</span><span class="st">'white'</span>, marker_line_width<span class="op">=</span><span class="fl">0.5</span>)</span>
+<span id="cb44-9"><a href="#cb44-9" aria-hidden="true" tabindex="-1"></a>fig.update_layout(bargap<span class="op">=</span><span class="fl">0.05</span>,</span>
+<span id="cb44-10"><a href="#cb44-10" aria-hidden="true" tabindex="-1"></a>                  height<span class="op">=</span><span class="bu">max</span>(DEFAULT_HEIGHT <span class="op">-</span> <span class="dv">20</span>, <span class="dv">400</span>),</span>
+<span id="cb44-11"><a href="#cb44-11" aria-hidden="true" tabindex="-1"></a>                  xaxis_title<span class="op">=</span><span class="st">'Projects'</span>, yaxis_title<span class="op">=</span><span class="st">'Users'</span>)</span>
+<span id="cb44-12"><a href="#cb44-12" aria-hidden="true" tabindex="-1"></a>fig.show()</span>
+<span id="cb44-13"><a href="#cb44-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb44-14"><a href="#cb44-14" aria-hidden="true" tabindex="-1"></a>save_plotly(fig, name<span class="op">=</span><span class="st">'projects_count_distribution'</span>, description<span class="op">=</span><span class="st">'Histogram of projects count per user'</span>, friendly_name<span class="op">=</span><span class="st">'Projects Count Distribution'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-display">
+<pre><code>Unable to display output for mime type(s): application/vnd.plotly.v1+json</code></pre>
+</div>
+</div>
+</section>
+<section id="distribution-of-user-balances" class="level1">
+<h1>Distribution of user balances</h1>
+<p>How are user balances distributed?</p>
+<div id="062fd792" class="cell" data-execution_count="42">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb46"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a>s <span class="op">=</span> pd.to_numeric(df[<span class="st">'balance'</span>], errors<span class="op">=</span><span class="st">'coerce'</span>)</span>
+<span id="cb46-2"><a href="#cb46-2" aria-hidden="true" tabindex="-1"></a>fig <span class="op">=</span> px.histogram(</span>
+<span id="cb46-3"><a href="#cb46-3" aria-hidden="true" tabindex="-1"></a>    s.dropna(), nbins<span class="op">=</span><span class="dv">40</span>,</span>
+<span id="cb46-4"><a href="#cb46-4" aria-hidden="true" tabindex="-1"></a>    title<span class="op">=</span><span class="st">'Distribution of User Balance'</span>,</span>
+<span id="cb46-5"><a href="#cb46-5" aria-hidden="true" tabindex="-1"></a>    labels<span class="op">=</span>{<span class="st">'value'</span>: <span class="st">'Balance'</span>, <span class="st">'count'</span>: <span class="st">'Users'</span>},</span>
+<span id="cb46-6"><a href="#cb46-6" aria-hidden="true" tabindex="-1"></a>    color_discrete_sequence<span class="op">=</span>[<span class="st">'#19A974'</span>]</span>
+<span id="cb46-7"><a href="#cb46-7" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb46-8"><a href="#cb46-8" aria-hidden="true" tabindex="-1"></a>fig.update_traces(marker_line_color<span class="op">=</span><span class="st">'white'</span>, marker_line_width<span class="op">=</span><span class="fl">0.5</span>)</span>
+<span id="cb46-9"><a href="#cb46-9" aria-hidden="true" tabindex="-1"></a>fig.update_layout(bargap<span class="op">=</span><span class="fl">0.05</span>,</span>
+<span id="cb46-10"><a href="#cb46-10" aria-hidden="true" tabindex="-1"></a>                  height<span class="op">=</span><span class="bu">max</span>(DEFAULT_HEIGHT <span class="op">-</span> <span class="dv">20</span>, <span class="dv">400</span>),</span>
+<span id="cb46-11"><a href="#cb46-11" aria-hidden="true" tabindex="-1"></a>                  xaxis_title<span class="op">=</span><span class="st">'Balance'</span>, yaxis_title<span class="op">=</span><span class="st">'Users'</span>)</span>
+<span id="cb46-12"><a href="#cb46-12" aria-hidden="true" tabindex="-1"></a>fig.show()</span>
+<span id="cb46-13"><a href="#cb46-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb46-14"><a href="#cb46-14" aria-hidden="true" tabindex="-1"></a>save_plotly(fig, name<span class="op">=</span><span class="st">'balance_distribution'</span>, description<span class="op">=</span><span class="st">'Histogram of user balances'</span>, friendly_name<span class="op">=</span><span class="st">'Balance Distribution'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-display">
+<pre><code>Unable to display output for mime type(s): application/vnd.plotly.v1+json</code></pre>
+</div>
+</div>
+</section>
+<section id="distribution-of-votes-count" class="level1">
+<h1>Distribution of votes count</h1>
+<p>How are user votes distributed?</p>
+<div id="2f481605" class="cell" data-execution_count="43">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb48"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a>s <span class="op">=</span> pd.to_numeric(df[<span class="st">'votes_count'</span>], errors<span class="op">=</span><span class="st">'coerce'</span>)</span>
+<span id="cb48-2"><a href="#cb48-2" aria-hidden="true" tabindex="-1"></a>fig <span class="op">=</span> px.histogram(</span>
+<span id="cb48-3"><a href="#cb48-3" aria-hidden="true" tabindex="-1"></a>    s.dropna(), nbins<span class="op">=</span><span class="dv">30</span>,</span>
+<span id="cb48-4"><a href="#cb48-4" aria-hidden="true" tabindex="-1"></a>    title<span class="op">=</span><span class="st">'Distribution of Votes Count per User'</span>,</span>
+<span id="cb48-5"><a href="#cb48-5" aria-hidden="true" tabindex="-1"></a>    labels<span class="op">=</span>{<span class="st">'value'</span>: <span class="st">'Votes'</span>, <span class="st">'count'</span>: <span class="st">'Users'</span>},</span>
+<span id="cb48-6"><a href="#cb48-6" aria-hidden="true" tabindex="-1"></a>    color_discrete_sequence<span class="op">=</span>[<span class="st">'#AB63FA'</span>]</span>
+<span id="cb48-7"><a href="#cb48-7" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb48-8"><a href="#cb48-8" aria-hidden="true" tabindex="-1"></a>fig.update_traces(marker_line_color<span class="op">=</span><span class="st">'white'</span>, marker_line_width<span class="op">=</span><span class="fl">0.5</span>)</span>
+<span id="cb48-9"><a href="#cb48-9" aria-hidden="true" tabindex="-1"></a>fig.update_layout(bargap<span class="op">=</span><span class="fl">0.05</span>,</span>
+<span id="cb48-10"><a href="#cb48-10" aria-hidden="true" tabindex="-1"></a>                  height<span class="op">=</span><span class="bu">max</span>(DEFAULT_HEIGHT <span class="op">-</span> <span class="dv">20</span>, <span class="dv">400</span>),</span>
+<span id="cb48-11"><a href="#cb48-11" aria-hidden="true" tabindex="-1"></a>                  xaxis_title<span class="op">=</span><span class="st">'Votes'</span>, yaxis_title<span class="op">=</span><span class="st">'Users'</span>)</span>
+<span id="cb48-12"><a href="#cb48-12" aria-hidden="true" tabindex="-1"></a>fig.show()</span>
+<span id="cb48-13"><a href="#cb48-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb48-14"><a href="#cb48-14" aria-hidden="true" tabindex="-1"></a>save_plotly(fig, name<span class="op">=</span><span class="st">'votes_count_distribution'</span>, description<span class="op">=</span><span class="st">'Histogram of votes count per user'</span>, friendly_name<span class="op">=</span><span class="st">'Votes Count Distribution'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-display">
+<pre><code>Unable to display output for mime type(s): application/vnd.plotly.v1+json</code></pre>
+</div>
+</div>
+</section>
+<section id="distribution-of-ships-count" class="level1">
+<h1>Distribution of ships count</h1>
+<p>How are user ships distributed?</p>
+<div id="829cd0d1" class="cell" data-execution_count="44">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb50"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a>s <span class="op">=</span> pd.to_numeric(df[<span class="st">'ships_count'</span>], errors<span class="op">=</span><span class="st">'coerce'</span>)</span>
+<span id="cb50-2"><a href="#cb50-2" aria-hidden="true" tabindex="-1"></a>fig <span class="op">=</span> px.histogram(</span>
+<span id="cb50-3"><a href="#cb50-3" aria-hidden="true" tabindex="-1"></a>    s.dropna(), nbins<span class="op">=</span><span class="dv">25</span>,</span>
+<span id="cb50-4"><a href="#cb50-4" aria-hidden="true" tabindex="-1"></a>    title<span class="op">=</span><span class="st">'Distribution of Ships Count per User'</span>,</span>
+<span id="cb50-5"><a href="#cb50-5" aria-hidden="true" tabindex="-1"></a>    labels<span class="op">=</span>{<span class="st">'value'</span>: <span class="st">'Ships'</span>, <span class="st">'count'</span>: <span class="st">'Users'</span>},</span>
+<span id="cb50-6"><a href="#cb50-6" aria-hidden="true" tabindex="-1"></a>    color_discrete_sequence<span class="op">=</span>[<span class="st">'#FFA15A'</span>]</span>
+<span id="cb50-7"><a href="#cb50-7" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb50-8"><a href="#cb50-8" aria-hidden="true" tabindex="-1"></a>fig.update_traces(marker_line_color<span class="op">=</span><span class="st">'white'</span>, marker_line_width<span class="op">=</span><span class="fl">0.5</span>)</span>
+<span id="cb50-9"><a href="#cb50-9" aria-hidden="true" tabindex="-1"></a>fig.update_layout(bargap<span class="op">=</span><span class="fl">0.05</span>,</span>
+<span id="cb50-10"><a href="#cb50-10" aria-hidden="true" tabindex="-1"></a>                  height<span class="op">=</span><span class="bu">max</span>(DEFAULT_HEIGHT <span class="op">-</span> <span class="dv">20</span>, <span class="dv">400</span>),</span>
+<span id="cb50-11"><a href="#cb50-11" aria-hidden="true" tabindex="-1"></a>                  xaxis_title<span class="op">=</span><span class="st">'Ships'</span>, yaxis_title<span class="op">=</span><span class="st">'Users'</span>)</span>
+<span id="cb50-12"><a href="#cb50-12" aria-hidden="true" tabindex="-1"></a>fig.show()</span>
+<span id="cb50-13"><a href="#cb50-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb50-14"><a href="#cb50-14" aria-hidden="true" tabindex="-1"></a>save_plotly(fig, name<span class="op">=</span><span class="st">'ships_count_distribution'</span>, description<span class="op">=</span><span class="st">'Histogram of ships count per user'</span>, friendly_name<span class="op">=</span><span class="st">'Ships Count Distribution'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-display">
+<pre><code>Unable to display output for mime type(s): application/vnd.plotly.v1+json</code></pre>
+</div>
+</div>
+</section>
+<section id="inactive-users-breakdown" class="level1">
+<h1>Inactive users breakdown</h1>
+<p>Visual breakdown of users with zero activity across different metrics.</p>
+<div id="47dbf487" class="cell" data-execution_count="45">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb52"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a>_df <span class="op">=</span> df.copy()</span>
+<span id="cb52-2"><a href="#cb52-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb52-3"><a href="#cb52-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Convert to numeric</span></span>
+<span id="cb52-4"><a href="#cb52-4" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> col <span class="kw">in</span> [<span class="st">'balance'</span>, <span class="st">'coding_time_seconds'</span>, <span class="st">'ships_count'</span>, <span class="st">'projects_count'</span>, <span class="st">'devlogs_count'</span>, <span class="st">'votes_count'</span>]:</span>
+<span id="cb52-5"><a href="#cb52-5" aria-hidden="true" tabindex="-1"></a>    _df[<span class="ss">f'</span><span class="sc">{</span>col<span class="sc">}</span><span class="ss">_num'</span>] <span class="op">=</span> pd.to_numeric(_df[col], errors<span class="op">=</span><span class="st">'coerce'</span>).fillna(<span class="dv">0</span>)</span>
+<span id="cb52-6"><a href="#cb52-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb52-7"><a href="#cb52-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate inactive users for each metric</span></span>
+<span id="cb52-8"><a href="#cb52-8" aria-hidden="true" tabindex="-1"></a>metrics <span class="op">=</span> {</span>
+<span id="cb52-9"><a href="#cb52-9" aria-hidden="true" tabindex="-1"></a>    <span class="st">'Zero Balance'</span>: (_df[<span class="st">'balance_num'</span>] <span class="op">==</span> <span class="dv">0</span>).<span class="bu">sum</span>(),</span>
+<span id="cb52-10"><a href="#cb52-10" aria-hidden="true" tabindex="-1"></a>    <span class="st">'Zero Coding Time'</span>: (_df[<span class="st">'coding_time_seconds_num'</span>] <span class="op">==</span> <span class="dv">0</span>).<span class="bu">sum</span>(), </span>
+<span id="cb52-11"><a href="#cb52-11" aria-hidden="true" tabindex="-1"></a>    <span class="st">'Zero Ships'</span>: (_df[<span class="st">'ships_count_num'</span>] <span class="op">==</span> <span class="dv">0</span>).<span class="bu">sum</span>(),</span>
+<span id="cb52-12"><a href="#cb52-12" aria-hidden="true" tabindex="-1"></a>    <span class="st">'Zero Projects'</span>: (_df[<span class="st">'projects_count_num'</span>] <span class="op">==</span> <span class="dv">0</span>).<span class="bu">sum</span>(),</span>
+<span id="cb52-13"><a href="#cb52-13" aria-hidden="true" tabindex="-1"></a>    <span class="st">'Zero Devlogs'</span>: (_df[<span class="st">'devlogs_count_num'</span>] <span class="op">==</span> <span class="dv">0</span>).<span class="bu">sum</span>(),</span>
+<span id="cb52-14"><a href="#cb52-14" aria-hidden="true" tabindex="-1"></a>    <span class="st">'Zero Votes'</span>: (_df[<span class="st">'votes_count_num'</span>] <span class="op">==</span> <span class="dv">0</span>).<span class="bu">sum</span>()</span>
+<span id="cb52-15"><a href="#cb52-15" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb52-16"><a href="#cb52-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb52-17"><a href="#cb52-17" aria-hidden="true" tabindex="-1"></a>total_users <span class="op">=</span> <span class="bu">len</span>(_df)</span>
+<span id="cb52-18"><a href="#cb52-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb52-19"><a href="#cb52-19" aria-hidden="true" tabindex="-1"></a><span class="co"># Create bar chart</span></span>
+<span id="cb52-20"><a href="#cb52-20" aria-hidden="true" tabindex="-1"></a>fig <span class="op">=</span> go.Figure()</span>
+<span id="cb52-21"><a href="#cb52-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb52-22"><a href="#cb52-22" aria-hidden="true" tabindex="-1"></a>fig.add_trace(go.Bar(</span>
+<span id="cb52-23"><a href="#cb52-23" aria-hidden="true" tabindex="-1"></a>    x<span class="op">=</span><span class="bu">list</span>(metrics.keys()),</span>
+<span id="cb52-24"><a href="#cb52-24" aria-hidden="true" tabindex="-1"></a>    y<span class="op">=</span><span class="bu">list</span>(metrics.values()),</span>
+<span id="cb52-25"><a href="#cb52-25" aria-hidden="true" tabindex="-1"></a>    text<span class="op">=</span>[<span class="ss">f'</span><span class="sc">{</span>count<span class="sc">}</span><span class="ss">&lt;br&gt;(</span><span class="sc">{</span>count<span class="op">/</span>total_users<span class="op">*</span><span class="dv">100</span><span class="sc">:.1f}</span><span class="ss">%)'</span> <span class="cf">for</span> count <span class="kw">in</span> metrics.values()],</span>
+<span id="cb52-26"><a href="#cb52-26" aria-hidden="true" tabindex="-1"></a>    textposition<span class="op">=</span><span class="st">'outside'</span>,</span>
+<span id="cb52-27"><a href="#cb52-27" aria-hidden="true" tabindex="-1"></a>    marker_color<span class="op">=</span>[<span class="st">'#FF6692'</span>, <span class="st">'#19D3F3'</span>, <span class="st">'#AB63FA'</span>, <span class="st">'#636EFA'</span>, <span class="st">'#EF553B'</span>, <span class="st">'#00CC96'</span>]</span>
+<span id="cb52-28"><a href="#cb52-28" aria-hidden="true" tabindex="-1"></a>))</span>
+<span id="cb52-29"><a href="#cb52-29" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb52-30"><a href="#cb52-30" aria-hidden="true" tabindex="-1"></a>fig.update_layout(</span>
+<span id="cb52-31"><a href="#cb52-31" aria-hidden="true" tabindex="-1"></a>    title<span class="op">=</span><span class="st">'Users with Zero Activity by Metric'</span>,</span>
+<span id="cb52-32"><a href="#cb52-32" aria-hidden="true" tabindex="-1"></a>    xaxis_title<span class="op">=</span><span class="st">'Metric'</span>,</span>
+<span id="cb52-33"><a href="#cb52-33" aria-hidden="true" tabindex="-1"></a>    yaxis_title<span class="op">=</span><span class="st">'Number of Users'</span>,</span>
+<span id="cb52-34"><a href="#cb52-34" aria-hidden="true" tabindex="-1"></a>    height<span class="op">=</span><span class="bu">max</span>(DEFAULT_HEIGHT, <span class="dv">450</span>),</span>
+<span id="cb52-35"><a href="#cb52-35" aria-hidden="true" tabindex="-1"></a>    xaxis_tickangle<span class="op">=-</span><span class="dv">30</span></span>
+<span id="cb52-36"><a href="#cb52-36" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb52-37"><a href="#cb52-37" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb52-38"><a href="#cb52-38" aria-hidden="true" tabindex="-1"></a>fig.show()</span>
+<span id="cb52-39"><a href="#cb52-39" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb52-40"><a href="#cb52-40" aria-hidden="true" tabindex="-1"></a>save_plotly(fig, name<span class="op">=</span><span class="st">'inactive_users_breakdown'</span>, description<span class="op">=</span><span class="st">'Bar chart showing number of users with zero activity for each metric'</span>, friendly_name<span class="op">=</span><span class="st">'Inactive Users Breakdown'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-display">
+<pre><code>Unable to display output for mime type(s): application/vnd.plotly.v1+json</code></pre>
+</div>
+</div>
+</section>
+<section id="custom-css-usage-breakdown" class="level1">
+<h1>Custom CSS usage breakdown</h1>
+<p>Visual breakdown of users with and without custom CSS.</p>
+<div id="3598d1e9" class="cell" data-execution_count="46">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb54"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb54-1"><a href="#cb54-1" aria-hidden="true" tabindex="-1"></a>custom_css_not_null <span class="op">=</span> df[<span class="st">'custom_css'</span>].notna() <span class="op">&amp;</span> (df[<span class="st">'custom_css'</span>].astype(<span class="bu">str</span>).<span class="bu">str</span>.strip() <span class="op">!=</span> <span class="st">''</span>) <span class="op">&amp;</span> (df[<span class="st">'custom_css'</span>].astype(<span class="bu">str</span>) <span class="op">!=</span> <span class="st">'nan'</span>)</span>
+<span id="cb54-2"><a href="#cb54-2" aria-hidden="true" tabindex="-1"></a>users_with_css <span class="op">=</span> custom_css_not_null.<span class="bu">sum</span>()</span>
+<span id="cb54-3"><a href="#cb54-3" aria-hidden="true" tabindex="-1"></a>users_without_css <span class="op">=</span> <span class="bu">len</span>(df) <span class="op">-</span> users_with_css</span>
+<span id="cb54-4"><a href="#cb54-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb54-5"><a href="#cb54-5" aria-hidden="true" tabindex="-1"></a>labels <span class="op">=</span> [<span class="st">'With Custom CSS'</span>, <span class="st">'Without Custom CSS'</span>]</span>
+<span id="cb54-6"><a href="#cb54-6" aria-hidden="true" tabindex="-1"></a>values <span class="op">=</span> [users_with_css, users_without_css]</span>
+<span id="cb54-7"><a href="#cb54-7" aria-hidden="true" tabindex="-1"></a>colors <span class="op">=</span> [<span class="st">'#FF6692'</span>, <span class="st">'#19D3F3'</span>]</span>
+<span id="cb54-8"><a href="#cb54-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb54-9"><a href="#cb54-9" aria-hidden="true" tabindex="-1"></a>fig <span class="op">=</span> go.Figure(go.Pie(</span>
+<span id="cb54-10"><a href="#cb54-10" aria-hidden="true" tabindex="-1"></a>    labels<span class="op">=</span>labels, </span>
+<span id="cb54-11"><a href="#cb54-11" aria-hidden="true" tabindex="-1"></a>    values<span class="op">=</span>values, </span>
+<span id="cb54-12"><a href="#cb54-12" aria-hidden="true" tabindex="-1"></a>    hole<span class="op">=</span><span class="fl">0.4</span>,</span>
+<span id="cb54-13"><a href="#cb54-13" aria-hidden="true" tabindex="-1"></a>    marker<span class="op">=</span><span class="bu">dict</span>(colors<span class="op">=</span>colors),</span>
+<span id="cb54-14"><a href="#cb54-14" aria-hidden="true" tabindex="-1"></a>    textinfo<span class="op">=</span><span class="st">'label+percent+value'</span>,</span>
+<span id="cb54-15"><a href="#cb54-15" aria-hidden="true" tabindex="-1"></a>    hovertemplate<span class="op">=</span><span class="st">'%</span><span class="sc">{label}</span><span class="st">: %</span><span class="sc">{value}</span><span class="st"> users (%</span><span class="sc">{percent}</span><span class="st">)'</span></span>
+<span id="cb54-16"><a href="#cb54-16" aria-hidden="true" tabindex="-1"></a>))</span>
+<span id="cb54-17"><a href="#cb54-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb54-18"><a href="#cb54-18" aria-hidden="true" tabindex="-1"></a>fig.update_layout(</span>
+<span id="cb54-19"><a href="#cb54-19" aria-hidden="true" tabindex="-1"></a>    title<span class="op">=</span><span class="st">'Custom CSS Usage Distribution'</span>,</span>
+<span id="cb54-20"><a href="#cb54-20" aria-hidden="true" tabindex="-1"></a>    height<span class="op">=</span><span class="bu">max</span>(DEFAULT_HEIGHT, <span class="dv">420</span>),</span>
+<span id="cb54-21"><a href="#cb54-21" aria-hidden="true" tabindex="-1"></a>    showlegend<span class="op">=</span><span class="va">True</span>,</span>
+<span id="cb54-22"><a href="#cb54-22" aria-hidden="true" tabindex="-1"></a>    legend<span class="op">=</span><span class="bu">dict</span>(orientation<span class="op">=</span><span class="st">'h'</span>, yanchor<span class="op">=</span><span class="st">'bottom'</span>, y<span class="op">=</span><span class="fl">1.02</span>, xanchor<span class="op">=</span><span class="st">'right'</span>, x<span class="op">=</span><span class="dv">1</span>)</span>
+<span id="cb54-23"><a href="#cb54-23" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb54-24"><a href="#cb54-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb54-25"><a href="#cb54-25" aria-hidden="true" tabindex="-1"></a>fig.show()</span>
+<span id="cb54-26"><a href="#cb54-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb54-27"><a href="#cb54-27" aria-hidden="true" tabindex="-1"></a>save_plotly(fig, name<span class="op">=</span><span class="st">'custom_css_usage_pie'</span>, description<span class="op">=</span><span class="st">'Pie chart showing distribution of users with and without custom CSS'</span>, friendly_name<span class="op">=</span><span class="st">'Custom CSS Usage'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-display">
+<pre><code>Unable to display output for mime type(s): application/vnd.plotly.v1+json</code></pre>
+</div>
+</div>
+</section>
+<section id="bio-text-analysis" class="level1">
+<h1>Bio text analysis</h1>
+<p>Word cloud from user bios</p>
+<div id="34e2efe0" class="cell" data-execution_count="47">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb56"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb56-1"><a href="#cb56-1" aria-hidden="true" tabindex="-1"></a>bio_texts <span class="op">=</span> df[<span class="st">'bio'</span>].fillna(<span class="st">''</span>).astype(<span class="bu">str</span>)</span>
+<span id="cb56-2"><a href="#cb56-2" aria-hidden="true" tabindex="-1"></a>bio_texts <span class="op">=</span> bio_texts[bio_texts.<span class="bu">str</span>.strip() <span class="op">!=</span> <span class="st">''</span>]  <span class="co"># Remove empty bios</span></span>
+<span id="cb56-3"><a href="#cb56-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb56-4"><a href="#cb56-4" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> <span class="bu">len</span>(bio_texts) <span class="op">&gt;</span> <span class="dv">0</span>:</span>
+<span id="cb56-5"><a href="#cb56-5" aria-hidden="true" tabindex="-1"></a>    corpus <span class="op">=</span> <span class="st">' '</span>.join(bio_texts.tolist())</span>
+<span id="cb56-6"><a href="#cb56-6" aria-hidden="true" tabindex="-1"></a>    corpus <span class="op">=</span> re.sub(<span class="vs">r"https</span><span class="op">?</span><span class="vs">://</span><span class="dv">\S</span><span class="op">+</span><span class="vs">"</span>, <span class="st">" "</span>, corpus)  <span class="co"># Remove URLs</span></span>
+<span id="cb56-7"><a href="#cb56-7" aria-hidden="true" tabindex="-1"></a>    corpus <span class="op">=</span> re.sub(<span class="vs">r"</span><span class="pp">[^A-Za-z0-9_+#-]</span><span class="op">+</span><span class="vs">"</span>, <span class="st">" "</span>, corpus)  <span class="co"># Keep only alphanumeric and some symbols</span></span>
+<span id="cb56-8"><a href="#cb56-8" aria-hidden="true" tabindex="-1"></a>    corpus <span class="op">=</span> re.sub(<span class="vs">r"</span><span class="dv">\s</span><span class="op">+</span><span class="vs">"</span>, <span class="st">" "</span>, corpus).strip().lower()  <span class="co"># Clean whitespace and lowercase</span></span>
+<span id="cb56-9"><a href="#cb56-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb56-10"><a href="#cb56-10" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> corpus:</span>
+<span id="cb56-11"><a href="#cb56-11" aria-hidden="true" tabindex="-1"></a>        wc <span class="op">=</span> WordCloud(</span>
+<span id="cb56-12"><a href="#cb56-12" aria-hidden="true" tabindex="-1"></a>            width<span class="op">=</span><span class="dv">1200</span>, height<span class="op">=</span><span class="dv">600</span>, background_color<span class="op">=</span><span class="st">'white'</span>,</span>
+<span id="cb56-13"><a href="#cb56-13" aria-hidden="true" tabindex="-1"></a>            collocations<span class="op">=</span><span class="va">False</span>, max_words<span class="op">=</span><span class="dv">300</span></span>
+<span id="cb56-14"><a href="#cb56-14" aria-hidden="true" tabindex="-1"></a>        ).generate(corpus)</span>
+<span id="cb56-15"><a href="#cb56-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb56-16"><a href="#cb56-16" aria-hidden="true" tabindex="-1"></a>        fig <span class="op">=</span> plt.figure(figsize<span class="op">=</span>(<span class="dv">12</span>, <span class="dv">6</span>))</span>
+<span id="cb56-17"><a href="#cb56-17" aria-hidden="true" tabindex="-1"></a>        plt.imshow(wc, interpolation<span class="op">=</span><span class="st">'bilinear'</span>)</span>
+<span id="cb56-18"><a href="#cb56-18" aria-hidden="true" tabindex="-1"></a>        plt.axis(<span class="st">'off'</span>)</span>
+<span id="cb56-19"><a href="#cb56-19" aria-hidden="true" tabindex="-1"></a>        plt.title(<span class="st">'Most Frequent Words in User Bios'</span>)</span>
+<span id="cb56-20"><a href="#cb56-20" aria-hidden="true" tabindex="-1"></a>        plt.tight_layout()</span>
+<span id="cb56-21"><a href="#cb56-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb56-22"><a href="#cb56-22" aria-hidden="true" tabindex="-1"></a>        save_matplotlib_current(name<span class="op">=</span><span class="st">'user_bio_word_cloud'</span>, description<span class="op">=</span><span class="st">'Word cloud of most frequent words in user bios'</span>, friendly_name<span class="op">=</span><span class="st">'User Bio Word Cloud'</span>)</span>
+<span id="cb56-23"><a href="#cb56-23" aria-hidden="true" tabindex="-1"></a>        plt.show()</span>
+<span id="cb56-24"><a href="#cb56-24" aria-hidden="true" tabindex="-1"></a>    <span class="cf">else</span>:</span>
+<span id="cb56-25"><a href="#cb56-25" aria-hidden="true" tabindex="-1"></a>        <span class="bu">print</span>(<span class="st">'Bio text is empty after cleaning.'</span>)</span>
+<span id="cb56-26"><a href="#cb56-26" aria-hidden="true" tabindex="-1"></a><span class="cf">else</span>:</span>
+<span id="cb56-27"><a href="#cb56-27" aria-hidden="true" tabindex="-1"></a>    <span class="bu">print</span>(<span class="st">'No bio text found or all bios are empty.'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="users_files/figure-html/cell-30-output-1.png" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="user-activity-metrics" class="level1">
+<h1>User activity metrics</h1>
+<p>Analysis of various user activity metrics</p>
+<div id="8bdce2c1" class="cell" data-execution_count="48">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb57"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb57-1"><a href="#cb57-1" aria-hidden="true" tabindex="-1"></a>_df <span class="op">=</span> df.copy()</span>
+<span id="cb57-2"><a href="#cb57-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb57-3"><a href="#cb57-3" aria-hidden="true" tabindex="-1"></a>metrics <span class="op">=</span> [<span class="st">'projects_count'</span>, <span class="st">'devlogs_count'</span>, <span class="st">'votes_count'</span>, <span class="st">'ships_count'</span>]</span>
+<span id="cb57-4"><a href="#cb57-4" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> col <span class="kw">in</span> metrics:</span>
+<span id="cb57-5"><a href="#cb57-5" aria-hidden="true" tabindex="-1"></a>    _df[<span class="ss">f'</span><span class="sc">{</span>col<span class="sc">}</span><span class="ss">_num'</span>] <span class="op">=</span> pd.to_numeric(_df[col], errors<span class="op">=</span><span class="st">'coerce'</span>)</span>
+<span id="cb57-6"><a href="#cb57-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb57-7"><a href="#cb57-7" aria-hidden="true" tabindex="-1"></a>corr_data <span class="op">=</span> _df[[<span class="ss">f'</span><span class="sc">{</span>col<span class="sc">}</span><span class="ss">_num'</span> <span class="cf">for</span> col <span class="kw">in</span> metrics]].rename(columns<span class="op">=</span>{</span>
+<span id="cb57-8"><a href="#cb57-8" aria-hidden="true" tabindex="-1"></a>    <span class="st">'projects_count_num'</span>: <span class="st">'Projects'</span>,</span>
+<span id="cb57-9"><a href="#cb57-9" aria-hidden="true" tabindex="-1"></a>    <span class="st">'devlogs_count_num'</span>: <span class="st">'Devlogs'</span>, </span>
+<span id="cb57-10"><a href="#cb57-10" aria-hidden="true" tabindex="-1"></a>    <span class="st">'votes_count_num'</span>: <span class="st">'Votes'</span>,</span>
+<span id="cb57-11"><a href="#cb57-11" aria-hidden="true" tabindex="-1"></a>    <span class="st">'ships_count_num'</span>: <span class="st">'Ships'</span></span>
+<span id="cb57-12"><a href="#cb57-12" aria-hidden="true" tabindex="-1"></a>}).corr()</span>
+<span id="cb57-13"><a href="#cb57-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb57-14"><a href="#cb57-14" aria-hidden="true" tabindex="-1"></a>fig <span class="op">=</span> px.imshow(</span>
+<span id="cb57-15"><a href="#cb57-15" aria-hidden="true" tabindex="-1"></a>    corr_data,</span>
+<span id="cb57-16"><a href="#cb57-16" aria-hidden="true" tabindex="-1"></a>    labels<span class="op">=</span><span class="bu">dict</span>(color<span class="op">=</span><span class="st">'Correlation'</span>),</span>
+<span id="cb57-17"><a href="#cb57-17" aria-hidden="true" tabindex="-1"></a>    color_continuous_scale<span class="op">=</span><span class="st">'RdBu_r'</span>,</span>
+<span id="cb57-18"><a href="#cb57-18" aria-hidden="true" tabindex="-1"></a>    aspect<span class="op">=</span><span class="st">'auto'</span>,</span>
+<span id="cb57-19"><a href="#cb57-19" aria-hidden="true" tabindex="-1"></a>    title<span class="op">=</span><span class="st">'User Activity Metrics Correlation'</span></span>
+<span id="cb57-20"><a href="#cb57-20" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb57-21"><a href="#cb57-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb57-22"><a href="#cb57-22" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">len</span>(corr_data.columns)):</span>
+<span id="cb57-23"><a href="#cb57-23" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> j <span class="kw">in</span> <span class="bu">range</span>(<span class="bu">len</span>(corr_data.columns)):</span>
+<span id="cb57-24"><a href="#cb57-24" aria-hidden="true" tabindex="-1"></a>        fig.add_annotation(</span>
+<span id="cb57-25"><a href="#cb57-25" aria-hidden="true" tabindex="-1"></a>            x<span class="op">=</span>i, y<span class="op">=</span>j,</span>
+<span id="cb57-26"><a href="#cb57-26" aria-hidden="true" tabindex="-1"></a>            text<span class="op">=</span><span class="ss">f'</span><span class="sc">{</span>corr_data<span class="sc">.</span>iloc[j, i]<span class="sc">:.2f}</span><span class="ss">'</span>,</span>
+<span id="cb57-27"><a href="#cb57-27" aria-hidden="true" tabindex="-1"></a>            showarrow<span class="op">=</span><span class="va">False</span>,</span>
+<span id="cb57-28"><a href="#cb57-28" aria-hidden="true" tabindex="-1"></a>            font<span class="op">=</span><span class="bu">dict</span>(color<span class="op">=</span><span class="st">'black'</span> <span class="cf">if</span> <span class="bu">abs</span>(corr_data.iloc[j, i]) <span class="op">&lt;</span> <span class="fl">0.5</span> <span class="cf">else</span> <span class="st">'white'</span>)</span>
+<span id="cb57-29"><a href="#cb57-29" aria-hidden="true" tabindex="-1"></a>        )</span>
+<span id="cb57-30"><a href="#cb57-30" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb57-31"><a href="#cb57-31" aria-hidden="true" tabindex="-1"></a>fig.update_layout(height<span class="op">=</span><span class="bu">max</span>(DEFAULT_HEIGHT, <span class="dv">450</span>))</span>
+<span id="cb57-32"><a href="#cb57-32" aria-hidden="true" tabindex="-1"></a>fig.show()</span>
+<span id="cb57-33"><a href="#cb57-33" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb57-34"><a href="#cb57-34" aria-hidden="true" tabindex="-1"></a>save_plotly(fig, name<span class="op">=</span><span class="st">'user_activity_correlation'</span>, description<span class="op">=</span><span class="st">'Correlation matrix of user activity metrics'</span>, friendly_name<span class="op">=</span><span class="st">'User Activity Correlation'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-display">
+<pre><code>Unable to display output for mime type(s): application/vnd.plotly.v1+json</code></pre>
+</div>
+</div>
+</section>
+<section id="save-all-the-info-to-a-index-for-web-stuff" class="level1">
+<h1>Save all the info to a index for web stuff</h1>
+<div id="81e0dff3" class="cell" data-execution_count="49">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb59"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb59-1"><a href="#cb59-1" aria-hidden="true" tabindex="-1"></a>index_path <span class="op">=</span> EXPORT_DIR <span class="op">/</span> <span class="st">'index.json'</span></span>
+<span id="cb59-2"><a href="#cb59-2" aria-hidden="true" tabindex="-1"></a><span class="cf">with</span> <span class="bu">open</span>(index_path, <span class="st">'w'</span>, encoding<span class="op">=</span><span class="st">'utf-8'</span>) <span class="im">as</span> f:</span>
+<span id="cb59-3"><a href="#cb59-3" aria-hidden="true" tabindex="-1"></a>    json.dump(index, f, indent<span class="op">=</span><span class="dv">4</span>)</span>
+<span id="cb59-4"><a href="#cb59-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f'Wrote index to </span><span class="sc">{</span>index_path<span class="sc">}</span><span class="ss">'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>Wrote index to /home/ajayanto/projects/SoM-Analytics/data/processed/users/index.json</code></pre>
+</div>
+</div>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    // Ensure there is a toggle, if there isn't float one in the top right
+    if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+      const a = window.document.createElement('a');
+      a.classList.add('top-right');
+      a.classList.add('quarto-color-scheme-toggle');
+      a.href = "";
+      a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+      const i = window.document.createElement("i");
+      i.classList.add('bi');
+      a.appendChild(i);
+      window.document.body.appendChild(a);
+    }
+    setColorSchemeToggle(hasAlternateSentinel())
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+        const codeEl = trigger.previousElementSibling.cloneNode(true);
+        for (const childEl of codeEl.children) {
+          if (isCodeAnnotation(childEl)) {
+            childEl.remove();
+          }
+        }
+        return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+
+
+
+
+<script src="site_libs/quarto-html/zenscroll-min.js"></script>
+</body></html>
