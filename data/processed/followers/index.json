@@ -14,11 +14,6 @@
       "name": "Unique projects followed",
       "description": "The number of unique projects that have at least one follower.",
       "data": 1375
-    },
-    "avg_followers_per_project": {
-      "name": "Average followers per project",
-      "description": "The average number of followers per project.",
-      "data": 2.096
     }
   },
   "top": {
@@ -100,11 +95,6 @@
       "name": "Follower category distribution",
       "description": "Distribution of followers across different project categories",
       "image_file": "follower_category_distribution.png"
-    },
-    "followers_per_project_distribution": {
-      "name": "Followers per project distribution",
-      "description": "Distribution showing how many followers projects typically have",
-      "image_file": "followers_per_project_distribution.png"
     },
     "projects_followed_per_user_distribution": {
       "name": "Projects followed per user distribution",

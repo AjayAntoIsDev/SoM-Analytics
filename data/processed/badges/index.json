@@ -78,16 +78,6 @@
       "name": "Badges per user distribution",
       "description": "Distribution showing how many badges users typically have",
       "image_file": "badges_per_user_distribution.png"
-    },
-    "badges_over_time": {
-      "name": "Badges over time",
-      "description": "Timeline showing badge awards per day",
-      "image_file": "badges_over_time.png"
-    },
-    "badge_rarity_distribution": {
-      "name": "Badge rarity distribution",
-      "description": "Distribution of badges by rarity (based on award frequency)",
-      "image_file": "badge_rarity_distribution.png"
     }
   },
   "badge_statistics": [

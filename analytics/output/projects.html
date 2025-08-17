@@ -342,15 +342,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#data-analysis-on-projects" id="toc-data-analysis-on-projects" class="nav-link active" data-scroll-target="#data-analysis-on-projects"><strong>Data analysis on projects</strong></a></li>
-  <li><a href="#numerical-data" id="toc-numerical-data" class="nav-link" data-scroll-target="#numerical-data">Numerical data</a>
+  <li><a href="#numerical-data" id="toc-numerical-data" class="nav-link active" data-scroll-target="#numerical-data">Numerical data</a>
   <ul class="collapse">
   <li><a href="#devlog-hour-ratio" id="toc-devlog-hour-ratio" class="nav-link" data-scroll-target="#devlog-hour-ratio">Devlog-Hour ratio</a></li>
   </ul></li>
   <li><a href="#graphical-data" id="toc-graphical-data" class="nav-link" data-scroll-target="#graphical-data">Graphical Data</a>
   <ul class="collapse">
-  <li><a href="#no-of-projects-created-per-date" id="toc-no-of-projects-created-per-date" class="nav-link" data-scroll-target="#no-of-projects-created-per-date">No of Projects created per Date</a></li>
+  <li><a href="#no-of-projects-created-per-date" id="toc-no-of-projects-created-per-date" class="nav-link" data-scroll-target="#no-of-projects-created-per-date">No of Projects created per Date</a>
+  <ul class="collapse">
   <li><a href="#growth-of-projects-over-time" id="toc-growth-of-projects-over-time" class="nav-link" data-scroll-target="#growth-of-projects-over-time">Growth of projects over time</a></li>
+  </ul></li>
   <li><a href="#top-projects-by-time-and-devlogs" id="toc-top-projects-by-time-and-devlogs" class="nav-link" data-scroll-target="#top-projects-by-time-and-devlogs">Top projects by time and devlogs</a></li>
   <li><a href="#wordcloud" id="toc-wordcloud" class="nav-link" data-scroll-target="#wordcloud">Wordcloud</a></li>
   <li><a href="#when-are-projects-created" id="toc-when-are-projects-created" class="nav-link" data-scroll-target="#when-are-projects-created">When are projects created?</a></li>
@@ -388,8 +389,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<section id="data-analysis-on-projects" class="level1 hidden">
-<h1><strong>Data analysis on projects</strong></h1>
+<section id="data-analysis-on-projects" class="level1 unnumbered unlisted hidden">
+<h1 class="unnumbered unlisted"><strong>Data analysis on projects</strong></h1>
 <p>This notebook runs a bunch of data analysis on the projects and saves the analysis to <code>data/processed/projects</code>.</p>
 </section>
 <div id="94b48bae" class="cell">
@@ -4543,9 +4544,8 @@ if (outputEl) {{
                         })                };            </script>        </div>
 </div>
 </div>
-</section>
-<section id="growth-of-projects-over-time" class="level2">
-<h2 class="anchored" data-anchor-id="growth-of-projects-over-time">Growth of projects over time</h2>
+<section id="growth-of-projects-over-time" class="level3">
+<h3 class="anchored" data-anchor-id="growth-of-projects-over-time">Growth of projects over time</h3>
 <p>Cumulative total of projects across dates.</p>
 <div id="20ceb1ee" class="cell" data-execution_count="21">
 <details class="code-fold">
@@ -4606,6 +4606,7 @@ if (outputEl) {{
                         })                };            </script>        </div>
 </div>
 </div>
+</section>
 </section>
 <section id="top-projects-by-time-and-devlogs" class="level2">
 <h2 class="anchored" data-anchor-id="top-projects-by-time-and-devlogs">Top projects by time and devlogs</h2>
