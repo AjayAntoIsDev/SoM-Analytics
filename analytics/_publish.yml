@@ -1,0 +1,4 @@
+- source: project
+  netlify:
+    - id: 3c7d9219-66b1-49e3-a7ec-1bd3602b28b9
+      url: https://genuine-torte-d19168.netlify.app
