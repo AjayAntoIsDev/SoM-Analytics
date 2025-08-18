@@ -3,27 +3,27 @@
         "total_comments": {
             "name": "Total number of comments",
             "description": "The total number of comments in the dataset.",
-            "data": 1367
+            "data": 1382
         },
         "unique_devlogs_with_comments": {
             "name": "Unique devlogs with comments",
             "description": "The number of unique devlogs that have comments.",
-            "data": 988
+            "data": 1000
         },
         "unique_commenting_users": {
             "name": "Unique commenting users",
             "description": "The number of unique users who have made comments.",
-            "data": 559
+            "data": 561
         },
         "avg_comments_per_devlog": {
             "name": "Average comments per devlog",
             "description": "The average number of comments per devlog.",
-            "data": 1.3836032388663968
+            "data": 1.382
         },
         "avg_comment_length": {
             "name": "Average comment length",
             "description": "The average length of comments in characters.",
-            "data": 67.5764447695684
+            "data": 67.34081041968162
         }
     },
     "top": {
@@ -74,26 +74,26 @@
                     "user_profile": "Slack ID: U07E8H9A24A"
                 },
                 "1": {
+                    "slack_id": "U09A3GV54QL",
+                    "comment_count": 31,
+                    "created_at": "2025-08-12T19:30:48.410000+00:00",
+                    "user_profile": "Slack ID: U09A3GV54QL"
+                },
+                "2": {
                     "slack_id": "U0925Q3PB0Q",
                     "comment_count": 30,
                     "created_at": "2025-07-31T08:45:16.240000+00:00",
                     "user_profile": "Slack ID: U0925Q3PB0Q"
                 },
-                "2": {
-                    "slack_id": "U09A3GV54QL",
-                    "comment_count": 30,
-                    "created_at": "2025-08-12T19:30:48.410000+00:00",
-                    "user_profile": "Slack ID: U09A3GV54QL"
-                },
                 "3": {
                     "slack_id": "U091KJSPK6X",
-                    "comment_count": 25,
+                    "comment_count": 26,
                     "created_at": "2025-06-18T13:44:27.637000+00:00",
                     "user_profile": "Slack ID: U091KJSPK6X"
                 },
                 "4": {
                     "slack_id": "U080V8UG5BR",
-                    "comment_count": 21,
+                    "comment_count": 23,
                     "created_at": "2025-07-31T14:20:15.173000+00:00",
                     "user_profile": "Slack ID: U080V8UG5BR"
                 }

@@ -3,27 +3,27 @@
         "project_count": {
             "name": "Total projects",
             "description": "Total number of projects",
-            "data": 8695
+            "data": 8708
         },
         "avg_devlogs_per_project": {
             "name": "Avg devlogs per project",
             "description": "Average of devlogs_count across projects",
-            "data": 3.3136285221391604
+            "data": 3.335898024804777
         },
         "avg_hours_per_project": {
             "name": "Avg coding hours per project",
             "description": "Average coding time in hours across projects",
-            "data": 9.860904542840712
+            "data": 9.902416041443374
         },
         "devlogs_per_hour_avg": {
             "name": "Avg devlogs per hour",
             "description": "Average devlogs produced per coding hour across projects",
-            "data": 0.8388331082018293
+            "data": 0.8354917364224206
         },
         "devlogs_per_10h_avg": {
             "name": "Avg devlogs per 10 hours",
             "description": "Average number of devlogs per 10 coding hours across projects",
-            "data": 8.388331082018293
+            "data": 8.354917364224205
         }
     },
     "top": {
@@ -56,10 +56,10 @@
                     "project_link": "https://summer.hackclub.com/projects/3491"
                 },
                 "4": {
-                    "id": 4304,
-                    "label": "SCREAM++ | Protein Structure & Drug Desi",
-                    "hours": 226.19,
-                    "project_link": "https://summer.hackclub.com/projects/4304"
+                    "id": 582,
+                    "label": "Hour Zero",
+                    "hours": 229.84,
+                    "project_link": "https://summer.hackclub.com/projects/582"
                 }
             }
         },

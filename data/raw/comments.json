@@ -1,7 +1,7 @@
 {
-  "scraped_at": "2025-08-17T04:38:16.121Z",
-  "total": 1367,
-  "expected_total": 1367,
+  "scraped_at": "2025-08-18T01:11:30.785Z",
+  "total": 1382,
+  "expected_total": 1382,
   "comments": [
     {
       "text": "woow, pretty awesome project! i love it!",
@@ -8204,6 +8204,96 @@
       "devlog_id": 37329,
       "slack_id": "U08M0R1HE03",
       "created_at": "2025-08-17T00:04:05.971Z"
+    },
+    {
+      "text": "thanks! i’ll consider it :D",
+      "devlog_id": 31015,
+      "slack_id": "U092CSW4FGQ",
+      "created_at": "2025-08-17T09:33:12.250Z"
+    },
+    {
+      "text": "super cool",
+      "devlog_id": 37483,
+      "slack_id": "U09A3GV54QL",
+      "created_at": "2025-08-17T11:13:49.273Z"
+    },
+    {
+      "text": "bro that sounds rough 0m0  good luck OwO",
+      "devlog_id": 37557,
+      "slack_id": "U098MKNBJ72",
+      "created_at": "2025-08-17T11:43:06.513Z"
+    },
+    {
+      "text": "¯\\_(ツ)_/¯",
+      "devlog_id": 37557,
+      "slack_id": "U080V8UG5BR",
+      "created_at": "2025-08-17T11:45:02.416Z"
+    },
+    {
+      "text": "i had to restart i accidentally deleted everything its allll good i had nothing done anyways",
+      "devlog_id": 37574,
+      "slack_id": "U092D42UA57",
+      "created_at": "2025-08-17T12:09:38.163Z"
+    },
+    {
+      "text": "UI tweaking not twiking.",
+      "devlog_id": 37602,
+      "slack_id": "U092JPSMZ47",
+      "created_at": "2025-08-17T13:12:04.234Z"
+    },
+    {
+      "text": "Ahhh that’s nice, but do you calculate their current?  look like the trace is small",
+      "devlog_id": 37658,
+      "slack_id": "U09BD8XRPDE",
+      "created_at": "2025-08-17T14:52:50.803Z"
+    },
+    {
+      "text": "Mrow",
+      "devlog_id": 37282,
+      "slack_id": "U07EQJY9YDD",
+      "created_at": "2025-08-17T16:04:20.067Z"
+    },
+    {
+      "text": "ok so after some testing i found an error. you cant run invalid commands. BUT THIS IS GOOD ACTUALY",
+      "devlog_id": 37760,
+      "slack_id": "U07950S3GMC",
+      "created_at": "2025-08-17T18:18:47.460Z"
+    },
+    {
+      "text": "relatable",
+      "devlog_id": 34836,
+      "slack_id": "U091KJSPK6X",
+      "created_at": "2025-08-17T19:38:43.448Z"
+    },
+    {
+      "text": "Does that mean all the factors will be gone? Also, it would be good to add a disclaimer to that thing that it’s not 100% accurate and use ur own judgement and take it with a  bag  pinch of salt",
+      "devlog_id": 37783,
+      "slack_id": "U08D22QNUVD",
+      "created_at": "2025-08-17T19:48:51.520Z"
+    },
+    {
+      "text": "What did Zeinab do?",
+      "devlog_id": 37800,
+      "slack_id": "U080V8UG5BR",
+      "created_at": "2025-08-17T20:12:44.877Z"
+    },
+    {
+      "text": "Only God knows hehe.   sorry Zeinab :D",
+      "devlog_id": 37800,
+      "slack_id": "U098MKNBJ72",
+      "created_at": "2025-08-17T20:15:27.955Z"
+    },
+    {
+      "text": "(as in, the arm physics control code)",
+      "devlog_id": 37850,
+      "slack_id": "U079JDRMBFZ",
+      "created_at": "2025-08-17T22:10:25.064Z"
+    },
+    {
+      "text": "cool!",
+      "devlog_id": 22416,
+      "slack_id": "U091SM4MWG5",
+      "created_at": "2025-08-17T23:06:46.040Z"
     }
   ]
 }

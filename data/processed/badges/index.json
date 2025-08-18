@@ -3,7 +3,7 @@
     "total_badges": {
       "name": "Total badges",
       "description": "The total number of badges in the dataset.",
-      "data": 2474
+      "data": 2501
     },
     "unique_badges": {
       "name": "Unique badge types",
@@ -13,12 +13,12 @@
     "users_with_badges": {
       "name": "Users with badges",
       "description": "The number of unique users who have at least one badge.",
-      "data": 2014
+      "data": 2032
     },
     "avg_badges_per_user": {
       "name": "Average badges per user",
       "description": "The average number of badges per user.",
-      "data": 1.2284011916583912
+      "data": 1.2308070866141732
     }
   },
   "top": {
@@ -52,18 +52,104 @@
       "data": {
         "0": {
           "badge_name": "Maiden Voyage",
-          "count": 1995,
+          "count": 2013,
           "badge_text": "you shipped your first project! the journey begins..."
         },
         "1": {
           "badge_name": "Ballot Stuffer",
-          "count": 245,
+          "count": 251,
           "badge_text": "vote 100 times."
         },
         "2": {
           "badge_name": "Yapper I",
           "count": 59,
           "badge_text": "Posted 10 comments on devlogs."
+        }
+      }
+    },
+    "all_badges": {
+      "name": "All badges",
+      "description": "A list of all badges with their counts and descriptions.",
+      "data": {
+        "0": {
+          "badge_name": "Maiden Voyage",
+          "count": 2013,
+          "badge_text": "you shipped your first project! the journey begins..."
+        },
+        "1": {
+          "badge_name": "Ballot Stuffer",
+          "count": 251,
+          "badge_text": "vote 100 times."
+        },
+        "2": {
+          "badge_name": "Yapper I",
+          "count": 59,
+          "badge_text": "Posted 10 comments on devlogs."
+        },
+        "3": {
+          "badge_name": "Graphic Design is My Passion",
+          "count": 47,
+          "badge_text": "Oh God How Did This Get Here I Am Not Good With Computer"
+        },
+        "4": {
+          "badge_name": "Spider",
+          "count": 39,
+          "badge_text": "this user has a pet!"
+        },
+        "5": {
+          "badge_name": "<%= admin_tool do %>",
+          "count": 27,
+          "badge_text": "with great power comes great responsibility... and a ban hammer."
+        },
+        "6": {
+          "badge_name": "Lived Mas",
+          "count": 20,
+          "badge_text": "you know what you did."
+        },
+        "7": {
+          "badge_name": "Verified",
+          "count": 17,
+          "badge_text": "this user is verified (i.e. gave us $8)"
+        },
+        "8": {
+          "badge_name": "No Fun",
+          "count": 9,
+          "badge_text": "opt-out added for the whimsy-impaired"
+        },
+        "9": {
+          "badge_name": "Preferred Customer",
+          "count": 6,
+          "badge_text": "you'll never know what this does..."
+        },
+        "10": {
+          "badge_name": "Gold Verified",
+          "count": 3,
+          "badge_text": "this user is REALLY verified (i.e. gave us $32)"
+        },
+        "11": {
+          "badge_name": "Offshore Bank Account",
+          "count": 3,
+          "badge_text": "away from the watchful eyes..."
+        },
+        "12": {
+          "badge_name": "Pocket Watcher",
+          "count": 2,
+          "badge_text": "you're a nosy one, aren't you?"
+        },
+        "13": {
+          "badge_name": "Follower",
+          "count": 2,
+          "badge_text": "Following more then 100 projects!"
+        },
+        "14": {
+          "badge_name": "Popular",
+          "count": 2,
+          "badge_text": "Mrs popular over here with 100+ combined followers"
+        },
+        "15": {
+          "badge_name": "Sunglasses",
+          "count": 1,
+          "badge_text": "protect your eyes from other people's... creative... CSS choices."
         }
       }
     }
@@ -84,12 +170,12 @@
     {
       "badge_name": "Maiden Voyage",
       "badge_description": "you shipped your first project! the journey begins...",
-      "num": 1995
+      "num": 2013
     },
     {
       "badge_name": "Ballot Stuffer",
       "badge_description": "vote 100 times.",
-      "num": 245
+      "num": 251
     },
     {
       "badge_name": "Yapper I",
@@ -119,12 +205,12 @@
     {
       "badge_name": "Verified",
       "badge_description": "this user is verified (i.e. gave us $8)",
-      "num": 16
+      "num": 17
     },
     {
       "badge_name": "No Fun",
       "badge_description": "opt-out added for the whimsy-impaired",
-      "num": 7
+      "num": 9
     },
     {
       "badge_name": "Preferred Customer",

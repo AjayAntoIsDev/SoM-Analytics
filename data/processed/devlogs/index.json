@@ -3,17 +3,17 @@
         "avg_minutes": {
             "name": "Average time per devlog",
             "description": "The average time spent on each devlog.",
-            "data": 178.55797785568012
+            "data": 178.1125837693932
         },
         "avg_devlogs": {
             "name": "Average devlogs per project",
             "description": "The average number of devlogs per project.",
-            "data": 6.850716740133977
+            "data": 6.912592949600661
         },
         "avg_engagement": {
             "name": "Average engagement per devlog",
             "description": "The average engagement per devlog.",
-            "data": 0.30953455277498176
+            "data": 0.308489396860369
         }
     },
     "top": {
