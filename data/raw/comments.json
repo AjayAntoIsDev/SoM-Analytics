@@ -1,7 +1,7 @@
 {
-  "scraped_at": "2025-08-18T01:11:30.785Z",
-  "total": 1382,
-  "expected_total": 1382,
+  "scraped_at": "2025-08-19T15:07:56.435Z",
+  "total": 1419,
+  "expected_total": 1419,
   "comments": [
     {
       "text": "woow, pretty awesome project! i love it!",
@@ -8294,6 +8294,228 @@
       "devlog_id": 22416,
       "slack_id": "U091SM4MWG5",
       "created_at": "2025-08-17T23:06:46.040Z"
+    },
+    {
+      "text": "what doe s",
+      "devlog_id": 37924,
+      "slack_id": "U099HFN5B1R",
+      "created_at": "2025-08-18T02:24:49.341Z"
+    },
+    {
+      "text": "peak",
+      "devlog_id": 37969,
+      "slack_id": "U091BNPJWDC",
+      "created_at": "2025-08-18T04:39:29.403Z"
+    },
+    {
+      "text": "The main store I have worked on was the F1 store",
+      "devlog_id": 37984,
+      "slack_id": "U07BRT996DC",
+      "created_at": "2025-08-18T05:42:56.708Z"
+    },
+    {
+      "text": "It gives me errors.",
+      "devlog_id": 37870,
+      "slack_id": "U080V8UG5BR",
+      "created_at": "2025-08-18T06:29:45.638Z"
+    },
+    {
+      "text": "I may have to check what is being passed to the function.",
+      "devlog_id": 37995,
+      "slack_id": "U080V8UG5BR",
+      "created_at": "2025-08-18T06:37:40.013Z"
+    },
+    {
+      "text": "debugging is so fun and so painful (┬┬ v ┬┬)",
+      "devlog_id": 37995,
+      "slack_id": "U098MKNBJ72",
+      "created_at": "2025-08-18T07:54:13.281Z"
+    },
+    {
+      "text": "yeah i’ll fix that",
+      "devlog_id": 37870,
+      "slack_id": "U098MKNBJ72",
+      "created_at": "2025-08-18T07:59:03.321Z"
+    },
+    {
+      "text": "So gork but actually useful",
+      "devlog_id": 38064,
+      "slack_id": "U08D22QNUVD",
+      "created_at": "2025-08-18T10:54:20.967Z"
+    },
+    {
+      "text": "weh, apparently I can’t edit the post with content. the a.g() method i have in the right window is a GET request from my quick testing script, stack=True just switches the endpoints",
+      "devlog_id": 38076,
+      "slack_id": "U08290982KU",
+      "created_at": "2025-08-18T11:16:21.258Z"
+    },
+    {
+      "text": "Thank guys!",
+      "devlog_id": 35559,
+      "slack_id": "U09ANA31KMW",
+      "created_at": "2025-08-18T12:58:12.243Z"
+    },
+    {
+      "text": "Yeah i’ll probably sdd something like that",
+      "devlog_id": 37783,
+      "slack_id": "U0842GMRJKC",
+      "created_at": "2025-08-18T13:06:03.608Z"
+    },
+    {
+      "text": "Make this mobile responsive pls",
+      "devlog_id": 38064,
+      "slack_id": "U09ACJQSHRV",
+      "created_at": "2025-08-18T13:13:13.736Z"
+    },
+    {
+      "text": "is a chrome extension usable on mobile ….? but its kinda responsive anyway",
+      "devlog_id": 38064,
+      "slack_id": "U0842GMRJKC",
+      "created_at": "2025-08-18T13:13:54.362Z"
+    },
+    {
+      "text": "“ this is the last devlog trust”   2 devlogs later…",
+      "devlog_id": 34568,
+      "slack_id": "U09ACJQSHRV",
+      "created_at": "2025-08-18T13:14:07.375Z"
+    },
+    {
+      "text": "Yoo I also changed up the density of objects, added overrides for that etc so physics should be more accurate I forgor about that",
+      "devlog_id": 38124,
+      "slack_id": "U07DG5AQ0RK",
+      "created_at": "2025-08-18T13:31:29.832Z"
+    },
+    {
+      "text": "And what will ya do abt it? OwO",
+      "devlog_id": 38190,
+      "slack_id": "U098MKNBJ72",
+      "created_at": "2025-08-18T16:00:01.772Z"
+    },
+    {
+      "text": "¯\\_(ツ)_/¯",
+      "devlog_id": 38190,
+      "slack_id": "U080V8UG5BR",
+      "created_at": "2025-08-18T16:01:44.406Z"
+    },
+    {
+      "text": "Do u know about ai.hackclub.com? it’s just free api for ai",
+      "devlog_id": 37622,
+      "slack_id": "U0870DH2PLK",
+      "created_at": "2025-08-18T16:49:39.275Z"
+    },
+    {
+      "text": "looks cool and will look cooler with three.js OwO (i’m excited)",
+      "devlog_id": 38243,
+      "slack_id": "U098MKNBJ72",
+      "created_at": "2025-08-18T17:53:23.311Z"
+    },
+    {
+      "text": "LMAO, real",
+      "devlog_id": 38210,
+      "slack_id": "U092C4M8VFA",
+      "created_at": "2025-08-18T18:34:40.804Z"
+    },
+    {
+      "text": "LMAO, real",
+      "devlog_id": 38210,
+      "slack_id": "U092C4M8VFA",
+      "created_at": "2025-08-18T18:34:46.219Z"
+    },
+    {
+      "text": "LMAO, real",
+      "devlog_id": 38210,
+      "slack_id": "U092C4M8VFA",
+      "created_at": "2025-08-18T18:34:55.853Z"
+    },
+    {
+      "text": "Whoops sorry I don't know why my comment got duplicated",
+      "devlog_id": 38210,
+      "slack_id": "U092C4M8VFA",
+      "created_at": "2025-08-18T18:38:04.490Z"
+    },
+    {
+      "text": "(uploaded too)",
+      "devlog_id": 37826,
+      "slack_id": "U091KJSPK6X",
+      "created_at": "2025-08-18T20:27:55.510Z"
+    },
+    {
+      "text": "Good work :D",
+      "devlog_id": 38342,
+      "slack_id": "U098MKNBJ72",
+      "created_at": "2025-08-18T21:19:31.256Z"
+    },
+    {
+      "text": "thx",
+      "devlog_id": 38342,
+      "slack_id": "U091U38C2CA",
+      "created_at": "2025-08-18T21:44:18.544Z"
+    },
+    {
+      "text": "https://emoji.slack-edge.com/T0266FRGM/ban/8e7b26fbc78d54a5.png",
+      "devlog_id": 38358,
+      "slack_id": "U046VA0KR8R",
+      "created_at": "2025-08-18T22:54:57.968Z"
+    },
+    {
+      "text": "Thank you!",
+      "devlog_id": 36874,
+      "slack_id": "U0836QRPV0U",
+      "created_at": "2025-08-19T00:08:02.245Z"
+    },
+    {
+      "text": "wait no shit its broken as hell",
+      "devlog_id": 38434,
+      "slack_id": "U096VGXJS92",
+      "created_at": "2025-08-19T04:25:43.564Z"
+    },
+    {
+      "text": "yayyyy!! isocahedron gameing!!! whenshipwhenshipwhenshipwhenshipwhenshipwhenshipwhenshipwhenshipwhenshipwhenshipwhenshipwhenship",
+      "devlog_id": 38471,
+      "slack_id": "U098A2QC2LF",
+      "created_at": "2025-08-19T07:39:51.144Z"
+    },
+    {
+      "text": "yaaaa",
+      "devlog_id": 38471,
+      "slack_id": "U093CHSMD0T",
+      "created_at": "2025-08-19T07:40:26.793Z"
+    },
+    {
+      "text": "Good Work :D",
+      "devlog_id": 38515,
+      "slack_id": "U098MKNBJ72",
+      "created_at": "2025-08-19T10:26:08.706Z"
+    },
+    {
+      "text": "bro what’s this? ; u ;",
+      "devlog_id": 33751,
+      "slack_id": "U098MKNBJ72",
+      "created_at": "2025-08-19T11:08:12.786Z"
+    },
+    {
+      "text": "M2 heat insert",
+      "devlog_id": 38573,
+      "slack_id": "U09BD8XRPDE",
+      "created_at": "2025-08-19T13:29:51.244Z"
+    },
+    {
+      "text": "Just curious, have you earned any shells yet?",
+      "devlog_id": 38586,
+      "slack_id": "U094FQCCF40",
+      "created_at": "2025-08-19T14:55:07.070Z"
+    },
+    {
+      "text": "yeah",
+      "devlog_id": 38586,
+      "slack_id": "U091H6KD6TG",
+      "created_at": "2025-08-19T14:56:14.838Z"
+    },
+    {
+      "text": "you can also see it in the devlog history",
+      "devlog_id": 38586,
+      "slack_id": "U091H6KD6TG",
+      "created_at": "2025-08-19T14:56:47.921Z"
     }
   ]
 }

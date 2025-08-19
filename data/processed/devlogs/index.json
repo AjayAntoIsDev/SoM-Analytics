@@ -3,17 +3,17 @@
         "avg_minutes": {
             "name": "Average time per devlog",
             "description": "The average time spent on each devlog.",
-            "data": 178.1125837693932
+            "data": 171.9146296735168
         },
         "avg_devlogs": {
             "name": "Average devlogs per project",
             "description": "The average number of devlogs per project.",
-            "data": 6.912592949600661
+            "data": 6.96895419304601
         },
         "avg_engagement": {
             "name": "Average engagement per devlog",
             "description": "The average engagement per devlog.",
-            "data": 0.308489396860369
+            "data": 0.3070386295155229
         }
     },
     "top": {
@@ -25,7 +25,7 @@
                     "devlog_id": 36978,
                     "project_id": 11469,
                     "devlog_label": "e-commerce -websitte | #36978",
-                    "time_minutes_num": 7210.7,
+                    "time_minutes_num": 7210.15,
                     "project_link": "https://summer.hackclub.com/projects/11469"
                 },
                 "1": {
@@ -86,7 +86,7 @@
                     "devlog_id": 35559,
                     "project_id": 11089,
                     "devlog_label": "Terminal Pong | #35559",
-                    "engagement_num": 12,
+                    "engagement_num": 13,
                     "project_link": "https://summer.hackclub.com/projects/11089"
                 },
                 "2": {

@@ -3,66 +3,66 @@
         "avg_projects": {
             "name": "Average projects per user",
             "description": "The average number of projects per user.",
-            "data": 0.3999081515499426
+            "data": 0.4000819000819001
         },
         "avg_devlogs": {
             "name": "Average devlogs per user",
             "description": "The average number of devlogs per user.",
-            "data": 1.626406429391504
+            "data": 1.6413686413686415
         },
         "avg_coding_hours": {
             "name": "Average coding time per user",
             "description": "The average coding time per user in hours.",
-            "data": 12.31072381681337
+            "data": 11.666781326781328
         },
         "avg_balance": {
             "name": "Average balance per user",
             "description": "The average balance per user.",
-            "data": 19.312146957520092
+            "data": 18.794976794976794
         },
         "avg_votes": {
             "name": "Average votes per user",
             "description": "The average number of votes per user.",
-            "data": 4.25134328358209
+            "data": 4.356674856674856
         },
         "avg_ships": {
             "name": "Average ships per user",
             "description": "The average number of ships per user.",
-            "data": 0.16404133180252584
+            "data": 0.16507416507416509
         },
         "inactive_users": {
             "name": "Inactive users analysis",
             "description": "Count and percentage of users with zero activity across different metrics.",
             "data": {
                 "zero_balance": {
-                    "count": 20342,
+                    "count": 20530,
                     "percentage": 93.4
                 },
                 "zero_coding_time": {
-                    "count": 12750,
-                    "percentage": 58.6
+                    "count": 12919,
+                    "percentage": 58.8
                 },
                 "zero_ships": {
-                    "count": 19916,
+                    "count": 20115,
                     "percentage": 91.5
                 },
                 "zero_projects": {
-                    "count": 17548,
-                    "percentage": 80.6
+                    "count": 17736,
+                    "percentage": 80.7
                 },
                 "zero_devlogs": {
-                    "count": 18387,
-                    "percentage": 84.4
+                    "count": 18570,
+                    "percentage": 84.5
                 },
                 "zero_votes": {
-                    "count": 18900,
+                    "count": 19081,
                     "percentage": 86.8
                 },
                 "completely_inactive": {
-                    "count": 12663,
-                    "percentage": 58.2
+                    "count": 12827,
+                    "percentage": 58.4
                 },
-                "total_users": 21775
+                "total_users": 21978
             }
         },
         "custom_css_usage": {
@@ -70,10 +70,10 @@
             "description": "Analysis of how many users have custom CSS.",
             "data": {
                 "users_with_css": 37,
-                "users_without_css": 21738,
+                "users_without_css": 21941,
                 "percentage_with_css": 0.2,
                 "percentage_without_css": 99.8,
-                "total_users": 21775
+                "total_users": 21978
             }
         }
     },
@@ -85,7 +85,7 @@
                 "0": {
                     "id": 9550,
                     "display_name_clean": "Suhail",
-                    "projects_count_num": 20,
+                    "projects_count_num": 23,
                     "profile_link": "https://summer.hackclub.com/users/9550"
                 },
                 "1": {
@@ -107,22 +107,22 @@
             "description": "The top 3 users by coding time (in hours).",
             "data": {
                 "0": {
-                    "id": 16574,
-                    "display_name_clean": "OneCheetah",
-                    "coding_time_hours": 1561.54,
-                    "profile_link": "https://summer.hackclub.com/users/16574"
-                },
-                "1": {
                     "id": 11921,
                     "display_name_clean": "Shivam Gupta",
-                    "coding_time_hours": 1537.1,
+                    "coding_time_hours": 1536.35,
                     "profile_link": "https://summer.hackclub.com/users/11921"
                 },
-                "2": {
+                "1": {
                     "id": 4693,
                     "display_name_clean": "Trou",
-                    "coding_time_hours": 549.74,
+                    "coding_time_hours": 549.75,
                     "profile_link": "https://summer.hackclub.com/users/4693"
+                },
+                "2": {
+                    "id": 11680,
+                    "display_name_clean": "Yahya Khan",
+                    "coding_time_hours": 533.09,
+                    "profile_link": "https://summer.hackclub.com/users/11680"
                 }
             }
         },
@@ -133,20 +133,20 @@
                 "0": {
                     "id": 1027,
                     "display_name_clean": "Maksiks",
-                    "balance_num": 5093,
+                    "balance_num": 5088,
                     "profile_link": "https://summer.hackclub.com/users/1027"
                 },
                 "1": {
-                    "id": 11144,
-                    "display_name_clean": "89 votes to go",
-                    "balance_num": 4186,
-                    "profile_link": "https://summer.hackclub.com/users/11144"
-                },
-                "2": {
                     "id": 9955,
                     "display_name_clean": "nosrep",
                     "balance_num": 3803,
                     "profile_link": "https://summer.hackclub.com/users/9955"
+                },
+                "2": {
+                    "id": 112,
+                    "display_name_clean": "Checkers",
+                    "balance_num": 3661,
+                    "profile_link": "https://summer.hackclub.com/users/112"
                 }
             }
         },
@@ -155,22 +155,22 @@
             "description": "The top 3 users by number of votes.",
             "data": {
                 "0": {
+                    "id": 9550,
+                    "display_name_clean": "Suhail",
+                    "votes_count_num": 591,
+                    "profile_link": "https://summer.hackclub.com/users/9550"
+                },
+                "1": {
                     "id": 20438,
                     "display_name_clean": "Rudaiba",
                     "votes_count_num": 537,
                     "profile_link": "https://summer.hackclub.com/users/20438"
                 },
-                "1": {
+                "2": {
                     "id": 3446,
                     "display_name_clean": "Saketh Baddam",
                     "votes_count_num": 536,
                     "profile_link": "https://summer.hackclub.com/users/3446"
-                },
-                "2": {
-                    "id": 5989,
-                    "display_name_clean": "Chee Yong",
-                    "votes_count_num": 500,
-                    "profile_link": "https://summer.hackclub.com/users/5989"
                 }
             }
         },
@@ -181,7 +181,7 @@
                 "0": {
                     "id": 9550,
                     "display_name_clean": "Suhail",
-                    "ships_count_num": 20,
+                    "ships_count_num": 23,
                     "profile_link": "https://summer.hackclub.com/users/9550"
                 },
                 "1": {

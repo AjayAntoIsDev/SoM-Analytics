@@ -3,30 +3,54 @@
         "project_count": {
             "name": "Total projects",
             "description": "Total number of projects",
-            "data": 8708
+            "data": 8795
         },
         "avg_devlogs_per_project": {
             "name": "Avg devlogs per project",
             "description": "Average of devlogs_count across projects",
-            "data": 3.335898024804777
+            "data": 3.3584991472427514
         },
         "avg_hours_per_project": {
             "name": "Avg coding hours per project",
             "description": "Average coding time in hours across projects",
-            "data": 9.902416041443374
+            "data": 9.622593171625292
         },
         "devlogs_per_hour_avg": {
             "name": "Avg devlogs per hour",
             "description": "Average devlogs produced per coding hour across projects",
-            "data": 0.8354917364224206
+            "data": 1.4702592276628275
         },
         "devlogs_per_10h_avg": {
             "name": "Avg devlogs per 10 hours",
             "description": "Average number of devlogs per 10 coding hours across projects",
-            "data": 8.354917364224205
+            "data": 14.702592276628275
         }
     },
     "top": {
+        "top_projects_devlogs_count": {
+            "name": "Top 3 projects by devlogs count",
+            "description": "The top 3 projects by number of devlogs.",
+            "data": {
+                "0": {
+                    "project_title_clean": "trout",
+                    "devlogs_count": 76,
+                    "category": "Something else",
+                    "project_link": "https://summer.hackclub.com/projects/2753"
+                },
+                "1": {
+                    "project_title_clean": "Lunar",
+                    "devlogs_count": 72,
+                    "category": "Web App",
+                    "project_link": "https://summer.hackclub.com/projects/26"
+                },
+                "2": {
+                    "project_title_clean": "MemeOS \u2013 A Web-Based \u201cOperating System\u201d ",
+                    "devlogs_count": 71,
+                    "category": "Web App",
+                    "project_link": "https://summer.hackclub.com/projects/1014"
+                }
+            }
+        },
         "top_projects_by_hours": {
             "name": "Top projects by coding time",
             "description": "Top projects ranked by total coding hours",
@@ -38,28 +62,28 @@
                     "project_link": "https://summer.hackclub.com/projects/46"
                 },
                 "1": {
-                    "id": 1916,
-                    "label": "syvredits (portfolio-ish web)",
-                    "hours": 294.57,
-                    "project_link": "https://summer.hackclub.com/projects/1916"
-                },
-                "2": {
                     "id": 2581,
                     "label": "Chaos Abyss",
-                    "hours": 265.78,
+                    "hours": 265.76,
                     "project_link": "https://summer.hackclub.com/projects/2581"
                 },
-                "3": {
+                "2": {
                     "id": 3491,
                     "label": "ReeTui",
                     "hours": 254.46,
                     "project_link": "https://summer.hackclub.com/projects/3491"
                 },
+                "3": {
+                    "id": 4304,
+                    "label": "SCREAM++ | Protein Structure & Drug Desi",
+                    "hours": 220.5,
+                    "project_link": "https://summer.hackclub.com/projects/4304"
+                },
                 "4": {
-                    "id": 582,
-                    "label": "Hour Zero",
-                    "hours": 229.84,
-                    "project_link": "https://summer.hackclub.com/projects/582"
+                    "id": 2218,
+                    "label": "Chronal - Metronome for Android",
+                    "hours": 203.54,
+                    "project_link": "https://summer.hackclub.com/projects/2218"
                 }
             }
         },
@@ -70,7 +94,7 @@
                 "0": {
                     "id": 2753,
                     "label": "trout",
-                    "devlogs_count": 75,
+                    "devlogs_count": 76,
                     "project_link": "https://summer.hackclub.com/projects/2753"
                 },
                 "1": {

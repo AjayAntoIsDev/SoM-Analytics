@@ -367,7 +367,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <p>Cleans up the data from projects.json</p>
 <p>This notebook will: - Read <code>data/raw/projects.json</code> - Flatten projects into tabular form - Extract nested arrays into separate tables: - Projects - Project Followers (with <code>project_id</code>) - Parse timestamps and add <code>scraped_at</code> to each row - Save to <code>data/*.parquet</code></p>
-<div id="b8385ee0" class="cell" data-execution_count="1">
+<div id="b8385ee0" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2025-08-19T15:25:58.119184Z&quot;,&quot;iopub.status.busy&quot;:&quot;2025-08-19T15:25:58.119075Z&quot;,&quot;iopub.status.idle&quot;:&quot;2025-08-19T15:25:58.542593Z&quot;,&quot;shell.execute_reply&quot;:&quot;2025-08-19T15:25:58.542317Z&quot;}}" data-execution_count="1">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> json</span>
@@ -383,7 +383,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>    raw <span class="op">=</span> json.load(f)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<div id="b0b6ef21" class="cell" data-execution_count="2">
+<div id="b0b6ef21" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2025-08-19T15:25:58.544189Z&quot;,&quot;iopub.status.busy&quot;:&quot;2025-08-19T15:25:58.543979Z&quot;,&quot;iopub.status.idle&quot;:&quot;2025-08-19T15:26:05.768797Z&quot;,&quot;shell.execute_reply&quot;:&quot;2025-08-19T15:26:05.768542Z&quot;}}" data-execution_count="2">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>projects <span class="op">=</span> raw.get(<span class="st">'projects'</span>, [])</span>
@@ -467,7 +467,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <td>2025-06-16 00:00:06.951000+00:00</td>
 <td>2025-07-30 20:03:23.829000+00:00</td>
 <td>https://summer.hackclub.com/rails/active_stora...</td>
-<td>2025-08-15 04:09:02.216000+00:00</td>
+<td>2025-08-19 15:06:56.124000+00:00</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">1</td>
@@ -488,31 +488,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <td>2025-06-16 00:02:07.258000+00:00</td>
 <td>2025-06-16 00:02:07.258000+00:00</td>
 <td>None</td>
-<td>2025-08-15 04:09:02.216000+00:00</td>
+<td>2025-08-19 15:06:56.124000+00:00</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">2</td>
-<td>5</td>
-<td>MusicMap</td>
-<td>How we feel for Music, currently has the playl...</td>
-<td>Mobile App</td>
-<td>9</td>
-<td>359516</td>
-<td>False</td>
-<td>https://raw.githubusercontent.com/N1k0s1/Music...</td>
-<td>https://github.com/N1k0s1/MusicMap/releases/ta...</td>
-<td>https://github.com/N1k0s1/MusicMap</td>
-<td>22</td>
-<td>U07960MD940</td>
-<td>NaN</td>
-<td>NaN</td>
-<td>2025-06-16 00:22:22.251000+00:00</td>
-<td>2025-08-14 12:57:06.188000+00:00</td>
-<td>https://summer.hackclub.com/rails/active_stora...</td>
-<td>2025-08-15 04:09:02.216000+00:00</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">3</td>
 <td>6</td>
 <td>Summer of making Share votes</td>
 <td>did it with high seas.. we doing it now</td>
@@ -530,16 +509,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <td>2025-06-16 00:47:20.524000+00:00</td>
 <td>2025-07-18 20:55:05.945000+00:00</td>
 <td>https://summer.hackclub.com/rails/active_stora...</td>
-<td>2025-08-15 04:09:02.216000+00:00</td>
+<td>2025-08-19 15:06:56.124000+00:00</td>
 </tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">4</td>
+<tr class="even">
+<td data-quarto-table-cell-role="th">3</td>
 <td>7</td>
 <td>Nomen</td>
 <td>A web viewer and parser for every name listed ...</td>
 <td>Web App</td>
 <td>5</td>
-<td>14619</td>
+<td>11756</td>
 <td>False</td>
 <td>https://raw.githubusercontent.com/aramshiva/no...</td>
 <td>https://nomen.sh</td>
@@ -549,9 +528,30 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <td>91.518325</td>
 <td>81.661442</td>
 <td>2025-06-16 00:53:49.627000+00:00</td>
-<td>2025-08-12 06:36:40.944000+00:00</td>
+<td>2025-08-16 13:54:34.590000+00:00</td>
 <td>https://summer.hackclub.com/rails/active_stora...</td>
-<td>2025-08-15 04:09:02.216000+00:00</td>
+<td>2025-08-19 15:06:56.124000+00:00</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">4</td>
+<td>8</td>
+<td>aram.sh</td>
+<td>Remake of my website! Features interactive pho...</td>
+<td>Web App</td>
+<td>3</td>
+<td>21748</td>
+<td>False</td>
+<td>https://raw.githubusercontent.com/aramshiva/we...</td>
+<td>https://aram.sh</td>
+<td>https://github.com/aramshiva/website</td>
+<td>39</td>
+<td>U0616280E6P</td>
+<td>26.446281</td>
+<td>32.489451</td>
+<td>2025-06-16 00:56:31.879000+00:00</td>
+<td>2025-08-07 05:16:38.665000+00:00</td>
+<td>https://summer.hackclub.com/rails/active_stora...</td>
+<td>2025-08-19 15:06:56.124000+00:00</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">...</td>
@@ -575,118 +575,118 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <td>...</td>
 </tr>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">8593</td>
-<td>11329</td>
-<td>qr code generator app</td>
-<td>This web app generates QR codes from user inpu...</td>
+<td data-quarto-table-cell-role="th">8790</td>
+<td>11762</td>
+<td>Personal Website</td>
+<td>A personal website designed to share my work, ...</td>
 <td>None</td>
-<td>0</td>
-<td>0</td>
+<td>2</td>
+<td>5635</td>
 <td>False</td>
-<td>https://raw.githubusercontent.com/Suhail-Gazya...</td>
-<td>https://suhail-gazyani.github.io/qr-code-gener...</td>
-<td>https://github.com/Suhail-Gazyani/qr-code-gene...</td>
-<td>9550</td>
-<td>U092UTJ472L</td>
+<td>https://raw.githubusercontent.com/Rainier-PS/P...</td>
+<td>https://rainier-ps.github.io/Personal-Website/</td>
+<td>https://github.com/Rainier-PS/Personal-Website</td>
+<td>12389</td>
+<td>U091JD51Z50</td>
 <td>NaN</td>
 <td>NaN</td>
-<td>2025-08-15 03:35:24.504000+00:00</td>
-<td>2025-08-15 03:35:25.073000+00:00</td>
-<td>https://summer.hackclub.com/rails/active_stora...</td>
-<td>2025-08-15 04:09:02.216000+00:00</td>
+<td>2025-08-19 14:21:42.287000+00:00</td>
+<td>2025-08-19 14:21:42.287000+00:00</td>
+<td>None</td>
+<td>2025-08-19 15:06:56.124000+00:00</td>
 </tr>
 <tr class="even">
-<td data-quarto-table-cell-role="th">8594</td>
-<td>11330</td>
-<td>qr code sccaner</td>
-<td>This project is a web-based QR Code Scanner bu...</td>
+<td data-quarto-table-cell-role="th">8791</td>
+<td>11763</td>
+<td>tinyspark</td>
+<td>(TinyWow-inspired)[tinywow.com] project gradua...</td>
 <td>None</td>
 <td>0</td>
 <td>0</td>
 <td>False</td>
-<td>https://raw.githubusercontent.com/Suhail-Gazya...</td>
-<td>https://suhail-gazyani.github.io/qr-code-sccaner/</td>
-<td>https://github.com/Suhail-Gazyani/qr-code-sccaner</td>
-<td>9550</td>
-<td>U092UTJ472L</td>
+<td>https://raw.githubusercontent.com/emb3rcia/tin...</td>
+<td></td>
+<td>https://github.com/emb3rcia/tinyspark</td>
+<td>15974</td>
+<td>U095RD2NX8F</td>
 <td>NaN</td>
 <td>NaN</td>
-<td>2025-08-15 03:44:33.797000+00:00</td>
-<td>2025-08-15 03:44:34.543000+00:00</td>
+<td>2025-08-19 14:22:36.978000+00:00</td>
+<td>2025-08-19 14:22:37.986000+00:00</td>
 <td>https://summer.hackclub.com/rails/active_stora...</td>
-<td>2025-08-15 04:09:02.216000+00:00</td>
+<td>2025-08-19 15:06:56.124000+00:00</td>
 </tr>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">8595</td>
-<td>11331</td>
-<td>Rebite</td>
-<td>🍗Rebite is a website helps reduce 🍕food waste ...</td>
+<td data-quarto-table-cell-role="th">8792</td>
+<td>11764</td>
+<td>Panell</td>
+<td>A home-hub that shows you useful info on the fly!</td>
 <td>None</td>
-<td>0</td>
-<td>0</td>
+<td>2</td>
+<td>4939</td>
 <td>False</td>
 <td></td>
 <td></td>
 <td></td>
-<td>14705</td>
-<td>U0952PFDZUY</td>
+<td>18075</td>
+<td>U096YQZV3V0</td>
 <td>NaN</td>
 <td>NaN</td>
-<td>2025-08-15 03:46:33.464000+00:00</td>
-<td>2025-08-15 03:46:35.335000+00:00</td>
-<td>https://summer.hackclub.com/rails/active_stora...</td>
-<td>2025-08-15 04:09:02.216000+00:00</td>
+<td>2025-08-19 14:25:10.457000+00:00</td>
+<td>2025-08-19 14:25:10.457000+00:00</td>
+<td>None</td>
+<td>2025-08-19 15:06:56.124000+00:00</td>
 </tr>
 <tr class="even">
-<td data-quarto-table-cell-role="th">8596</td>
-<td>11332</td>
-<td>word search generator</td>
-<td>This app generates a 7x7 word search puzzle. E...</td>
+<td data-quarto-table-cell-role="th">8793</td>
+<td>11765</td>
+<td>AI bill management system</td>
+<td>A ai bill management system build for govt. or...</td>
 <td>None</td>
-<td>0</td>
-<td>0</td>
+<td>1</td>
+<td>2951</td>
 <td>False</td>
-<td>http://github.com/Suhail-Gazyani/word-search-g...</td>
-<td>https://suhail-gazyani.github.io/word-search-g...</td>
-<td>https://github.com/Suhail-Gazyani/word-search-...</td>
-<td>9550</td>
-<td>U092UTJ472L</td>
+<td>https://raw.githubusercontent.com/aryan6673/bi...</td>
+<td>https://kvs.deyweaver.live/</td>
+<td>https://github.com/aryan6673/bill</td>
+<td>5074</td>
+<td>U08MVDFCKJ8</td>
 <td>NaN</td>
 <td>NaN</td>
-<td>2025-08-15 03:55:46.492000+00:00</td>
-<td>2025-08-15 03:55:47.336000+00:00</td>
+<td>2025-08-19 14:34:53.866000+00:00</td>
+<td>2025-08-19 14:34:54.941000+00:00</td>
 <td>https://summer.hackclub.com/rails/active_stora...</td>
-<td>2025-08-15 04:09:02.216000+00:00</td>
+<td>2025-08-19 15:06:56.124000+00:00</td>
 </tr>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">8597</td>
-<td>11333</td>
-<td>Lola's Lunar Adventure</td>
-<td>A small point &amp; click adventure game made with...</td>
+<td data-quarto-table-cell-role="th">8794</td>
+<td>11766</td>
+<td>Rock Paper Scissors</td>
+<td>Play the rock paper scissors game</td>
 <td>None</td>
 <td>0</td>
 <td>0</td>
 <td>False</td>
 <td></td>
 <td></td>
-<td>https://github.com/CmdrApollo/LLA</td>
-<td>21642</td>
-<td>U0797PR5UTA</td>
+<td></td>
+<td>16667</td>
+<td>U096QEL0W5U</td>
 <td>NaN</td>
 <td>NaN</td>
-<td>2025-08-15 04:07:37.172000+00:00</td>
-<td>2025-08-15 04:07:37.172000+00:00</td>
+<td>2025-08-19 14:57:03.575000+00:00</td>
+<td>2025-08-19 14:57:03.575000+00:00</td>
 <td>None</td>
-<td>2025-08-15 04:09:02.216000+00:00</td>
+<td>2025-08-19 15:06:56.124000+00:00</td>
 </tr>
 </tbody>
 </table>
 
-<p>8598 rows × 18 columns</p>
+<p>8795 rows × 18 columns</p>
 </div>
 </div>
 </div>
-<div id="6a03cbc0" class="cell" data-execution_count="3">
+<div id="6a03cbc0" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2025-08-19T15:26:05.769757Z&quot;,&quot;iopub.status.busy&quot;:&quot;2025-08-19T15:26:05.769647Z&quot;,&quot;iopub.status.idle&quot;:&quot;2025-08-19T15:26:05.803159Z&quot;,&quot;shell.execute_reply&quot;:&quot;2025-08-19T15:26:05.802887Z&quot;}}" data-execution_count="3">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>paths <span class="op">=</span> {</span>
@@ -716,10 +716,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
  - followers: ../../data/project_followers.parquet
 
 Row counts:
-{'projects': 8598, 'followers': 2864}</code></pre>
+{'projects': 8795, 'followers': 2910}</code></pre>
 </div>
 </div>
-<div id="59d935d7" class="cell" data-execution_count="4">
+<div id="59d935d7" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2025-08-19T15:26:05.804118Z&quot;,&quot;iopub.status.busy&quot;:&quot;2025-08-19T15:26:05.804004Z&quot;,&quot;iopub.status.idle&quot;:&quot;2025-08-19T15:26:05.808616Z&quot;,&quot;shell.execute_reply&quot;:&quot;2025-08-19T15:26:05.808317Z&quot;}}" data-execution_count="4">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>df_followers</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -744,35 +744,35 @@ Row counts:
 <td>3</td>
 <td>31</td>
 <td>3rr0rc0d3z3r0</td>
-<td>2025-08-15 04:09:02.216000+00:00</td>
+<td>2025-08-19 15:06:56.124000+00:00</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">1</td>
 <td>3</td>
 <td>126</td>
 <td>dave9123</td>
-<td>2025-08-15 04:09:02.216000+00:00</td>
+<td>2025-08-19 15:06:56.124000+00:00</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">2</td>
 <td>3</td>
 <td>5</td>
 <td>Neon</td>
-<td>2025-08-15 04:09:02.216000+00:00</td>
+<td>2025-08-19 15:06:56.124000+00:00</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">3</td>
 <td>3</td>
 <td>3</td>
 <td>nora</td>
-<td>2025-08-15 04:09:02.216000+00:00</td>
+<td>2025-08-19 15:06:56.124000+00:00</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">4</td>
 <td>3</td>
 <td>7077</td>
 <td>I'm literally a duck.</td>
-<td>2025-08-15 04:09:02.216000+00:00</td>
+<td>2025-08-19 15:06:56.124000+00:00</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">...</td>
@@ -782,44 +782,44 @@ Row counts:
 <td>...</td>
 </tr>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">2859</td>
-<td>11188</td>
-<td>14913</td>
-<td>Suleman Gazyani</td>
-<td>2025-08-15 04:09:02.216000+00:00</td>
-</tr>
-<tr class="even">
-<td data-quarto-table-cell-role="th">2860</td>
-<td>11192</td>
-<td>14</td>
-<td>Toshit</td>
-<td>2025-08-15 04:09:02.216000+00:00</td>
-</tr>
-<tr class="odd">
-<td data-quarto-table-cell-role="th">2861</td>
-<td>11193</td>
+<td data-quarto-table-cell-role="th">2905</td>
+<td>11652</td>
 <td>8068</td>
 <td>Jagan</td>
-<td>2025-08-15 04:09:02.216000+00:00</td>
+<td>2025-08-19 15:06:56.124000+00:00</td>
 </tr>
 <tr class="even">
-<td data-quarto-table-cell-role="th">2862</td>
-<td>11230</td>
-<td>21515</td>
-<td>Mayank Vyas</td>
-<td>2025-08-15 04:09:02.216000+00:00</td>
+<td data-quarto-table-cell-role="th">2906</td>
+<td>11673</td>
+<td>21481</td>
+<td>Lemon</td>
+<td>2025-08-19 15:06:56.124000+00:00</td>
 </tr>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">2863</td>
-<td>11237</td>
-<td>5850</td>
-<td>Hat Dealer</td>
-<td>2025-08-15 04:09:02.216000+00:00</td>
+<td data-quarto-table-cell-role="th">2907</td>
+<td>11698</td>
+<td>20537</td>
+<td>Aaron Rashid</td>
+<td>2025-08-19 15:06:56.124000+00:00</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">2908</td>
+<td>11748</td>
+<td>4943</td>
+<td>Josh</td>
+<td>2025-08-19 15:06:56.124000+00:00</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">2909</td>
+<td>11748</td>
+<td>8233</td>
+<td>twa</td>
+<td>2025-08-19 15:06:56.124000+00:00</td>
 </tr>
 </tbody>
 </table>
 
-<p>2864 rows × 4 columns</p>
+<p>2910 rows × 4 columns</p>
 </div>
 </div>
 </div>

@@ -3,27 +3,27 @@
         "total_comments": {
             "name": "Total number of comments",
             "description": "The total number of comments in the dataset.",
-            "data": 1382
+            "data": 1419
         },
         "unique_devlogs_with_comments": {
             "name": "Unique devlogs with comments",
             "description": "The number of unique devlogs that have comments.",
-            "data": 1000
+            "data": 1022
         },
         "unique_commenting_users": {
             "name": "Unique commenting users",
             "description": "The number of unique users who have made comments.",
-            "data": 561
+            "data": 571
         },
         "avg_comments_per_devlog": {
             "name": "Average comments per devlog",
             "description": "The average number of comments per devlog.",
-            "data": 1.382
+            "data": 1.388454011741683
         },
         "avg_comment_length": {
             "name": "Average comment length",
             "description": "The average length of comments in characters.",
-            "data": 67.34081041968162
+            "data": 66.56871035940803
         }
     },
     "top": {
@@ -33,7 +33,7 @@
             "data": {
                 "0": {
                     "devlog_id": 35559,
-                    "comment_count": 11,
+                    "comment_count": 12,
                     "created_at": "2025-08-13T18:12:47.438000+00:00",
                     "devlog_link": "https://summer.hackclub.com/devlogs/35559"
                 },
@@ -44,16 +44,16 @@
                     "devlog_link": "https://summer.hackclub.com/devlogs/563"
                 },
                 "2": {
-                    "devlog_id": 31905,
-                    "comment_count": 7,
-                    "created_at": "2025-08-08T00:07:50.947000+00:00",
-                    "devlog_link": "https://summer.hackclub.com/devlogs/31905"
-                },
-                "3": {
                     "devlog_id": 35671,
                     "comment_count": 7,
                     "created_at": "2025-08-13T21:59:28.874000+00:00",
                     "devlog_link": "https://summer.hackclub.com/devlogs/35671"
+                },
+                "3": {
+                    "devlog_id": 31905,
+                    "comment_count": 7,
+                    "created_at": "2025-08-08T00:07:50.947000+00:00",
+                    "devlog_link": "https://summer.hackclub.com/devlogs/31905"
                 },
                 "4": {
                     "devlog_id": 5868,
@@ -87,13 +87,13 @@
                 },
                 "3": {
                     "slack_id": "U091KJSPK6X",
-                    "comment_count": 26,
+                    "comment_count": 27,
                     "created_at": "2025-06-18T13:44:27.637000+00:00",
                     "user_profile": "Slack ID: U091KJSPK6X"
                 },
                 "4": {
                     "slack_id": "U080V8UG5BR",
-                    "comment_count": 23,
+                    "comment_count": 26,
                     "created_at": "2025-07-31T14:20:15.173000+00:00",
                     "user_profile": "Slack ID: U080V8UG5BR"
                 }

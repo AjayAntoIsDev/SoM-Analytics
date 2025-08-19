@@ -367,7 +367,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <p>Normalize <code>users.json</code> into analytics-ready Parquet datasets.</p>
 <p>This notebook will: - Read <code>data/raw/users.json</code> (fallback: <code>data/backup/users.json</code>) - Build a Users table (exclude nested <code>projects</code> list) - Build a User Badges table with one row per badge name per user - Parse timestamps and add <code>scraped_at</code> - Save to <code>data/users.parquet</code> and <code>data/user_badges.parquet</code></p>
-<div id="c7d5928a" class="cell" data-execution_count="7">
+<div id="c7d5928a" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2025-08-19T15:26:07.619000Z&quot;,&quot;iopub.status.busy&quot;:&quot;2025-08-19T15:26:07.618615Z&quot;,&quot;iopub.status.idle&quot;:&quot;2025-08-19T15:26:07.991542Z&quot;,&quot;shell.execute_reply&quot;:&quot;2025-08-19T15:26:07.991232Z&quot;}}" data-execution_count="1">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Imports</span></span>
@@ -384,7 +384,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>    raw <span class="op">=</span> json.load(f)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<div id="7a31e8db" class="cell" data-execution_count="8">
+<div id="7a31e8db" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2025-08-19T15:26:07.992855Z&quot;,&quot;iopub.status.busy&quot;:&quot;2025-08-19T15:26:07.992680Z&quot;,&quot;iopub.status.idle&quot;:&quot;2025-08-19T15:26:25.581339Z&quot;,&quot;shell.execute_reply&quot;:&quot;2025-08-19T15:26:25.581002Z&quot;}}" data-execution_count="2">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>users <span class="op">=</span> raw.get(<span class="st">'users'</span>, [])</span>
@@ -407,7 +407,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a>df_users <span class="op">=</span> pd.DataFrame(user_records)</span>
 <span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a>df_users</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
-<div class="cell-output cell-output-display" data-execution_count="8">
+<div class="cell-output cell-output-display" data-execution_count="2">
 <div>
 
 
@@ -445,13 +445,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <td>12</td>
 <td>1</td>
 <td>133510</td>
-<td>6540</td>
+<td>0</td>
 <td>You need to have a pocket watcher badge to vie...</td>
 <td>2025-06-15 16:27:55.496000+00:00</td>
 <td>2025-08-10 00:54:37.885000+00:00</td>
 <td>https://avatars.slack-edge.com/2025-04-02/8691...</td>
 <td>None</td>
-<td>2025-08-15 04:02:43.390000+00:00</td>
+<td>2025-08-19 14:56:44.608000+00:00</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">1</td>
@@ -463,14 +463,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <td>0</td>
 <td>2</td>
 <td>0</td>
-<td>594227</td>
-<td>1479</td>
+<td>582920</td>
+<td>131</td>
 <td>You need to have a pocket watcher badge to vie...</td>
 <td>2025-06-15 16:30:11.969000+00:00</td>
 <td>2025-08-10 02:48:09.410000+00:00</td>
 <td>https://avatars.slack-edge.com/2025-06-28/9118...</td>
 <td>None</td>
-<td>2025-08-15 04:02:43.390000+00:00</td>
+<td>2025-08-19 14:56:44.608000+00:00</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">2</td>
@@ -482,14 +482,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <td>3</td>
 <td>2</td>
 <td>2</td>
-<td>335751</td>
-<td>144</td>
+<td>336486</td>
+<td>0</td>
 <td>You need to have a pocket watcher badge to vie...</td>
 <td>2025-06-15 16:54:28.478000+00:00</td>
 <td>2025-08-06 19:48:37.175000+00:00</td>
 <td>https://avatars.slack-edge.com/2024-10-26/7934...</td>
 <td>body { filter: invert(1); font-family: "Papyrus"}</td>
-<td>2025-08-15 04:02:43.390000+00:00</td>
+<td>2025-08-19 14:56:44.608000+00:00</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">3</td>
@@ -499,16 +499,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <td>uhhhh?</td>
 <td>3</td>
 <td>5</td>
-<td>42</td>
+<td>51</td>
 <td>0</td>
-<td>273641</td>
-<td>120</td>
+<td>295157</td>
+<td>6777</td>
 <td>You need to have a pocket watcher badge to vie...</td>
 <td>2025-06-15 17:35:55.246000+00:00</td>
 <td>2025-07-09 15:02:58.138000+00:00</td>
 <td>https://avatars.slack-edge.com/2025-05-17/8913...</td>
 <td>body {\n display: none;\n}\n</td>
-<td>2025-08-15 04:02:43.390000+00:00</td>
+<td>2025-08-19 14:56:44.608000+00:00</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">4</td>
@@ -517,17 +517,17 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <td>Neon</td>
 <td>Meow meow - https://saahild.com</td>
 <td>11</td>
-<td>27</td>
-<td>43</td>
+<td>28</td>
+<td>59</td>
 <td>6</td>
-<td>647605</td>
-<td>5673</td>
+<td>716968</td>
+<td>1834</td>
 <td>You need to have a pocket watcher badge to vie...</td>
 <td>2025-06-15 18:46:29.520000+00:00</td>
 <td>2025-08-13 04:52:22.561000+00:00</td>
 <td>https://avatars.slack-edge.com/2025-04-22/8794...</td>
 <td>body::after {\r\n content: "";\r\n position:...</td>
-<td>2025-08-15 04:02:43.390000+00:00</td>
+<td>2025-08-19 14:56:44.608000+00:00</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">...</td>
@@ -549,29 +549,29 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <td>...</td>
 </tr>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">13355</td>
-<td>13356</td>
-<td>U094C9L9532</td>
-<td>Alan Rong</td>
+<td data-quarto-table-cell-role="th">21973</td>
+<td>22059</td>
+<td>U09B1E8EUMQ</td>
+<td>Nathan</td>
 <td>None</td>
 <td>0</td>
 <td>0</td>
 <td>0</td>
 <td>0</td>
-<td>777</td>
+<td>0</td>
 <td>0</td>
 <td>You need to have a pocket watcher badge to vie...</td>
-<td>2025-06-30 16:16:18.207000+00:00</td>
-<td>2025-07-04 00:07:28.285000+00:00</td>
-<td>https://secure.gravatar.com/avatar/dff079159d4...</td>
+<td>2025-08-19 13:55:19.012000+00:00</td>
+<td>2025-08-19 13:55:19.012000+00:00</td>
+<td>https://secure.gravatar.com/avatar/c37aa1cd89e...</td>
 <td>None</td>
-<td>2025-08-15 04:02:43.390000+00:00</td>
+<td>2025-08-19 14:56:44.608000+00:00</td>
 </tr>
 <tr class="even">
-<td data-quarto-table-cell-role="th">13356</td>
-<td>13357</td>
-<td>U093NDFSMMK</td>
-<td>Nick Adams</td>
+<td data-quarto-table-cell-role="th">21974</td>
+<td>22060</td>
+<td>U09B3GY6YCE</td>
+<td>Ray Liu</td>
 <td>None</td>
 <td>0</td>
 <td>0</td>
@@ -580,36 +580,36 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <td>0</td>
 <td>0</td>
 <td>You need to have a pocket watcher badge to vie...</td>
-<td>2025-06-30 16:16:25.565000+00:00</td>
-<td>2025-07-05 06:14:50.044000+00:00</td>
-<td>https://avatars.slack-edge.com/2025-06-30/9112...</td>
+<td>2025-08-19 14:13:17.845000+00:00</td>
+<td>2025-08-19 14:29:13.561000+00:00</td>
+<td>https://secure.gravatar.com/avatar/1970f4e4417...</td>
 <td>None</td>
-<td>2025-08-15 04:02:43.390000+00:00</td>
+<td>2025-08-19 14:56:44.608000+00:00</td>
 </tr>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">13357</td>
-<td>13358</td>
-<td>U093H7PSE4T</td>
-<td>Lucifer</td>
+<td data-quarto-table-cell-role="th">21975</td>
+<td>22061</td>
+<td>U09B3FXL9NJ</td>
+<td>Antonin LMarxer</td>
 <td>None</td>
 <td>0</td>
 <td>0</td>
 <td>0</td>
 <td>0</td>
-<td>0</td>
-<td>0</td>
+<td>328</td>
+<td>549</td>
 <td>You need to have a pocket watcher badge to vie...</td>
-<td>2025-06-30 16:16:56.568000+00:00</td>
-<td>2025-07-04 00:07:28.694000+00:00</td>
-<td>https://secure.gravatar.com/avatar/790601db101...</td>
+<td>2025-08-19 14:20:58.981000+00:00</td>
+<td>2025-08-19 14:37:04.653000+00:00</td>
+<td>https://secure.gravatar.com/avatar/153c0c05d10...</td>
 <td>None</td>
-<td>2025-08-15 04:02:43.390000+00:00</td>
+<td>2025-08-19 14:56:44.608000+00:00</td>
 </tr>
 <tr class="even">
-<td data-quarto-table-cell-role="th">13358</td>
-<td>13359</td>
-<td>U093A6L217H</td>
-<td>Refilwe</td>
+<td data-quarto-table-cell-role="th">21976</td>
+<td>22062</td>
+<td>U07EW23D1CL</td>
+<td>Quackington</td>
 <td>None</td>
 <td>0</td>
 <td>0</td>
@@ -618,17 +618,17 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <td>0</td>
 <td>0</td>
 <td>You need to have a pocket watcher badge to vie...</td>
-<td>2025-06-30 16:18:10.695000+00:00</td>
-<td>2025-07-04 00:07:28.955000+00:00</td>
-<td>https://secure.gravatar.com/avatar/8d0c9b1b395...</td>
+<td>2025-08-19 14:45:25.725000+00:00</td>
+<td>2025-08-19 14:45:25.725000+00:00</td>
+<td>https://secure.gravatar.com/avatar/34b3cc1239a...</td>
 <td>None</td>
-<td>2025-08-15 04:02:43.390000+00:00</td>
+<td>2025-08-19 14:56:44.608000+00:00</td>
 </tr>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">13359</td>
-<td>13360</td>
-<td>U093NDNSW5B</td>
-<td>phuquocchamp</td>
+<td data-quarto-table-cell-role="th">21977</td>
+<td>22063</td>
+<td>U09B1R9JBJN</td>
+<td>Maggie</td>
 <td>None</td>
 <td>0</td>
 <td>0</td>
@@ -637,21 +637,21 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <td>0</td>
 <td>0</td>
 <td>You need to have a pocket watcher badge to vie...</td>
-<td>2025-06-30 16:18:51.481000+00:00</td>
-<td>2025-07-05 06:14:50.253000+00:00</td>
-<td>https://secure.gravatar.com/avatar/47ca6f9bc54...</td>
+<td>2025-08-19 14:52:11.586000+00:00</td>
+<td>2025-08-19 14:52:11.586000+00:00</td>
+<td>https://secure.gravatar.com/avatar/e9007b51ff3...</td>
 <td>None</td>
-<td>2025-08-15 04:02:43.390000+00:00</td>
+<td>2025-08-19 14:56:44.608000+00:00</td>
 </tr>
 </tbody>
 </table>
 
-<p>13360 rows × 16 columns</p>
+<p>21978 rows × 16 columns</p>
 </div>
 </div>
 </div>
 <p>Add the shells data too</p>
-<div id="de947264" class="cell" data-execution_count="9">
+<div id="de947264" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2025-08-19T15:26:25.582527Z&quot;,&quot;iopub.status.busy&quot;:&quot;2025-08-19T15:26:25.582397Z&quot;,&quot;iopub.status.idle&quot;:&quot;2025-08-19T15:26:25.599978Z&quot;,&quot;shell.execute_reply&quot;:&quot;2025-08-19T15:26:25.599554Z&quot;}}" data-execution_count="3">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> pathlib <span class="im">import</span> Path</span>
@@ -691,7 +691,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb3-35"><a href="#cb3-35" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb3-36"><a href="#cb3-36" aria-hidden="true" tabindex="-1"></a>(df_users[[<span class="st">'id'</span>,<span class="st">'slack_id'</span>,<span class="st">'balance'</span>]].head(<span class="dv">10</span>) <span class="cf">if</span> <span class="st">'balance'</span> <span class="kw">in</span> df_users.columns <span class="cf">else</span> df_users.head(<span class="dv">5</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
-<div class="cell-output cell-output-display" data-execution_count="9">
+<div class="cell-output cell-output-display" data-execution_count="3">
 <div>
 
 
@@ -715,7 +715,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <td data-quarto-table-cell-role="th">1</td>
 <td>2</td>
 <td>U080A3QP42C</td>
-<td>3</td>
+<td>498</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">2</td>
@@ -771,7 +771,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </div>
-<div id="10435bb3" class="cell" data-execution_count="10">
+<div id="10435bb3" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2025-08-19T15:26:25.601182Z&quot;,&quot;iopub.status.busy&quot;:&quot;2025-08-19T15:26:25.600999Z&quot;,&quot;iopub.status.idle&quot;:&quot;2025-08-19T15:26:26.275802Z&quot;,&quot;shell.execute_reply&quot;:&quot;2025-08-19T15:26:26.275544Z&quot;}}" data-execution_count="4">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>badge_records <span class="op">=</span> []</span>
@@ -789,7 +789,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>df_badges <span class="op">=</span> pd.DataFrame(badge_records)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<div id="a00f77ed" class="cell" data-execution_count="11">
+<div id="a00f77ed" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2025-08-19T15:26:26.276942Z&quot;,&quot;iopub.status.busy&quot;:&quot;2025-08-19T15:26:26.276809Z&quot;,&quot;iopub.status.idle&quot;:&quot;2025-08-19T15:26:26.314981Z&quot;,&quot;shell.execute_reply&quot;:&quot;2025-08-19T15:26:26.314711Z&quot;}}" data-execution_count="5">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>p_users <span class="op">=</span> OUTPUT <span class="op">/</span> <span class="st">'users.parquet'</span></span>
@@ -812,15 +812,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
  - users: ../../data/users.parquet
  - user_badges: ../../data/user_badges.parquet
 
-Row counts: {'users': 13360, 'user_badges': 1819}</code></pre>
+Row counts: {'users': 21978, 'user_badges': 2533}</code></pre>
 </div>
 </div>
-<div id="f4843705" class="cell" data-execution_count="12">
+<div id="f4843705" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2025-08-19T15:26:26.315941Z&quot;,&quot;iopub.status.busy&quot;:&quot;2025-08-19T15:26:26.315811Z&quot;,&quot;iopub.status.idle&quot;:&quot;2025-08-19T15:26:26.324696Z&quot;,&quot;shell.execute_reply&quot;:&quot;2025-08-19T15:26:26.324432Z&quot;}}" data-execution_count="6">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>df_users</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
-<div class="cell-output cell-output-display" data-execution_count="12">
+<div class="cell-output cell-output-display" data-execution_count="6">
 <div>
 
 
@@ -858,13 +858,13 @@ Row counts: {'users': 13360, 'user_badges': 1819}</code></pre>
 <td>12</td>
 <td>1</td>
 <td>133510</td>
-<td>6540</td>
+<td>0</td>
 <td>0</td>
 <td>2025-06-15 16:27:55.496000+00:00</td>
 <td>2025-08-10 00:54:37.885000+00:00</td>
 <td>https://avatars.slack-edge.com/2025-04-02/8691...</td>
 <td>None</td>
-<td>2025-08-15 04:02:43.390000+00:00</td>
+<td>2025-08-19 14:56:44.608000+00:00</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">1</td>
@@ -876,14 +876,14 @@ Row counts: {'users': 13360, 'user_badges': 1819}</code></pre>
 <td>0</td>
 <td>2</td>
 <td>0</td>
-<td>594227</td>
-<td>1479</td>
-<td>3</td>
+<td>582920</td>
+<td>131</td>
+<td>498</td>
 <td>2025-06-15 16:30:11.969000+00:00</td>
 <td>2025-08-10 02:48:09.410000+00:00</td>
 <td>https://avatars.slack-edge.com/2025-06-28/9118...</td>
 <td>None</td>
-<td>2025-08-15 04:02:43.390000+00:00</td>
+<td>2025-08-19 14:56:44.608000+00:00</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">2</td>
@@ -895,14 +895,14 @@ Row counts: {'users': 13360, 'user_badges': 1819}</code></pre>
 <td>3</td>
 <td>2</td>
 <td>2</td>
-<td>335751</td>
-<td>144</td>
+<td>336486</td>
+<td>0</td>
 <td>385</td>
 <td>2025-06-15 16:54:28.478000+00:00</td>
 <td>2025-08-06 19:48:37.175000+00:00</td>
 <td>https://avatars.slack-edge.com/2024-10-26/7934...</td>
 <td>body { filter: invert(1); font-family: "Papyrus"}</td>
-<td>2025-08-15 04:02:43.390000+00:00</td>
+<td>2025-08-19 14:56:44.608000+00:00</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">3</td>
@@ -912,16 +912,16 @@ Row counts: {'users': 13360, 'user_badges': 1819}</code></pre>
 <td>uhhhh?</td>
 <td>3</td>
 <td>5</td>
-<td>42</td>
+<td>51</td>
 <td>0</td>
-<td>273641</td>
-<td>120</td>
+<td>295157</td>
+<td>6777</td>
 <td>239</td>
 <td>2025-06-15 17:35:55.246000+00:00</td>
 <td>2025-07-09 15:02:58.138000+00:00</td>
 <td>https://avatars.slack-edge.com/2025-05-17/8913...</td>
 <td>body {\n display: none;\n}\n</td>
-<td>2025-08-15 04:02:43.390000+00:00</td>
+<td>2025-08-19 14:56:44.608000+00:00</td>
 </tr>
 <tr class="odd">
 <td data-quarto-table-cell-role="th">4</td>
@@ -930,17 +930,17 @@ Row counts: {'users': 13360, 'user_badges': 1819}</code></pre>
 <td>Neon</td>
 <td>Meow meow - https://saahild.com</td>
 <td>11</td>
-<td>27</td>
-<td>43</td>
+<td>28</td>
+<td>59</td>
 <td>6</td>
-<td>647605</td>
-<td>5673</td>
+<td>716968</td>
+<td>1834</td>
 <td>365</td>
 <td>2025-06-15 18:46:29.520000+00:00</td>
 <td>2025-08-13 04:52:22.561000+00:00</td>
 <td>https://avatars.slack-edge.com/2025-04-22/8794...</td>
 <td>body::after {\r\n content: "";\r\n position:...</td>
-<td>2025-08-15 04:02:43.390000+00:00</td>
+<td>2025-08-19 14:56:44.608000+00:00</td>
 </tr>
 <tr class="even">
 <td data-quarto-table-cell-role="th">...</td>
@@ -962,29 +962,29 @@ Row counts: {'users': 13360, 'user_badges': 1819}</code></pre>
 <td>...</td>
 </tr>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">13355</td>
-<td>13356</td>
-<td>U094C9L9532</td>
-<td>Alan Rong</td>
+<td data-quarto-table-cell-role="th">21973</td>
+<td>22059</td>
+<td>U09B1E8EUMQ</td>
+<td>Nathan</td>
 <td>None</td>
 <td>0</td>
 <td>0</td>
 <td>0</td>
 <td>0</td>
-<td>777</td>
 <td>0</td>
 <td>0</td>
-<td>2025-06-30 16:16:18.207000+00:00</td>
-<td>2025-07-04 00:07:28.285000+00:00</td>
-<td>https://secure.gravatar.com/avatar/dff079159d4...</td>
+<td>0</td>
+<td>2025-08-19 13:55:19.012000+00:00</td>
+<td>2025-08-19 13:55:19.012000+00:00</td>
+<td>https://secure.gravatar.com/avatar/c37aa1cd89e...</td>
 <td>None</td>
-<td>2025-08-15 04:02:43.390000+00:00</td>
+<td>2025-08-19 14:56:44.608000+00:00</td>
 </tr>
 <tr class="even">
-<td data-quarto-table-cell-role="th">13356</td>
-<td>13357</td>
-<td>U093NDFSMMK</td>
-<td>Nick Adams</td>
+<td data-quarto-table-cell-role="th">21974</td>
+<td>22060</td>
+<td>U09B3GY6YCE</td>
+<td>Ray Liu</td>
 <td>None</td>
 <td>0</td>
 <td>0</td>
@@ -993,36 +993,36 @@ Row counts: {'users': 13360, 'user_badges': 1819}</code></pre>
 <td>0</td>
 <td>0</td>
 <td>0</td>
-<td>2025-06-30 16:16:25.565000+00:00</td>
-<td>2025-07-05 06:14:50.044000+00:00</td>
-<td>https://avatars.slack-edge.com/2025-06-30/9112...</td>
+<td>2025-08-19 14:13:17.845000+00:00</td>
+<td>2025-08-19 14:29:13.561000+00:00</td>
+<td>https://secure.gravatar.com/avatar/1970f4e4417...</td>
 <td>None</td>
-<td>2025-08-15 04:02:43.390000+00:00</td>
+<td>2025-08-19 14:56:44.608000+00:00</td>
 </tr>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">13357</td>
-<td>13358</td>
-<td>U093H7PSE4T</td>
-<td>Lucifer</td>
+<td data-quarto-table-cell-role="th">21975</td>
+<td>22061</td>
+<td>U09B3FXL9NJ</td>
+<td>Antonin LMarxer</td>
 <td>None</td>
 <td>0</td>
 <td>0</td>
 <td>0</td>
 <td>0</td>
+<td>328</td>
+<td>549</td>
 <td>0</td>
-<td>0</td>
-<td>0</td>
-<td>2025-06-30 16:16:56.568000+00:00</td>
-<td>2025-07-04 00:07:28.694000+00:00</td>
-<td>https://secure.gravatar.com/avatar/790601db101...</td>
+<td>2025-08-19 14:20:58.981000+00:00</td>
+<td>2025-08-19 14:37:04.653000+00:00</td>
+<td>https://secure.gravatar.com/avatar/153c0c05d10...</td>
 <td>None</td>
-<td>2025-08-15 04:02:43.390000+00:00</td>
+<td>2025-08-19 14:56:44.608000+00:00</td>
 </tr>
 <tr class="even">
-<td data-quarto-table-cell-role="th">13358</td>
-<td>13359</td>
-<td>U093A6L217H</td>
-<td>Refilwe</td>
+<td data-quarto-table-cell-role="th">21976</td>
+<td>22062</td>
+<td>U07EW23D1CL</td>
+<td>Quackington</td>
 <td>None</td>
 <td>0</td>
 <td>0</td>
@@ -1031,17 +1031,17 @@ Row counts: {'users': 13360, 'user_badges': 1819}</code></pre>
 <td>0</td>
 <td>0</td>
 <td>0</td>
-<td>2025-06-30 16:18:10.695000+00:00</td>
-<td>2025-07-04 00:07:28.955000+00:00</td>
-<td>https://secure.gravatar.com/avatar/8d0c9b1b395...</td>
+<td>2025-08-19 14:45:25.725000+00:00</td>
+<td>2025-08-19 14:45:25.725000+00:00</td>
+<td>https://secure.gravatar.com/avatar/34b3cc1239a...</td>
 <td>None</td>
-<td>2025-08-15 04:02:43.390000+00:00</td>
+<td>2025-08-19 14:56:44.608000+00:00</td>
 </tr>
 <tr class="odd">
-<td data-quarto-table-cell-role="th">13359</td>
-<td>13360</td>
-<td>U093NDNSW5B</td>
-<td>phuquocchamp</td>
+<td data-quarto-table-cell-role="th">21977</td>
+<td>22063</td>
+<td>U09B1R9JBJN</td>
+<td>Maggie</td>
 <td>None</td>
 <td>0</td>
 <td>0</td>
@@ -1050,16 +1050,16 @@ Row counts: {'users': 13360, 'user_badges': 1819}</code></pre>
 <td>0</td>
 <td>0</td>
 <td>0</td>
-<td>2025-06-30 16:18:51.481000+00:00</td>
-<td>2025-07-05 06:14:50.253000+00:00</td>
-<td>https://secure.gravatar.com/avatar/47ca6f9bc54...</td>
+<td>2025-08-19 14:52:11.586000+00:00</td>
+<td>2025-08-19 14:52:11.586000+00:00</td>
+<td>https://secure.gravatar.com/avatar/e9007b51ff3...</td>
 <td>None</td>
-<td>2025-08-15 04:02:43.390000+00:00</td>
+<td>2025-08-19 14:56:44.608000+00:00</td>
 </tr>
 </tbody>
 </table>
 
-<p>13360 rows × 16 columns</p>
+<p>21978 rows × 16 columns</p>
 </div>
 </div>
 </div>

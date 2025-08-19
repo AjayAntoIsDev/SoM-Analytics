@@ -368,13 +368,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>Extracts devlogs from the scraped project data</p>
 <p>devlogs_df schema - devlog_id: int - project_id: int - project_title: string - project_user_id: int - project_slack_id: string - category: string - text: string - text_length: int - has_attachment: bool - attachment_url: string | NaN - attachment_host: string | NaN - attachment_ext: string | NaN - time_seconds: int - time_minutes: float - likes_count: int - comments_count: int - engagement: int (likes_count + comments_count) - created_at: datetime64[ns, UTC] - updated_at: datetime64[ns, UTC] - created_date: date - created_hour_utc: int [0..23] - created_dow: int [0=Mon..6=Sun] - created_week: int [1..53] (ISO) - created_month: string (YYYY-MM) - devlog_idx_in_project: int (1-based order by created_at within project)</p>
 <p>Output artifacts: - devlogs.parquet</p>
-<div id="4766fd9d" class="cell" data-execution_count="1">
+<div id="4766fd9d" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2025-08-19T15:25:31.667589Z&quot;,&quot;iopub.status.busy&quot;:&quot;2025-08-19T15:25:31.667363Z&quot;,&quot;iopub.status.idle&quot;:&quot;2025-08-19T15:25:31.669626Z&quot;,&quot;shell.execute_reply&quot;:&quot;2025-08-19T15:25:31.669377Z&quot;}}" data-execution_count="1">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># %pip install pandas numpy pyarrow</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<div id="bae870da" class="cell" data-execution_count="2">
+<div id="bae870da" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2025-08-19T15:25:31.670611Z&quot;,&quot;iopub.status.busy&quot;:&quot;2025-08-19T15:25:31.670479Z&quot;,&quot;iopub.status.idle&quot;:&quot;2025-08-19T15:25:32.096989Z&quot;,&quot;shell.execute_reply&quot;:&quot;2025-08-19T15:25:32.096635Z&quot;}}" data-execution_count="2">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> json</span>
@@ -394,7 +394,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a>projects <span class="op">=</span> raw.get(<span class="st">'projects'</span>, [])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
-<div id="4bd2d3cf" class="cell" data-execution_count="3">
+<div id="4bd2d3cf" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2025-08-19T15:25:32.098484Z&quot;,&quot;iopub.status.busy&quot;:&quot;2025-08-19T15:25:32.098318Z&quot;,&quot;iopub.status.idle&quot;:&quot;2025-08-19T15:25:56.104315Z&quot;,&quot;shell.execute_reply&quot;:&quot;2025-08-19T15:25:56.103944Z&quot;}}" data-execution_count="3">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>rows <span class="op">=</span> []</span>
@@ -456,7 +456,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </details>
 </div>
 <p>Enhance the data inside the dataframe</p>
-<div id="3cd2efe3" class="cell" data-execution_count="4">
+<div id="3cd2efe3" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2025-08-19T15:25:56.105536Z&quot;,&quot;iopub.status.busy&quot;:&quot;2025-08-19T15:25:56.105398Z&quot;,&quot;iopub.status.idle&quot;:&quot;2025-08-19T15:25:56.225135Z&quot;,&quot;shell.execute_reply&quot;:&quot;2025-08-19T15:25:56.224857Z&quot;}}" data-execution_count="4">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> rows:</span>
@@ -484,11 +484,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb4-23"><a href="#cb4-23" aria-hidden="true" tabindex="-1"></a>        <span class="st">'M'</span>).astype(<span class="bu">str</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stderr">
-<pre><code>/tmp/ipykernel_25744/73189697.py:22: UserWarning: Converting to PeriodArray/Index representation will drop timezone information.
+<pre><code>/tmp/ipykernel_100569/73189697.py:22: UserWarning: Converting to PeriodArray/Index representation will drop timezone information.
   devlogs_df['created_month'] = devlogs_df['created_at'].dt.to_period(</code></pre>
 </div>
 </div>
-<div id="8cb7f922" class="cell" data-execution_count="5">
+<div id="8cb7f922" class="cell" data-quarto-private-1="{&quot;key&quot;:&quot;execution&quot;,&quot;value&quot;:{&quot;iopub.execute_input&quot;:&quot;2025-08-19T15:25:56.226128Z&quot;,&quot;iopub.status.busy&quot;:&quot;2025-08-19T15:25:56.226012Z&quot;,&quot;iopub.status.idle&quot;:&quot;2025-08-19T15:25:56.301846Z&quot;,&quot;shell.execute_reply&quot;:&quot;2025-08-19T15:25:56.301597Z&quot;}}" data-execution_count="5">
 <details class="code-fold">
 <summary>Code</summary>
 <div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>OUTPUT.mkdir(parents<span class="op">=</span><span class="va">True</span>, exist_ok<span class="op">=</span><span class="va">True</span>)</span>
@@ -508,7 +508,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a>devlogs_df.head(<span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
-<pre><code>devlogs: 28115 rows across 6374 projects</code></pre>
+<pre><code>devlogs: 29537 rows across 6589 projects</code></pre>
 </div>
 <div class="cell-output cell-output-display" data-execution_count="5">
 <div>
@@ -558,7 +558,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <td>0</td>
 <td>0</td>
 <td>2025-06-16 19:28:04.969000+00:00</td>
-<td>2025-08-15 03:56:31.766000+00:00</td>
+<td>2025-08-19 12:11:21.090000+00:00</td>
 <td>1</td>
 <td>2025-06-16</td>
 <td>19</td>
@@ -582,7 +582,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <td>0</td>
 <td>1</td>
 <td>2025-07-04 14:03:39.379000+00:00</td>
-<td>2025-08-15 03:55:49.036000+00:00</td>
+<td>2025-08-19 06:45:27.704000+00:00</td>
 <td>2</td>
 <td>2025-07-04</td>
 <td>14</td>
@@ -606,7 +606,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <td>0</td>
 <td>0</td>
 <td>2025-07-04 17:26:32.619000+00:00</td>
-<td>2025-08-15 03:55:22.571000+00:00</td>
+<td>2025-08-19 06:47:12.340000+00:00</td>
 <td>3</td>
 <td>2025-07-04</td>
 <td>17</td>

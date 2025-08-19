@@ -3,7 +3,7 @@
     "total_badges": {
       "name": "Total badges",
       "description": "The total number of badges in the dataset.",
-      "data": 2501
+      "data": 2533
     },
     "unique_badges": {
       "name": "Unique badge types",
@@ -13,12 +13,12 @@
     "users_with_badges": {
       "name": "Users with badges",
       "description": "The number of unique users who have at least one badge.",
-      "data": 2032
+      "data": 2048
     },
     "avg_badges_per_user": {
       "name": "Average badges per user",
       "description": "The average number of badges per user.",
-      "data": 1.2308070866141732
+      "data": 1.23681640625
     }
   },
   "top": {
@@ -52,17 +52,17 @@
       "data": {
         "0": {
           "badge_name": "Maiden Voyage",
-          "count": 2013,
+          "count": 2027,
           "badge_text": "you shipped your first project! the journey begins..."
         },
         "1": {
           "badge_name": "Ballot Stuffer",
-          "count": 251,
+          "count": 262,
           "badge_text": "vote 100 times."
         },
         "2": {
           "badge_name": "Yapper I",
-          "count": 59,
+          "count": 60,
           "badge_text": "Posted 10 comments on devlogs."
         }
       }
@@ -73,27 +73,27 @@
       "data": {
         "0": {
           "badge_name": "Maiden Voyage",
-          "count": 2013,
+          "count": 2027,
           "badge_text": "you shipped your first project! the journey begins..."
         },
         "1": {
           "badge_name": "Ballot Stuffer",
-          "count": 251,
+          "count": 262,
           "badge_text": "vote 100 times."
         },
         "2": {
           "badge_name": "Yapper I",
-          "count": 59,
+          "count": 60,
           "badge_text": "Posted 10 comments on devlogs."
         },
         "3": {
           "badge_name": "Graphic Design is My Passion",
-          "count": 47,
+          "count": 48,
           "badge_text": "Oh God How Did This Get Here I Am Not Good With Computer"
         },
         "4": {
           "badge_name": "Spider",
-          "count": 39,
+          "count": 40,
           "badge_text": "this user has a pet!"
         },
         "5": {
@@ -103,7 +103,7 @@
         },
         "6": {
           "badge_name": "Lived Mas",
-          "count": 20,
+          "count": 21,
           "badge_text": "you know what you did."
         },
         "7": {
@@ -113,7 +113,7 @@
         },
         "8": {
           "badge_name": "No Fun",
-          "count": 9,
+          "count": 12,
           "badge_text": "opt-out added for the whimsy-impaired"
         },
         "9": {
@@ -170,27 +170,27 @@
     {
       "badge_name": "Maiden Voyage",
       "badge_description": "you shipped your first project! the journey begins...",
-      "num": 2013
+      "num": 2027
     },
     {
       "badge_name": "Ballot Stuffer",
       "badge_description": "vote 100 times.",
-      "num": 251
+      "num": 262
     },
     {
       "badge_name": "Yapper I",
       "badge_description": "Posted 10 comments on devlogs.",
-      "num": 59
+      "num": 60
     },
     {
       "badge_name": "Graphic Design is My Passion",
       "badge_description": "Oh God How Did This Get Here I Am Not Good With Computer",
-      "num": 47
+      "num": 48
     },
     {
       "badge_name": "Spider",
       "badge_description": "this user has a pet!",
-      "num": 39
+      "num": 40
     },
     {
       "badge_name": "<%= admin_tool do %>",
@@ -200,7 +200,7 @@
     {
       "badge_name": "Lived Mas",
       "badge_description": "you know what you did.",
-      "num": 20
+      "num": 21
     },
     {
       "badge_name": "Verified",
@@ -210,7 +210,7 @@
     {
       "badge_name": "No Fun",
       "badge_description": "opt-out added for the whimsy-impaired",
-      "num": 9
+      "num": 12
     },
     {
       "badge_name": "Preferred Customer",
